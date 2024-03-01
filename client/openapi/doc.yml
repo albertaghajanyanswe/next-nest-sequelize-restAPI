@@ -1,0 +1,1040 @@
+openapi: 3.0.0
+paths:
+  /api/uploads:
+    post:
+      operationId: UploadController_uploadFile
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: &ref_0
+        - Uploads
+      security: &ref_1
+        - bearer: []
+  /api/uploads/avatar:
+    post:
+      operationId: UploadController_uploadAvatar
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+      security: *ref_1
+  /api/uploads/avatar/delete/{filename}:
+    delete:
+      operationId: UploadController_deleteAvatar
+      summary: Delete file by name
+      parameters:
+        - name: filename
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: link
+          required: true
+          in: path
+          description: File name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteFileDto'
+      tags: *ref_0
+      security: *ref_1
+  /api/uploads/productImage:
+    post:
+      operationId: UploadController_uploadProductImage
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductImageDto'
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+      security: *ref_1
+  /api/files/{filename}:
+    get:
+      operationId: FileController_serveFile
+      parameters:
+        - name: filename
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Files
+  /api/users/registration:
+    post:
+      operationId: UsersController_register
+      summary: Create new user
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags: &ref_2
+        - Users
+      security: &ref_3
+        - bearer: []
+  /api/users/registration/guest:
+    post:
+      operationId: UsersController_registerGuest
+      summary: Create new guest user
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags: *ref_2
+      security: *ref_3
+  /api/users/activate/{link}:
+    get:
+      operationId: UsersController_activateUser
+      summary: Activate registred user account
+      parameters:
+        - name: link
+          required: true
+          in: path
+          description: The activation link
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags: *ref_2
+      security: *ref_3
+  /api/users:
+    get:
+      operationId: UsersController_getAll
+      summary: Get all users
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUsersDto'
+      tags: *ref_2
+      security: *ref_3
+  /api/users/currentUser:
+    get:
+      operationId: UsersController_getCurrentUser
+      summary: Get current users
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+      tags: *ref_2
+      security: *ref_3
+  /api/users/{id}:
+    put:
+      operationId: UsersController_updateUser
+      summary: Update user info
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: User id
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags: *ref_2
+      security: *ref_3
+  /api/roles:
+    post:
+      operationId: RolesController_create
+      summary: Create new role
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoleDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+      tags: &ref_4
+        - Roles
+      security: &ref_5
+        - bearer: []
+  /api/roles/{value}:
+    get:
+      operationId: RolesController_getRoleByValue
+      summary: Get role by value
+      parameters:
+        - name: value
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+      tags: *ref_4
+      security: *ref_5
+  /api/categories:
+    get:
+      operationId: CategoriesController_getAllCategories
+      summary: Get all categories
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCategoriesDto'
+      tags: &ref_6
+        - Categories
+      security: &ref_7
+        - bearer: []
+    post:
+      operationId: CategoriesController_create
+      summary: Create new category
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCategoryDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+      tags: *ref_6
+      security: *ref_7
+  /api/categories/{value}:
+    get:
+      operationId: CategoriesController_getCategoryByValue
+      summary: Get category by value
+      parameters:
+        - name: value
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+      tags: *ref_6
+      security: *ref_7
+  /api/products/{id}:
+    get:
+      operationId: ProductsController_getProductById
+      summary: Get product by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+      tags: &ref_8
+        - Products
+      security: &ref_9
+        - bearer: []
+    put:
+      operationId: ProductsController_updateProduct
+      summary: Update product
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: Product id
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+      tags: *ref_8
+      security: *ref_9
+  /api/products:
+    get:
+      operationId: ProductsController_getAll
+      summary: Get all product
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsDto'
+      tags: *ref_8
+      security: *ref_9
+    post:
+      operationId: ProductsController_create
+      summary: Create new product
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+      tags: *ref_8
+      security: *ref_9
+  /api/favoriteProducts:
+    get:
+      operationId: FavoriteProductsController_getAll
+      summary: Get all favorite products
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFavoriteProductsDto'
+      tags: &ref_10
+        - FavoriteProduct
+      security: &ref_11
+        - bearer: []
+  /api/favoriteProducts/add:
+    post:
+      operationId: FavoriteProductsController_create
+      summary: Create favorite products
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFavoriteProductByIdDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FavoriteProductDto'
+      tags: *ref_10
+      security: *ref_11
+  /api/favoriteProducts/delete/{id}:
+    delete:
+      operationId: FavoriteProductsController_delete
+      summary: Delete favorite products
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteDto'
+      tags: *ref_10
+      security: *ref_11
+  /api/auth/login:
+    post:
+      operationId: AuthController_login
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags: &ref_12
+        - Auth
+  /api/auth/postLogin:
+    post:
+      operationId: AuthController_postLogin
+      summary: Login
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostLoginDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags: *ref_12
+  /api/auth/postLogin/guest:
+    post:
+      operationId: AuthController_postLoginGuest
+      summary: Login guest
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostLoginGuestDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags: *ref_12
+info:
+  title: Test BE
+  description: Description for REST APIs
+  version: 1.0.0
+  contact: {}
+tags:
+  - name: APIs
+    description: ''
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    DeleteFileDto:
+      type: object
+      properties: {}
+    CreateProductImageDto:
+      type: object
+      properties: {}
+    User:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        nickName:
+          type: string
+          example: Nick name
+          description: User nick name
+        firstName:
+          type: string
+          example: First name
+          description: User first name
+        lastName:
+          type: string
+          example: Last name
+          description: User last name
+        email:
+          type: string
+          example: test@yopmail.com
+          description: User email address
+        password:
+          type: string
+          example: '11111'
+          description: User password
+        passwordExpireDate:
+          type: string
+          example: '2023-09-19 19:31:35.669+04'
+          description: User password expire date
+        lastLogin:
+          type: string
+          example: '2023-09-19 19:31:35.669+04'
+          description: User last login date
+        phone:
+          type: string
+          example: Last name
+          description: User last name
+        activationLink:
+          type: string
+          example: ''
+          description: User activation link
+        isActive:
+          type: boolean
+          example: true
+          description: User active state
+        archived:
+          type: boolean
+          example: false
+          description: User archived
+        roles:
+          example: 1
+          description: Corresponding role id
+          type: array
+          items:
+            type: string
+        image:
+          type: string
+          example: ''
+          description: User image
+        firebaseSubscription:
+          type: string
+          example: ''
+          description: Firebase subscription
+        firebaseToken:
+          type: string
+          example: ''
+          description: Firebase token
+        deviceType:
+          type: string
+          example: ''
+          description: Device type
+        favoriteProducts:
+          example: 1
+          description: Corresponding favoriteProduct id
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - nickName
+        - firstName
+        - lastName
+        - email
+        - password
+        - passwordExpireDate
+        - lastLogin
+        - phone
+        - activationLink
+        - isActive
+        - archived
+        - roles
+        - image
+        - firebaseSubscription
+        - firebaseToken
+        - deviceType
+        - favoriteProducts
+    GetUsersDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        count:
+          type: number
+      required:
+        - data
+        - count
+    Role:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        value:
+          type: string
+          enum:
+            - ADMIN
+            - USER
+            - GUEST
+        description:
+          type: string
+          example: Guest user
+          description: Role description
+      required:
+        - id
+        - value
+        - description
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        nickName:
+          type: string
+          example: Nick name
+          description: User nick name
+        firstName:
+          type: string
+          example: First name
+          description: User first name
+        lastName:
+          type: string
+          example: Last name
+          description: User last name
+        email:
+          type: string
+          example: test@yopmail.com
+          description: User email address
+        password:
+          type: string
+          example: '11111'
+          description: User password
+        passwordExpireDate:
+          type: string
+          example: '2023-09-19 19:31:35.669+04'
+          description: User password expire date
+        lastLogin:
+          type: string
+          example: '2023-09-19 19:31:35.669+04'
+          description: User last login date
+        phone:
+          type: string
+          example: Last name
+          description: User last name
+        activationLink:
+          type: string
+          example: ''
+          description: User activation link
+        isActive:
+          type: boolean
+          example: true
+          description: User active state
+        archived:
+          type: boolean
+          example: false
+          description: User archived
+        image:
+          type: string
+          example: ''
+          description: User image
+        firebaseSubscription:
+          type: string
+          example: ''
+          description: Firebase subscription
+        firebaseToken:
+          type: string
+          example: ''
+          description: Firebase token
+        deviceType:
+          type: string
+          example: ''
+          description: Device type
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+      required:
+        - id
+        - nickName
+        - firstName
+        - lastName
+        - email
+        - password
+        - passwordExpireDate
+        - lastLogin
+        - phone
+        - activationLink
+        - isActive
+        - archived
+        - image
+        - firebaseSubscription
+        - firebaseToken
+        - deviceType
+        - roles
+    UpdateUserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: First name
+          description: User first name
+        lastName:
+          type: string
+          example: Last name
+          description: User last name
+        phone:
+          type: string
+          example: Last name
+          description: User last name
+        image:
+          type: string
+          example: ''
+          description: User image
+      required:
+        - firstName
+        - lastName
+        - phone
+        - image
+    CreateRoleDto:
+      type: object
+      properties: {}
+    Category:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        name:
+          type: string
+          example: OTHER
+          description: Other
+        description:
+          type: string
+          example: Other category
+          description: Other category
+      required:
+        - id
+        - name
+        - description
+    GetCategoriesDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        count:
+          type: number
+      required:
+        - data
+        - count
+    CreateCategoryDto:
+      type: object
+      properties: {}
+    ProductDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        name:
+          type: string
+          example: Name
+          description: Product name
+        description:
+          type: string
+          example: Description
+          description: Product description
+        price:
+          type: string
+          example: '1'
+          description: Product price
+        currency:
+          type: string
+          example: USD
+          description: Product price currency
+        province:
+          type: string
+          example: Lori
+          description: Product located province
+        city:
+          type: string
+          example: Vanadzor
+          description: Product located city
+        address:
+          type: string
+          example: Street Usanoxakan
+          description: Product located address
+        otherInfo:
+          type: string
+          example: Product info
+          description: Product other information
+        intendedFor:
+          type: string
+          enum:
+            - FOR_SALE
+            - FOR_RENT
+            - FOR_FREE_GIVING
+        productState:
+          type: string
+          enum:
+            - NEW
+            - USED
+            - NOT_OPERABLE
+        categoryId:
+          type: number
+          example: '1'
+          description: Product category id
+        category:
+          $ref: '#/components/schemas/Category'
+        userId:
+          type: boolean
+          example: false
+          description: User archived
+        user:
+          $ref: '#/components/schemas/User'
+      required:
+        - id
+        - name
+        - description
+        - price
+        - currency
+        - province
+        - city
+        - address
+        - otherInfo
+        - intendedFor
+        - productState
+        - categoryId
+        - category
+        - userId
+        - user
+    Product:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        name:
+          type: string
+          example: Notebook Dell
+          description: Enter product name
+        description:
+          type: string
+          example: Notebook
+          description: Notebook description
+        price:
+          type: string
+          example: '500'
+          description: Notebook price
+        currency:
+          type: string
+          example: USD
+          description: Notebook price currency
+        province:
+          type: string
+          example: Lori
+          description: Notebook located province
+        city:
+          type: string
+          example: Vanadzor
+          description: Notebook located city
+        address:
+          type: string
+          example: Usanoxakan 5
+          description: Notebook located exact address
+        otherInfo:
+          type: string
+          example: New notebook
+          description: Notebook other information
+        intendedFor:
+          type: string
+          enum:
+            - FOR_SALE
+            - FOR_RENT
+            - FOR_FREE_GIVING
+        productState:
+          type: string
+          enum:
+            - NEW
+            - USED
+            - NOT_OPERABLE
+      required:
+        - id
+        - name
+        - description
+        - price
+        - currency
+        - province
+        - city
+        - address
+        - otherInfo
+        - intendedFor
+        - productState
+    GetProductsDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: number
+      required:
+        - data
+        - count
+    CreateProductDto:
+      type: object
+      properties: {}
+    FavoriteProductDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        storedProductId:
+          type: number
+          example: '1'
+          description: Stored Product id
+        storedProductName:
+          type: string
+          example: Name
+          description: Stored product name
+        storedProductDescription:
+          type: string
+          example: Description
+          description: Stored product description
+        storedProductPrice:
+          type: string
+          example: '1'
+          description: Stored product price
+        storedProductCurrency:
+          type: string
+          example: USD
+          description: Stored product price currency
+        storedProductProvince:
+          type: string
+          example: Lori
+          description: Stored product located province
+        storedProductCity:
+          type: string
+          example: Vanadzor
+          description: Stored product located city
+        storedProductAddress:
+          type: string
+          example: Street Usanoxakan
+          description: Stored product located address
+        storedProductOtherInfo:
+          type: string
+          example: Product info
+          description: Stored product other information
+        storedProductIntendedFor:
+          type: string
+          enum:
+            - FOR_SALE
+            - FOR_RENT
+            - FOR_FREE_GIVING
+        storedProductState:
+          type: string
+          enum:
+            - NEW
+            - USED
+            - NOT_OPERABLE
+        storedProductCategoryId:
+          type: number
+          example: '1'
+          description: Stored product category id
+        storedProductUserId:
+          type: number
+          example: '1'
+          description: Stored Product user id
+      required:
+        - id
+        - storedProductId
+        - storedProductName
+        - storedProductDescription
+        - storedProductPrice
+        - storedProductCurrency
+        - storedProductProvince
+        - storedProductCity
+        - storedProductAddress
+        - storedProductOtherInfo
+        - storedProductIntendedFor
+        - storedProductState
+        - storedProductCategoryId
+        - storedProductUserId
+    GetFavoriteProductsDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FavoriteProductDto'
+        count:
+          type: number
+      required:
+        - data
+        - count
+    CreateFavoriteProductByIdDto:
+      type: object
+      properties: {}
+    DeleteDto:
+      type: object
+      properties: {}
+    PostLoginDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: test@yopmail.com
+          description: User email address
+        password:
+          type: string
+          example: '11111'
+          description: User password
+      required:
+        - email
+        - password
+    PostLoginGuestDto:
+      type: object
+      properties:
+        nickName:
+          type: string
+          example: test
+          description: User nickname
+        password:
+          type: string
+          example: '11111'
+          description: User password
+      required:
+        - nickName
+        - password
