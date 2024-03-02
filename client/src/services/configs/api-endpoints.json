@@ -1,0 +1,19 @@
+{
+  "users": "/users",
+  "registration": "/users/registration",
+  "registrationGuest": "/users/registration/guest",
+  "login": "/auth/login",
+  "postLogin": "/auth/postLogin",
+  "postLoginGuest": "/auth/postLogin/guest",
+  "user": "/users/:userId",
+  "uploadsAvatar": "/uploads/avatar",
+  "uploadsProductImage": "/uploads/productImage",
+  "deleteAvatar": "/uploads/avatar/delete/:filename",
+  "currentUser": "/users/currentUser",
+  "products": "/products",
+  "product": "/products/:id",
+  "createProducts": "/products",
+  "categories": "/categories",
+  "addToFavorite": "/favoriteProducts/add",
+  "deleteFavorite": "/favoriteProducts/delete/:id"
+}
