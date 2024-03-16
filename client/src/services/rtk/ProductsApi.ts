@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { GetProductsDto, Product, ProductDto, GetCategoriesDto } from '../../generated/openapi';
+import { GetProductsDto, Product, ProductDto, GetCategoriesDto } from '@/generated/openapi';
 // import { axiosInstance } from '../client/axiosHelper';
-import { apiEndpoints } from '../configs';
-import { getCurrentUser } from '../lsService';
+import { apiEndpoints } from '@/services/configs';
+import { getCurrentUser } from '@/services/lsService';
 
 // const baseUrl = `${process.env.REACT_APP_UI_URL}/api` || 'http://localhost:4000/api';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

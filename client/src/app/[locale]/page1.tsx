@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 
 import React from 'react';
 import ChangeTheme from '../components/changeTheme';
@@ -19,9 +19,11 @@ export default function Home() {
   //   }
   //   return true
   // }
+  const { data: currentUser, isLoading } = usersAPI.useGetCurrentUserQuery({});
+
   return (
     <main className={styles.main}>
-
+      Home
     </main>
   );
 }

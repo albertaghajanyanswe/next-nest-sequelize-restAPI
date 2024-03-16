@@ -5,7 +5,7 @@ const fileService = {
     if (!uuid) {
       return '';
     }
-    return `${process.env.REACT_APP_API_URL}/${PREFIX}/files/${uuid}`
+    return `${process.env.NEXT_PUBLIC_API_URL}/${PREFIX}/files/${uuid}`
   }
 }
 

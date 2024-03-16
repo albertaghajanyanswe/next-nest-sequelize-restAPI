@@ -1,3 +1,3 @@
-import apiEndpoints from './api-endpoints.json';
+import apiEndpoints from '@/services/configs/api-endpoints.json';
 
 export { apiEndpoints };

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { lsConstants } from "../../configs/shared/constants";
+import { lsConstants } from "@/configs/shared/constants";
 
 interface ISidebarState {
   isSideBarOpen: boolean,

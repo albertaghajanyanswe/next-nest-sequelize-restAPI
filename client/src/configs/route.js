@@ -39,6 +39,10 @@ const routes = {
     path: '/products/create',
     title: 'pages.createProduct'
   },
+  settings: {
+    path: '/settings',
+    title: 'pages.settings'
+  },
 }
 
 export default routes;

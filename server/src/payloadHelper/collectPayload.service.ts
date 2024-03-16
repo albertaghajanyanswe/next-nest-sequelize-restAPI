@@ -65,7 +65,6 @@ export class CollectPayloadService {
             // res.where[i] = { [Op.startsWith]: filter[i] };
           }
 
-          console.log('\n\n 111 customFilterNames = ', customFilterNames)
           for (const i in customFilterNames) {
             const name = customFilterNames[i];
             if (customFilter[name].in) {

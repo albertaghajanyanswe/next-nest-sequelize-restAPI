@@ -1,5 +1,5 @@
 import { apiEndpoints } from "../configs"
-import { usersAPI } from "./UsersApi"
+import { usersAPI } from "@/services/rtk/UsersApi";
 
 const uploadsAPI = usersAPI.injectEndpoints({
   endpoints: (build) => ({

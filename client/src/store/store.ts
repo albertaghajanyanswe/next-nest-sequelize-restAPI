@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import userReducer from './reducers/UsersSlice';
-import counterReducer from './reducers/CounterSlice';
-import sidebarReducer from './reducers/SidebarSlice';
+import userReducer from '@/store/reducers/UsersSlice';
+import counterReducer from '@/store/reducers/CounterSlice';
+import sidebarReducer from '@/store/reducers/SidebarSlice';
 import { usersAPI } from "@/services/rtk/UsersApi";
 import { setupListeners } from '@reduxjs/toolkit/query/react';
-import { rtkQueryErrorLogger } from "./middleware/rtkErrorHandling";
+import { rtkQueryErrorLogger } from "@/store/middleware/rtkErrorHandling";
 import { uploadsAPI } from "@/services/rtk/UploadsApi";
 import { productsAPI } from "@/services/rtk/ProductsApi";
 

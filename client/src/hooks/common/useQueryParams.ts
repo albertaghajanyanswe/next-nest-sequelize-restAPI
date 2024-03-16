@@ -1,12 +1,14 @@
+'use client';
 import { useCallback, useRef } from 'react';
 import qs from 'qs';
 import { iFilter, iFilterParams, iSearch, iSort } from '../../configs/shared/types';
-import { useRouter } from 'next/router';
+import { useRouter, usePathname } from 'next/navigation';
 
 const useQueryParams = ({ pageDefaultParams }: { pageDefaultParams?: iFilterParams }) => {
 
   const router = useRouter();
-
+  const pathname = usePathname();
+  console.log('pathname = ', pathname)
   const pageParams = qs.parse(location && location.search.split('?')[1], { ignoreQueryPrefix: true, arrayLimit: Infinity });
 
   const tableFilter = useRef(
@@ -23,13 +25,12 @@ const useQueryParams = ({ pageDefaultParams }: { pageDefaultParams?: iFilterPara
 
   const replacePath = (newQuery: any) => {
     const search = qs.stringify({ ...newQuery }, { skipNulls: true });
-    router.push({
-      pathname: router.pathname,
-      search: search
-    }, undefined,
-      {
-        shallow: true,
-      })
+    console.log('search = ', search)
+    router.push(`${pathname}?${search}`)
+    // router.push({
+    //   pathname: router.pathname,
+    //   query: search
+    // })
   };
 
   const setFilteredParams = useCallback(

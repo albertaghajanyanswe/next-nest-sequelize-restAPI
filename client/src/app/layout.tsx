@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import React from 'react';
 import "./globals.css";
 import i18nConfig from '@/app/i18nConfig';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import CustomThemeProvider from '../configs/themes/CustomThemeProvider';
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ["latin"],
+  variable: "--font-poppins"
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <AppRouterCacheProvider>
           <CustomThemeProvider>
             {children}

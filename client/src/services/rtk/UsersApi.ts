@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { iLogin, iLoginGuest, iRegistration, iRegistrationGuest, IUser } from '../../configs/shared/types';
-import { GetUsersDto, UpdateUserDto, UserDto } from '../../generated/openapi';
+import { iLogin, iLoginGuest, iRegistration, iRegistrationGuest, IUser } from '@/configs/shared/types';
+import { GetUsersDto, UpdateUserDto, UserDto } from '@/generated/openapi';
 // import { axiosInstance } from '../client/axiosHelper';
-import { apiEndpoints } from '../configs';
-import { getCurrentUser } from '../lsService';
+import { apiEndpoints } from '@/services/configs';
+import { getCurrentUser } from '@/services/lsService';
 
 // const baseUrl = `${process.env.REACT_APP_UI_URL}/api` || 'http://localhost:4000/api';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -54,8 +54,6 @@ export const usersAPI = createApi({
     }),
     updateUser: build.mutation<UserDto, UpdateUserDto & { userId: number }>({
       query: ({userId, ...data}) => {
-        console.log('userId = ', userId)
-        console.log('data = ', data)
         return {
           url: `api${apiEndpoints.user.replace(':userId', `${userId}`)}`,
           method: 'PUT',

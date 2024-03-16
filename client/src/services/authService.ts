@@ -1,7 +1,7 @@
 // import { CreateUserDto, DefaultApi, User, UsersApi } from '../generated/openapi';
-import { AuthApi } from '../generated/openapi';
+import { AuthApi } from '@/generated/openapi';
 
-import { axiosInstance } from './client/axiosHelper';
+import { axiosInstance } from '@/services/client/axiosHelper';
 
 const PREFIX = 'api';
 

@@ -150,7 +150,6 @@ export class UsersService {
       if (transaction) {
         await transaction.rollback();
       }
-      console.log('\n\n error = ', err);
       throw err;
       // console.log('\n\n error = ', err)
       // throw new HttpException('Error in create user', HttpStatus.INTERNAL_SERVER_ERROR);

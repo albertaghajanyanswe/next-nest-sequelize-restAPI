@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { iRegistrationGuest, IUser } from '../../configs/shared/types';
-import userService from '../../services/usersService';
+import { iRegistrationGuest, IUser } from '@/configs/shared/types';
+import userService from '@/services/usersService';
 
 interface IUserState {
   users: IUser[];

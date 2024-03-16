@@ -1,4 +1,4 @@
-import { routes } from './configs';
+import { routes } from '@/configs';
 
 export default function onUnauthorized(error: any, reactRouterHistory: any) {
   // logOut();

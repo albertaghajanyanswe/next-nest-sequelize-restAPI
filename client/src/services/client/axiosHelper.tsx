@@ -1,6 +1,6 @@
 import axios from 'axios';
-import onUnauthorized from '../errorHandlers';
-import { getCurrentUser } from '../lsService';
+import onUnauthorized from '@/services/errorHandlers';
+import { getCurrentUser } from '@/services/lsService';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -17,6 +17,7 @@ const defaultHeaderHandler = (request: any) => {
   if (authHeader) {
     request.headers = authHeader;
   }
+  console.log('request = ', request)
   return request;
 };
 

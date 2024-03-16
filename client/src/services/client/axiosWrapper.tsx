@@ -1,4 +1,4 @@
-import * as axiosHelper from './axiosHelper';
+import * as axiosHelper from '@/services/client/axiosHelper';
 
 const get = <T, O = any>(options: O) => axiosHelper.apiClient<T, O>('GET', options);
 

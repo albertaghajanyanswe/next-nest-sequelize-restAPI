@@ -1,8 +1,8 @@
 'use client'
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useContext } from "react";
-import { CustomThemeContext } from "../../../configs/themes/CustomThemeProvider";
+import { CustomThemeContext } from "@/configs/themes/CustomThemeProvider";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useTranslation } from "react-i18next";
@@ -18,20 +18,16 @@ function ChangeTheme() {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        // color: 'text.primary',
-        borderRadius: 1,
-      }}
-    >
-      <Typography sx={{ color: theme.palette.primary.main, minWidth: '224px', mr: 2, textAlign: 'start', fontWeight: 500 }}>{t('changeTheme')}</Typography>
+    <Grid container gap={2}>
+      <Grid item xs={12} sm={3}>
+        <Typography sx={{ textAlign: 'start', fontWeight: 500 }}>{t('changeTheme')}</Typography>
+      </Grid>
+      <Grid item xs={12} sm={3}>
       <IconButton onClick={() => handleChangeTheme(currentTheme === 'light' ? 'dark' : 'light')} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
-    </Box>
+      </Grid>
+    </Grid>
   );
 }
 
