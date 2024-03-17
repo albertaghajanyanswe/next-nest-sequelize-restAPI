@@ -71,3 +71,17 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+### Add migration
+- cd server/src/database
+- npx sequelize-cli migration:generate --name 03-products-add-image-column
+
+
+### Run a Specific Migration
+- npx sequelize-cli db:migrate --env test --name <migration-file-name>
+
+
+### Undo a Specific Migration:
+- npx sequelize-cli db:migrate:undo --env test --name <migration-file-name> 
+- example: db:migrate:undo --name 20240317105234-03-products-add-image-column.js

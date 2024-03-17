@@ -61,7 +61,7 @@ function ProductsLayout<T>({
   // eslint-disable-next-line
   const getFooterHeight = useCallback(() => (footerRef.current?.clientHeight || 0), [footerRef.current?.clientHeight, loading])
 
-  const { filterFields, searchFields, rowsPerPageOptions } = options;
+  const { filterFields, searchFields, rowsPerPageOptions } = options(t);
 
   const onSearchCallback = (value: string) => {
     let oldValue = filteredParams.params?.search?.value;
@@ -84,7 +84,6 @@ function ProductsLayout<T>({
     return filteredFields;
     // eslint-disable-next-line
   }, [currentUser]);
-
 
   const onFilterCallback = (filterObj: { [key: string]: any }) => {
     if (filterObj && !Array.isArray(filterObj)) {

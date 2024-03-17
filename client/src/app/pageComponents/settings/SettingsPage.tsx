@@ -22,6 +22,7 @@ import FormFileInput from '@/app/components/form/imageInput';
 import { DEFAULT_VALUES_PROFILE } from '@/configs/shared/defaultValues';
 import { stylesWithTheme } from './styles';
 import { useRouter } from 'next/navigation';
+import { uploadsAPI } from '@/services/rtk/UploadsApi';
 
 const FormHOC = StepHOC<iAccountDetails>()(
   ["image", "firstName", "lastName", "email", "phone", "nickName"]
@@ -119,6 +120,8 @@ const SettingsPage = () => {
       closeModal();
     }
   }
+  const [uploadAvatar, { isLoading }] = uploadsAPI.useUploadAvatarMutation();
+  const [deleteAvatar] = uploadsAPI.useDeleteAvatarMutation();
 
   return (
     <Box sx={{ p: '64px'}}>
@@ -135,6 +138,9 @@ const SettingsPage = () => {
                 labelSx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}
                 description={t('photoDesc')}
                 sx={{ mt: 0 }}
+                uploadFile={uploadAvatar}
+                deleteFile={deleteAvatar}
+                uploadFileLoading={isLoading}
               />
             </Grid>
             <Grid item xs={12} sm={6}>

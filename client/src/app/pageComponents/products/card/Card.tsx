@@ -40,7 +40,7 @@ function ProductItemCard<T>({
 
   return (
     // <CardActionArea sx={{ height: '100%' }} onClick={handleOnClick}>
-    <Card sx={{ p: 2, height: '100%' }}>
+    <Card sx={{ p: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
       <Chip sx={{ position: 'absolute', top: '12px', right: '12px', height: '24px', backgroundColor: bgColors[details.intendedFor as keyof typeof bgColors] }} label={t(`${details.intendedFor}`)} />
       <CardMedia
         // sx={{ height: 140 }}

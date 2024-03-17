@@ -1,5 +1,5 @@
 'use client';
-import ProductsPage from '@/app/pageComponents/products/productsPage';
+import ProductsPage from '@/app/pageComponents/products/ProductsPage';
 import React from 'react';
 
 function Products() {

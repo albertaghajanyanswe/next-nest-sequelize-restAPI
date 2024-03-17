@@ -158,6 +158,7 @@ const ProductItemPage = () => {
     return <NotFound />
   }
 
+
   return (
     <Box>
       <Box sx={{ position: 'fixed', width: `calc(100% - ${variables.drawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px' }}>

@@ -34,6 +34,10 @@ const FormFileInput = <T extends FieldValues>({
   labelSx = {},
   btnType = 'primary',
   alt = '',
+  uploadFile,
+  uploadFileLoading,
+  deleteFile,
+  itemId = null
 }: {
   name: TypedPath<T, FileData[]>;
   rules?: any;
@@ -49,7 +53,12 @@ const FormFileInput = <T extends FieldValues>({
   labelSx?: any;
   btnType?: 'secondary' | 'primary' | 'tertiary' | 'ghost';
   alt?: string;
+  uploadFile: ({formData}: any) => any;
+  deleteFile: ({filename}: any) => any;
+  uploadFileLoading: boolean;
+  itemId?: number | string | string[] | null;
 }) => {
+
   const { t } = useTranslation();
   const theme = useTheme();
   const muiStyles = muiStylesWithTheme(theme);
@@ -61,8 +70,8 @@ const FormFileInput = <T extends FieldValues>({
   const [previewFile, setPreviewFile] = useState(initialFile ? fileService.getFileUrl(initialFile || value) : '');
   const ALLOWED_MAX_SIZE = 10000000; // 10 MB
 
-  const [uploadAvatar, { isLoading }] = uploadsAPI.useUploadAvatarMutation();
-  const [deleteAvatar] = uploadsAPI.useDeleteAvatarMutation();
+  // const [uploadAvatar, { isLoading }] = uploadsAPI.useUploadAvatarMutation();
+  // const [deleteAvatar] = uploadsAPI.useDeleteAvatarMutation();
 
   useEffect(() => {
     setInitialFile(value);
@@ -78,7 +87,14 @@ const FormFileInput = <T extends FieldValues>({
   const createFileApi = async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await uploadAvatar({ formData });
+    console.log(111111, {
+      formData,
+      ...(itemId ? {uniqueId: itemId} : {})
+    })
+    const res = await uploadFile({
+      formData,
+      ...(itemId ? {uniqueId: itemId} : {})
+    });
     console.log('res = ', res)
     if ('data' in res) {
       clearErrors(name);
@@ -121,7 +137,7 @@ const FormFileInput = <T extends FieldValues>({
   const { getRootProps, getInputProps, open } = useDropzone(dropzoneOptions);
 
   const onDelete = async () => {
-    await deleteAvatar({filename: initialFile});
+    await deleteFile({filename: initialFile});
     setPreviewFile('');
     onChange('');
   };
@@ -135,7 +151,7 @@ const FormFileInput = <T extends FieldValues>({
         <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: {xs: 'center', sm: 'center', md: 'center', lg: 'inherit'}, flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row'} }}>
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row'} }}>
-              <Avatar alt={alt} src={isLoading ? LOADING_GIF : imagePath(initialFile) || previewFile} sx={{ mr: {xs: 0, sm: 2}, width: 72, height: 72 }} />
+              <Avatar alt={alt} src={uploadFileLoading ? LOADING_GIF : imagePath(initialFile) || previewFile} sx={{ mr: {xs: 0, sm: 2}, width: 72, height: 72 }} />
               <Box component="div" sx={{ display: 'flex', flexDirection: 'column', textAlign: {xs: 'center', sm: 'inherit'} }}>
                 {label ? typeof label === 'string' ? <Typography sx={{ ...muiStyles.label, ...labelSx }}>{label}</Typography> : label : null}
                 {description && <Typography sx={muiStyles.description}>{description}</Typography>}
