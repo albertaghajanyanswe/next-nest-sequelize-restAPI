@@ -1,5 +1,6 @@
 import React from "react";
 import { FavoriteProductDto, Product, ProductIntendedForEnum, ProductProductStateEnum } from "../../generated/openapi";
+import { StaticFiles } from "@/app/generated/openapi";
 
 export interface IUser {
   id: number;
@@ -180,6 +181,7 @@ export interface iCreateProduct {
   categoryId: number;
   intendedFor: ProductIntendedForEnum;
   productState: ProductProductStateEnum;
+  staticFiles?: StaticFiles[];
 }
 
 // todo add this type in BE

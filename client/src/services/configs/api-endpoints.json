@@ -15,5 +15,6 @@
   "createProducts": "/products",
   "categories": "/categories",
   "addToFavorite": "/favoriteProducts/add",
-  "deleteFavorite": "/favoriteProducts/delete/:id"
+  "deleteFavorite": "/favoriteProducts/delete/:id",
+  "uploadsStaticFile": "/uploads/staticFile"
 }

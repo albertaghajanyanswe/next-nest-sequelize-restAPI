@@ -21,7 +21,7 @@ import { uploadsAPI } from '@/services/rtk/UploadsApi';
 
 const LOADING_GIF = 'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif';
 
-const FormFileInput = <T extends FieldValues>({
+const FormFileInputMultiple = <T extends FieldValues>({
   name,
   rules,
   label,
@@ -53,8 +53,8 @@ const FormFileInput = <T extends FieldValues>({
   labelSx?: any;
   btnType?: 'secondary' | 'primary' | 'tertiary' | 'ghost';
   alt?: string;
-  uploadFile: ({formData}: any) => any;
-  deleteFile: ({filename}: any) => any;
+  uploadFile: ({ formData }: any) => any;
+  deleteFile: ({ filename }: any) => any;
   uploadFileLoading: boolean;
   itemId?: number | string | string[] | null;
 }) => {
@@ -65,9 +65,15 @@ const FormFileInput = <T extends FieldValues>({
   const { clearErrors } = useFormContext();
 
   const { field: { onChange, value }, fieldState: { error } } = useController<T>({ rules, name });
+  console.log('VALUE = ', value)
   const { enqueueSnackbar } = useSnackbar();
-  const [initialFile, setInitialFile] = useState<string>(value as string || '');
-  const [previewFile, setPreviewFile] = useState(initialFile ? fileService.getFileUrl(initialFile || value) : '');
+  const [initialFile, setInitialFile] = useState<string[]>(value as string[] || []);
+  const [previewFile, setPreviewFile] = useState(initialFile ? () => {
+    if (initialFile.length) {
+      return initialFile.map(i => fileService.getFileUrl(i))
+    }
+    return [];
+  } : []);
   const ALLOWED_MAX_SIZE = 10000000; // 10 MB
 
   // const [uploadAvatar, { isLoading }] = uploadsAPI.useUploadAvatarMutation();
@@ -106,7 +112,7 @@ const FormFileInput = <T extends FieldValues>({
       return;
     }
     disableSave(true);
-    setPreviewFile(URL.createObjectURL(file));
+    setPreviewFile((prev) => [...prev, URL.createObjectURL(file)]);
     try {
       await createFileApi(file);
     } catch (error: any) {
@@ -132,10 +138,10 @@ const FormFileInput = <T extends FieldValues>({
 
   const { getRootProps, getInputProps, open } = useDropzone(dropzoneOptions);
 
-  const onDelete = async () => {
-    await deleteFile({filename: initialFile});
-    setPreviewFile('');
-    onChange('');
+  const onDelete = async (item: any) => {
+    await deleteFile({ filename: initialFile });
+    setPreviewFile((prev) => prev.filter(i => i !== item));
+    onChange([]);
   };
 
   const attachSVGStyle = btnType === 'primary' ? {} : muiStyles.attachBtnStyle;
@@ -144,20 +150,28 @@ const FormFileInput = <T extends FieldValues>({
   return (
     <Box sx={{ ...muiStyles.container, ...sx }} display="flex" flexDirection="column">
       <Box sx={{ ...muiStyles.root, ...rootSx, ...(error && muiStyles.rootError) }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: {xs: 'center', sm: 'center', md: 'center', lg: 'inherit'}, flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row'} }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'inherit' }, flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' } }}>
           <Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row'} }}>
-              <Avatar alt={alt} src={uploadFileLoading ? LOADING_GIF : imagePath(initialFile) || previewFile} sx={{ mr: {xs: 0, sm: 2}, width: 72, height: 72 }} />
-              <Box component="div" sx={{ display: 'flex', flexDirection: 'column', textAlign: {xs: 'center', sm: 'inherit'} }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row' } }}>
+              <Box component="div" sx={{ display: 'flex', flexDirection: 'column', textAlign: { xs: 'center', sm: 'inherit' } }}>
                 {label ? typeof label === 'string' ? <Typography sx={{ ...muiStyles.label, ...labelSx }}>{label}</Typography> : label : null}
                 {description && <Typography sx={muiStyles.description}>{description}</Typography>}
               </Box>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', margin: {xs: '24px 0', sm: '24px 0', md: '24px 0', lg: '0'} }}>
-            {initialFile && <IconButton onClick={onDelete} sx={{ height: '32px', width: '32px', mr: '12px', '& > svg': { '& > path': { stroke: '#004B7F' } } }}>
-              <CleanSvg />
-            </IconButton>}
+          <Box sx={{ display: 'flex', alignItems: 'center', margin: { xs: '24px 0', sm: '24px 0', md: '24px 0', lg: '0' } }}>
+            {initialFile &&
+              initialFile.map((i, index) => {
+                console.log('iiiiiii ', i)
+                return (
+                  <div key={index}>
+                    <IconButton onClick={onDelete} sx={{ height: '32px', width: '32px', mr: '12px', '& > svg': { '& > path': { stroke: '#004B7F' } } }}>
+                      <CleanSvg />
+                    </IconButton>
+                  </div>
+                )
+              })
+            }
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <Box {...(!disabled && getRootProps())} >
                 <CustomButton
@@ -184,4 +198,4 @@ const FormFileInput = <T extends FieldValues>({
   );
 }
 
-export default FormFileInput;
+export default FormFileInputMultiple;

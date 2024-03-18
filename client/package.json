@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "openapi": "yarn openapi-generator-cli generate -g typescript-axios -o src/app/generated/openapi -i openapi/doc.yml"
+    "openapi": "yarn openapi-generator-cli generate -g typescript-axios -o src/generated/openapi -i openapi/doc.yml"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",

@@ -39,7 +39,6 @@ const SettingsPage = () => {
 
   const { data: currentUser } = usersAPI.useGetCurrentUserQuery({});
 
-  console.log('currentUser = ', currentUser)
   const currentUserInitialData = {
     image: currentUser ? currentUser?.image : '',
     firstName: currentUser ? currentUser?.firstName : '',
@@ -122,6 +121,19 @@ const SettingsPage = () => {
   }
   const [uploadAvatar, { isLoading }] = uploadsAPI.useUploadAvatarMutation();
   const [deleteAvatar] = uploadsAPI.useDeleteAvatarMutation();
+
+  // const [uploadStaticFile, { isLoading: isLoadingStatic }] = uploadsAPI.useUploadStaticFileMutation();
+
+  // const handleUpload = async ({ formData }: any) => {
+  //   const bodyData = new FormData();
+  //   bodyData.append('file', formData.get('file'));
+  //   bodyData.append('userId', '1');
+  //   // bodyData.append('productId', '2');
+
+  //   console.log('formData = ', formData);
+  //   const res = await uploadStaticFile({ formData: bodyData });
+  //   return res;
+  // }
 
   return (
     <Box sx={{ p: '64px'}}>

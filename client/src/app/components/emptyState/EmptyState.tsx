@@ -18,7 +18,8 @@ function EmptyState({
   const toolbarMinHeight = theme.breakpoints.up('md') ? 64 : 56;
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', height: `calc(100% - ${toolbarMinHeight}px)`, alignItems: 'center' }}>
+    // <Box sx={{ display: 'flex', justifyContent: 'center', height: `calc(100% - ${toolbarMinHeight}px)`, alignItems: 'center', }}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
       <Box sx={{ width: '92%', height: '90%', backgroundColor: 'primary.btnMainDisabled', padding: '24px 24px 36px 24px', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <Box sx={{ m: 3 }}><EmptySVG /></Box>
         {title && <Typography sx={{ ...globalMuiStyles.font_14_16_500, color: 'primary.textColor1' }}>{title}</Typography>}

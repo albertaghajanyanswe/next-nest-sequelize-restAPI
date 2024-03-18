@@ -9,6 +9,7 @@ import { UserRoles } from 'src/roles/user-roles.model';
 import { DEVELOPMENT, PRODUCTION, SEQUELIZE, TEST } from 'src/shared/constants';
 import { User } from 'src/users/users.model';
 import { databaseConfig } from './database.config';
+import { StaticFiles } from 'src/staticFiles/staticFiles.model';
 
 export const databaseProvidersObject = {
   provide: SEQUELIZE,
@@ -37,6 +38,7 @@ export const databaseProvidersObject = {
       ProductImage,
       FavoriteProduct,
       UserFavoriteProducts,
+      StaticFiles,
     ]);
     await sequelize.sync();
     return sequelize;

@@ -42,11 +42,11 @@ const RegistrationGuestPage = () => {
     try {
       await registerGuest(data as iRegistrationGuest).unwrap();
       // toast.success(getMessage('', 'success'));
-      SystemMessage(enqueueSnackbar, getMessage('', 'success'), { variant: 'success', theme });
+      SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), { variant: 'success', theme });
       router.push(routes.login.path)
     } catch (error: any) {
       // toast.error('error');
-      SystemMessage(enqueueSnackbar, getMessage(error), { variant: 'error', theme });
+      SystemMessage(enqueueSnackbar, getMessage(t, error), { variant: 'error', theme });
     }
     return true
     // eslint-disable-next-line react-hooks/exhaustive-deps

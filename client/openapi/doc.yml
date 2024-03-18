@@ -60,6 +60,21 @@ paths:
           description: ''
       tags: *ref_0
       security: *ref_1
+  /api/uploads/staticFile:
+    post:
+      operationId: UploadController_uploadStaticFile
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStaticFileDto'
+      responses:
+        '201':
+          description: ''
+      tags: *ref_0
+      security: *ref_1
   /api/files/{filename}:
     get:
       operationId: FileController_serveFile
@@ -476,6 +491,9 @@ components:
     CreateProductImageDto:
       type: object
       properties: {}
+    CreateStaticFileDto:
+      type: object
+      properties: {}
     User:
       type: object
       properties:
@@ -757,6 +775,20 @@ components:
     CreateCategoryDto:
       type: object
       properties: {}
+    StaticFiles:
+      type: object
+      properties:
+        id:
+          type: number
+          example: '1'
+          description: Unique id
+        name:
+          type: string
+          example: Image name
+          description: Image name desc
+      required:
+        - id
+        - name
     ProductDto:
       type: object
       properties:
@@ -820,6 +852,10 @@ components:
           description: User archived
         user:
           $ref: '#/components/schemas/User'
+        staticFiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/StaticFiles'
       required:
         - id
         - name
@@ -836,6 +872,7 @@ components:
         - category
         - userId
         - user
+        - staticFiles
     Product:
       type: object
       properties:

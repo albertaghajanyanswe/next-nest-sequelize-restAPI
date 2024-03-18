@@ -6,6 +6,7 @@ import FormTextField from "./textField";
 import FormPhoneField from "./phoneNumberInput";
 import FormSwitchField from "../switchField";
 import FormFileInput from "./imageInput";
+import FormFileInputMultiple from "./imageInputMultiple";
 import FormSelectField from "./selectField";
 
 export function testStepsIntersection(steps: StepType<any, any>[]) {
@@ -46,6 +47,7 @@ export function genForm<Form extends FieldValues>() {
     PhoneField: FormPhoneField<Form>,
     SwitchField: FormSwitchField<Form>,
     AvatarImageField: FormFileInput<Form>,
+    FileInputMultiple: FormFileInputMultiple<Form>,
     SelectField: FormSelectField<Form>,
   }
 }

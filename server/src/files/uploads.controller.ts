@@ -20,9 +20,11 @@ import * as fs from 'fs';
 import { DeleteFileDto } from './delete-file.dto';
 import { CreateProductImageDto } from 'src/productImages/dto/create-product-image.dto';
 import { ProductsService } from 'src/products/products.service';
-import { PRODUCT_IMAGE_REPOSITORY } from 'src/shared/constants';
+import { PRODUCT_IMAGE_REPOSITORY, STATIC_FILES_REPOSITORY } from 'src/shared/constants';
 import { ProductImage } from 'src/productImages/productsImage.model';
 import { InjectModel } from '@nestjs/sequelize';
+import { CreateStaticFileDto } from 'src/staticFiles/dto/staticFiles.dto';
+import { StaticFiles } from 'src/staticFiles/staticFiles.model';
 
 @ApiTags('Uploads')
 @ApiBearerAuth()
@@ -33,6 +35,7 @@ export class UploadController {
     private readonly productService: ProductsService,
     // @InjectModel(ProductImage) private readonly productImageRepository: typeof ProductImage,
     @Inject(PRODUCT_IMAGE_REPOSITORY) private readonly productImageRepository: typeof ProductImage,
+    @Inject(STATIC_FILES_REPOSITORY) private readonly staticFilesRepository: typeof StaticFiles,
   ) { }
 
   @Post()
@@ -86,5 +89,19 @@ export class UploadController {
     };
     const newProductImage = await this.productImageRepository.create({ ...productImageObj });
     return newProductImage;
+  }
+
+  @Post('/staticFile')
+  @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(FileInterceptor('file', multerOptions))
+  async uploadStaticFile(@UploadedFile() file, @Request() req, @Body() createStaticFileDto: CreateStaticFileDto) {
+    const user = await this.userService.findOneByEmail(req.user.email);
+    if (user) {
+      const newStaticFile = await this.staticFilesRepository.create({ name: file.filename, userId: createStaticFileDto.userId, productId: createStaticFileDto.productId });
+      return newStaticFile;
+
+    } else {
+      return { error: 'User not found' };
+    }
   }
 }

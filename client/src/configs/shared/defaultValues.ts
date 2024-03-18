@@ -39,4 +39,5 @@ export const DEFAULT_VALUES_CREATE_PRODUCT = {
   categoryId: undefined,
   intendedFor: undefined,
   productState: undefined,
+  staticFiles: [],
 }

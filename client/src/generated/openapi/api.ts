@@ -454,6 +454,12 @@ export interface ProductDto {
      * @memberof ProductDto
      */
     'user': User;
+    /**
+     * 
+     * @type {Array<StaticFiles>}
+     * @memberof ProductDto
+     */
+    'staticFiles': Array<StaticFiles>;
 }
 
 export const ProductDtoIntendedForEnum = {
@@ -505,6 +511,25 @@ export const RoleValueEnum = {
 
 export type RoleValueEnum = typeof RoleValueEnum[keyof typeof RoleValueEnum];
 
+/**
+ * 
+ * @export
+ * @interface StaticFiles
+ */
+export interface StaticFiles {
+    /**
+     * Unique id
+     * @type {number}
+     * @memberof StaticFiles
+     */
+    'id': number;
+    /**
+     * Image name desc
+     * @type {string}
+     * @memberof StaticFiles
+     */
+    'name': string;
+}
 /**
  * 
  * @export
@@ -2285,6 +2310,45 @@ export const UploadsApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {object} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadControllerUploadStaticFile: async (body: object, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            assertParamExists('uploadControllerUploadStaticFile', 'body', body)
+            const localVarPath = `/api/uploads/staticFile`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -2343,6 +2407,18 @@ export const UploadsApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['UploadsApi.uploadControllerUploadProductImage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @param {object} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async uploadControllerUploadStaticFile(body: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadControllerUploadStaticFile(body, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UploadsApi.uploadControllerUploadStaticFile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -2388,6 +2464,15 @@ export const UploadsApiFactory = function (configuration?: Configuration, basePa
          */
         uploadControllerUploadProductImage(body: object, options?: any): AxiosPromise<void> {
             return localVarFp.uploadControllerUploadProductImage(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {object} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadControllerUploadStaticFile(body: object, options?: any): AxiosPromise<void> {
+            return localVarFp.uploadControllerUploadStaticFile(body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2441,6 +2526,17 @@ export class UploadsApi extends BaseAPI {
      */
     public uploadControllerUploadProductImage(body: object, options?: RawAxiosRequestConfig) {
         return UploadsApiFp(this.configuration).uploadControllerUploadProductImage(body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {object} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UploadsApi
+     */
+    public uploadControllerUploadStaticFile(body: object, options?: RawAxiosRequestConfig) {
+        return UploadsApiFp(this.configuration).uploadControllerUploadStaticFile(body, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

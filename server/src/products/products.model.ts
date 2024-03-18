@@ -5,6 +5,7 @@ import { FavoriteProduct } from 'src/favoriteProducts/favoriteProducts.model';
 import { ProductImage } from 'src/productImages/productsImage.model';
 import { User } from 'src/users/users.model';
 import { IntendedForEnum, ProductStateEnum } from './dto/create-product.dto';
+import { StaticFiles } from '../staticFiles/staticFiles.model';
 
 interface ProductCreationAttr {
   name: string;
@@ -111,4 +112,13 @@ export class Product extends Model<Product, ProductCreationAttr> {
   })
   // @HasMany(() => ProductImage, 'productId')
   favoriteProduct: FavoriteProduct[];
+
+  @HasMany(() => StaticFiles, {
+    foreignKey: {
+      name: 'productId',
+      field: 'productId',
+    },
+    onDelete: 'CASCADE',
+  })
+  staticFiles: StaticFiles[];
 }

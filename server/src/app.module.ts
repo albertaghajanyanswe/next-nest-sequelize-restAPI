@@ -14,6 +14,8 @@ import { ProductsModule } from './products/products.module';
 import { ProductsImageModule } from './productImages/productsImage.module';
 import { productsImageProviders } from './productImages/productsImage.providers';
 import { FavoriteProductsModule } from './favoriteProducts/favoriteProducts.module';
+import { StaticFilesModule } from './staticFiles/staticFiles.module';
+import { staticFilesProviders } from './staticFiles/staticFiles.providers';
 
 @Module({
   imports: [
@@ -26,9 +28,10 @@ import { FavoriteProductsModule } from './favoriteProducts/favoriteProducts.modu
     ProductsModule,
     ProductsImageModule,
     FavoriteProductsModule,
+    StaticFilesModule,
     AuthModule,
   ],
   controllers: [UploadController, FileController],
-  providers: [...productsImageProviders],
+  providers: [...productsImageProviders, ...staticFilesProviders],
 })
 export class AppModule {}

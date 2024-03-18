@@ -1,3 +1,5 @@
+import { StaticFiles } from "src/staticFiles/staticFiles.model";
+
 export enum IntendedForEnum {
   ForSale = 'FOR_SALE',
   ForRent = 'FOR_RENT',
@@ -23,4 +25,5 @@ export class CreateProductDto {
   readonly productState: ProductStateEnum;
   readonly categoryId: number;
   readonly userId: number;
+  readonly staticFiles?: StaticFiles[];
 }

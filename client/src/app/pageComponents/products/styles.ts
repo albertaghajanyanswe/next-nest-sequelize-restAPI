@@ -5,13 +5,15 @@ const muiStylesWithTheme = (theme: Theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    height: '100%'
+    height: '100%',
+    width: '100%',
   },
   tableRoot: {
     p: '0 24px',
     minWidth: '276px',
     backgroundColor: 'white',
-    height: '100%'
+    height: '100%',
+    width: '100%',
   },
   btnRoot: {
     p: 4,

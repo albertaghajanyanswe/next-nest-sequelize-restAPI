@@ -7,6 +7,7 @@ import { User } from 'src/users/users.model';
 import { CreateProductDto } from './dto/create-product.dto';
 import { GetProductsDto } from './dto/product.dto';
 import { Product } from './products.model';
+import { StaticFiles } from 'src/staticFiles/staticFiles.model';
 
 @Injectable()
 export class ProductsService {
@@ -44,6 +45,10 @@ export class ProductsService {
       {
         model: ProductImage,
         attributes: ['id', 'name', 'productId'],
+      },
+      {
+        model: StaticFiles,
+        attributes: ['id', 'name', 'userId', 'productId'],
       },
       {
         model: FavoriteProduct,

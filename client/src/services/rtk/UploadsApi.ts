@@ -22,6 +22,20 @@ const uploadsAPI = usersAPI.injectEndpoints({
       },
       invalidatesTags: ['CurrentUser']
     }),
+    uploadStaticFile: build.mutation<{ filename: string }, { formData: FormData }>({
+      query: ({ formData }) => {
+        // const bodyData = new FormData();
+        // bodyData.append('file', formData.get('file') as any);
+        // bodyData.append('userId', userId);
+        // bodyData.append('productId', productId);
+        return {
+          url: `api${apiEndpoints.uploadsStaticFile}`,
+          method: 'POST',
+          body: formData
+        }
+      },
+      invalidatesTags: ['CurrentUser']
+    }),
   }),
   overrideExisting: false,
 })
