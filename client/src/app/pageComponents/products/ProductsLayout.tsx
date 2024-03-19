@@ -176,7 +176,7 @@ function ProductsLayout<T>({
             {toolbarView && toolbarView}
             <Grid container spacing={3}>
               {(tableSources.data as ProductsDataType[]).map((product) => (
-                <Grid item xs={12} sm={6} md={6} lg={4} xl={3} key={product.id}>
+                <Grid item xs={12} sm={6} md={6} lg={4} xl={4} key={product.id}>
                   <ProductItemCard<ProductsDataType>
                     details={product}
                     handleFavorite={calculateIsFavorite(product) ? handleDeleteFavorite : handleFavorite}

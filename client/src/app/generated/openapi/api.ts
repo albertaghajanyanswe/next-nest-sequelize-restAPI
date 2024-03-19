@@ -456,10 +456,10 @@ export interface ProductDto {
     'user': User;
     /**
      * 
-     * @type {Array<StaticFiles>}
+     * @type {StaticFiles}
      * @memberof ProductDto
      */
-    'staticFiles': Array<StaticFiles>;
+    'staticFiles': StaticFiles;
 }
 
 export const ProductDtoIntendedForEnum = {
@@ -529,12 +529,6 @@ export interface StaticFiles {
      * @memberof StaticFiles
      */
     'name': string;
-    /**
-     * Image name desc
-     * @type {string}
-     * @memberof StaticFiles
-     */
-    'fileType': string;
 }
 /**
  * 

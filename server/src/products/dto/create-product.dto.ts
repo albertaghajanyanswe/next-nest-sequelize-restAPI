@@ -26,4 +26,5 @@ export class CreateProductDto {
   readonly categoryId: number;
   readonly userId: number;
   readonly staticFiles?: StaticFiles[];
+  readonly staticFilesNames?: string[];
 }

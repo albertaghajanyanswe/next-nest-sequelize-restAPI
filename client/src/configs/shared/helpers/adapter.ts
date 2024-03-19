@@ -1,5 +1,6 @@
 import { ProductWithImages } from "@/configs/shared/types";
-import { User } from "@/generated/openapi";
+import { StaticFiles, User } from "@/generated/openapi";
+import { ProductDto } from '../../../app/generated/openapi/api';
 
 function decorateShowField<T extends readonly any[]>(ar: T) {
   return ar as readonly (T[number] & {
@@ -22,7 +23,7 @@ function adaptUsersTableData(data: User[]) {
 export type ProductsDataType = ReturnType<typeof adaptProductsData>[number];
 
 // Users table data
-function adaptProductsData(data: Partial<ProductWithImages>[]) {
+function adaptProductsData(data: Partial<ProductDto>[]) {
   return data.map((item) => {
     return {
       id: item?.id,
@@ -35,8 +36,9 @@ function adaptProductsData(data: Partial<ProductWithImages>[]) {
       city: item?.city,
       address: item?.address,
       intendedFor: item?.intendedFor,
-      productImage: item?.productImage,
+      // productImage: item?.productImage,
       favoriteProducts: item?.user?.favoriteProducts,
+      staticFiles: item?.staticFiles
     }
   });
 };

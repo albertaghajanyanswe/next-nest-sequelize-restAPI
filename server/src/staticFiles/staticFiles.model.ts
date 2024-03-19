@@ -28,6 +28,14 @@ export class StaticFiles extends Model<StaticFiles, StaticFileCreationAttr> {
   })
   name: string;
 
+  @ApiProperty({ example: 'avatar/productImg', description: 'Image name desc' })
+  @Column({
+    type: DataType.STRING,
+    unique: false,
+    allowNull: true,
+  })
+  fileType: string;
+
   @ForeignKey(() => Product)
   @Column({
     type: DataType.INTEGER,

@@ -24,7 +24,7 @@ const CustomAppBar = ({ open, children }: AppBarProps) => {
         }),
         ...(open && {
           marginLeft: variables.drawerWidthValue,
-          width: `calc(100% - ${variables.drawerWidthValue}px)`,
+          width: `calc(100% - ${variables.drawerWidth})`,
           transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,

@@ -12,6 +12,23 @@ import { routes } from "@/configs";
 import { globalMuiStyles } from "@/app/globalMuiStyles";
 import CustomButton from "@/app/components/customButton";
 import { useTranslation } from "react-i18next";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { StaticFiles } from "@/generated/openapi";
+import Image from "next/image";
+import fileService from "@/services/fileService";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  rows: 1,
+  adaptiveHeight: true,
+  // centerMode: true,
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ProductItemCard<T>({
@@ -38,30 +55,57 @@ function ProductItemCard<T>({
     FOR_FREE_GIVING: 'primary.green2'
   }
 
+  const images = (details?.staticFiles as any)?.map((i: StaticFiles) => i.name);
+
+  const myLoader = ({ src }: { src: string }) => {
+    return fileService.getFileUrl(src);
+  }
+
+  const image = (imgLink: string) => {
+    return (
+      <Image
+        key={imgLink}
+        loader={myLoader}
+        src={imgLink}
+        alt="img"
+        // layout="fill"
+        objectFit="contain"
+        width={240}
+        height={240}
+        priority={false}
+        style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
+      />
+    )
+  }
   return (
     // <CardActionArea sx={{ height: '100%' }} onClick={handleOnClick}>
-    <Card sx={{ p: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      <Chip sx={{ position: 'absolute', top: '12px', right: '12px', height: '24px', backgroundColor: bgColors[details.intendedFor as keyof typeof bgColors] }} label={t(`${details.intendedFor}`)} />
-      <CardMedia
-        // sx={{ height: 140 }}
-        image='https://m.media-amazon.com/images/I/81YUl0EpOhL._AC_UF350,350_QL80_.jpg'
-        sx={{
-          backgroundSize: 'contain',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          width: '100%',
-          paddingBottom: '50%',
-        }}
-      />
-      <Divider sx={{ ...globalMuiStyles.divider, m: '8px 0' }} />
-      <CardContent>
-        <Typography sx={{ ...globalMuiStyles.font_18_24_600, textAlign: 'start', color: 'primary.textColor1' }}>
+    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
+      <Chip sx={{ zIndex: 1000, position: 'absolute', top: '12px', right: '12px', height: '24px', backgroundColor: bgColors[details.intendedFor as keyof typeof bgColors] }} label={t(`${details.intendedFor}`)} />
+      <Box
+        component={Slider}
+        {...settings}
+      // sx={{
+      //   '& > .slick-list': {
+      //     maxHeight: { xs: '250px', sm: '186px', md: '186px' },
+      //     '& > .slick-track': {
+      //       '& > div': {
+      //         // mt: 5,
+      //         '& > img': { maxHeight: { xs: '250px', sm: '186px', md: '186px', lg: '186px' } }
+      //       }
+      //     }
+      //   }
+      // }}
+      >
+        {images.map((i: string) => image(i))}
+      </Box>
+      <CardContent sx={{ mt: 2 }}>
+        <Typography sx={{ ...globalMuiStyles.font_16_20_600, textAlign: 'start', color: 'primary.textColor1' }}>
           {details.name}
         </Typography>
-        <Typography sx={{ ...globalMuiStyles.font_16_20_600, textAlign: 'start', mt: '12px', color: 'primary.textColor1' }}>
+        <Typography sx={{ ...globalMuiStyles.font_16_20_500, textAlign: 'start', mt: '4px', color: 'primary.textColor1' }}>
           {details.price} {details.currency}
         </Typography>
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: 1 }}>
           <Typography sx={{ ...globalMuiStyles.font_14_16_400, textAlign: 'start', color: 'primary.textColor1' }}>
             {details.province} {details.city} {details.address}
           </Typography>
@@ -83,7 +127,7 @@ function ProductItemCard<T>({
         />
         {/* Actions todo */}
       </CardActions>
-    </Card>
+    </Card >
     // </CardActionArea>
   );
 }

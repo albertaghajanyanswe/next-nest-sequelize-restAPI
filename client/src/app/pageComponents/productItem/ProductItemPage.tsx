@@ -23,14 +23,18 @@ import { requiredErrMsg } from '@/configs/shared/helpers/formHelper';
 import { globalMuiStylesWithTheme } from '@/app/globalMuiStyles';
 import SETTINGS from '@/configs/shared/settings';
 import CustomButton from '@/app/components/customButton';
+import { uploadsAPI } from '@/services/rtk/UploadsApi';
+import { useAppSelector } from '../../../hooks/reactQuery/redux';
 
 const FormHOC = StepHOC<iCreateProduct>()(
-  ["name", "description", "otherInfo", "price", "currency", "province", "city", "address", "categoryId", "intendedFor", "productState"]
+  ["name", "description", "otherInfo", "price", "currency", "province", "city", "address", "categoryId", "intendedFor", "productState", "staticFilesNames"]
 );
 
 const Form = FormHOC.Form
 
 const ProductItemPage = () => {
+  const {isSideBarOpen} = useAppSelector((state) => state.sidebarReducer);
+
   const theme = useTheme();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const muiStyles = stylesWithTheme(theme);
@@ -56,7 +60,8 @@ const ProductItemPage = () => {
     address: productData?.address || '',
     categoryId: productData?.categoryId || undefined,
     intendedFor: productData?.intendedFor || undefined,
-    productState: productData?.productState || undefined
+    productState: productData?.productState || undefined,
+    staticFilesNames: productData?.staticFiles?.map(i => i.name) || [],
   }
 
   const methods = useForm<iCreateProduct>({
@@ -99,6 +104,7 @@ const ProductItemPage = () => {
   const { handleSubmit } = methods;
 
   const handleSave = useCallback(() => handleSubmit(async (data: any) => {
+    console.log('data = ', data)
     try {
       setDisableSubmit(true)
       methods.reset(data, { keepErrors: true, keepDirty: false });
@@ -150,6 +156,19 @@ const ProductItemPage = () => {
     }
   }
 
+  const [uploadStaticFile, { isLoading: isLoadingStatic }] = uploadsAPI.useUploadStaticFileMutation();
+
+  const handleUpload = async ({ formData }: any) => {
+    const bodyData = new FormData();
+    bodyData.append('file', formData.get('file'));
+    bodyData.append('userId', '1');
+    // bodyData.append('productId', '2');
+
+    console.log('formData = ', formData);
+    const res = await uploadStaticFile({ formData: bodyData });
+    return res;
+  }
+
   if (isGetLoading) {
     return <Loading />
   }
@@ -158,10 +177,9 @@ const ProductItemPage = () => {
     return <NotFound />
   }
 
-
   return (
     <Box>
-      <Box sx={{ position: 'fixed', width: `calc(100% - ${variables.drawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px' }}>
+      <Box sx={{ position: 'fixed', width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px' }}>
         <PageTitle handlePageHeaderRef={handlePageHeaderRef} title={productData?.name ? productData?.name : t('createNewProduct')} withBack />
       </Box>
       <Box sx={{ p: '0 40px 40px 40px', position: 'absolute', mt: `${getPageHeaderHeight()}px` }}>
@@ -169,6 +187,21 @@ const ProductItemPage = () => {
         <FormProvider {...methods}>
           <form noValidate>
             <Grid container spacing={3} sx={{ mt: 0, mb: `${getFooterHeight()}px` }}>
+            <Grid item xs={12}>
+              <Form.FileInputMultiple
+                name='staticFilesNames'
+                label={t('productPhoto')}
+                setDisableSave={setDisableSubmit}
+                rootSx={{ borderRadius: '24px' }}
+                btnType='secondary'
+                labelSx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}
+                description={t('productPhotoDesc')}
+                sx={{ mt: 0 }}
+                uploadFile={handleUpload}
+                deleteFile={() => {}}
+                uploadFileLoading={isLoadingStatic}
+              />
+            </Grid>
               <Grid item xs={12} sm={12}>
                 <Form.TextField
                   rules={{ required: requiredErrMsg(t, 'name') }}
@@ -299,7 +332,7 @@ const ProductItemPage = () => {
           </form>
         </FormProvider>
       </Box>
-      <Box ref={handleFooterRef} sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, position: 'fixed', bottom: 0, p: '24px 40px', width: `calc(100% - 0px - ${variables.drawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px -12px 10px -12px' }}>
+      <Box ref={handleFooterRef} sx={{ minWidth: 'max-content', display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, position: 'fixed', bottom: 0, p: '24px 40px', width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px -12px 10px -12px' }}>
         <CustomButton
           label={productId ? t('cancel') : t('clear')}
           btnType='secondary'

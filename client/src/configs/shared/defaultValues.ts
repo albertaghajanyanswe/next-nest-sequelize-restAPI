@@ -40,4 +40,5 @@ export const DEFAULT_VALUES_CREATE_PRODUCT = {
   intendedFor: undefined,
   productState: undefined,
   staticFiles: [],
+  staticFilesNames: [],
 }

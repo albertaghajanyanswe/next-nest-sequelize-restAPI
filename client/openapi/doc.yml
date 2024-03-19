@@ -786,9 +786,14 @@ components:
           type: string
           example: Image name
           description: Image name desc
+        fileType:
+          type: string
+          example: avatar/productImg
+          description: Image name desc
       required:
         - id
         - name
+        - fileType
     ProductDto:
       type: object
       properties:

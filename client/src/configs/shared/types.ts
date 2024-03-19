@@ -182,6 +182,7 @@ export interface iCreateProduct {
   intendedFor: ProductIntendedForEnum;
   productState: ProductProductStateEnum;
   staticFiles?: StaticFiles[];
+  staticFilesNames?: string[];
 }
 
 // todo add this type in BE

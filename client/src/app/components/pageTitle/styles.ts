@@ -5,7 +5,8 @@ const muiStyles = {
     alignItems: 'center',
     padding: '32px 40px',
     flexDirection: {xs: 'column', sm: 'column', md: 'row'},
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    minWidth: 'max-content',
   },
   leftRoot: {
     display: 'flex',

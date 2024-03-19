@@ -69,6 +69,8 @@
     "clear": "Clear",
 
     "productName": "Name",
+    "productPhoto": "Product photo",
+    "productPhotoDesc": "This will be displayed on product profile",
     "productDescription": "Description",
     "productOtherInfo": "Other info",
     "productPrice": "Price",

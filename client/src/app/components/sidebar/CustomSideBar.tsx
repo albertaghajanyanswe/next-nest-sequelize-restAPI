@@ -59,14 +59,17 @@ function CustomSideBar() {
   const theme = useTheme();
   const muiStyles = stylesWithTheme(theme);
 
-  const [open, setOpen] = React.useState(true);
-
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isPC = useMediaQuery(theme.breakpoints.up('md'));
 
-  const isAppBarOpen = (isMobile || isTablet ? false : open);
+  const {isSideBarOpen: sidebarOpen} = useAppSelector((state) => state.sidebarReducer);
+  const { toggleSidebarByValue } = sidebarSlice.actions;
 
+  React.useEffect(() => {
+  },[sidebarOpen])
+
+  const isAppBarOpen = (isMobile || isTablet ? false : sidebarOpen);
   const { setActiveLink } = sidebarSlice.actions;
   const dispatch = useAppDispatch();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -77,11 +80,11 @@ function CustomSideBar() {
   const isLinkActive = (link: string) => pathname === link;
 
   const openSideBar = () => {
-    setOpen(true);
+    dispatch(toggleSidebarByValue(isMobile || isTablet ? false : true));
   };
 
   const closeSideBar = () => {
-    setOpen(false);
+    dispatch(toggleSidebarByValue(false));
   };
 
   const handleClick = (link: string) => {
@@ -216,7 +219,7 @@ function CustomSideBar() {
     )
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [anchorEl, handleLogout, menuOpened, open]);
+  }, [anchorEl, handleLogout, menuOpened, sidebarOpen]);
 
   return (
     <Box sx={{ display: 'flex' }}>

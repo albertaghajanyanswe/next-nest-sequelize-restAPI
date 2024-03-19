@@ -1,9 +1,9 @@
 'use client'
-
+// todo
 import React, { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { FieldValues, useController, useFormContext } from 'react-hook-form';
-import { Box, Typography, Tooltip, IconButton, Avatar } from '@mui/material';
+import { FieldValues, Path, useController, useFormContext } from 'react-hook-form';
+import { Box, Typography, Tooltip, IconButton, Avatar, Grid } from '@mui/material';
 import InputError from '@/assets/form/input-error.svg';
 import CleanSvg from '@/assets/form/clean.svg';
 import { useSnackbar } from 'notistack';
@@ -18,6 +18,7 @@ import CustomButton from '@/app/components/customButton';
 import { useTranslation } from 'react-i18next';
 import fileService from '@/services/fileService';
 import { uploadsAPI } from '@/services/rtk/UploadsApi';
+import Image from 'next/image';
 
 const LOADING_GIF = 'https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif';
 
@@ -39,7 +40,8 @@ const FormFileInputMultiple = <T extends FieldValues>({
   deleteFile,
   itemId = null
 }: {
-  name: TypedPath<T, FileData[]>;
+  // name: TypedPath<T, FileData[]>;
+  name: Path<T>,
   rules?: any;
   title?: string;
   helperTooltip?: string;
@@ -65,7 +67,6 @@ const FormFileInputMultiple = <T extends FieldValues>({
   const { clearErrors } = useFormContext();
 
   const { field: { onChange, value }, fieldState: { error } } = useController<T>({ rules, name });
-  console.log('VALUE = ', value)
   const { enqueueSnackbar } = useSnackbar();
   const [initialFile, setInitialFile] = useState<string[]>(value as string[] || []);
   const [previewFile, setPreviewFile] = useState(initialFile ? () => {
@@ -98,21 +99,30 @@ const FormFileInputMultiple = <T extends FieldValues>({
       // ...(itemId ? {uniqueId: itemId} : {})
     });
     console.log('res = ', res)
+    console.log('value = ', value)
     if ('data' in res) {
       clearErrors(name);
-      onChange(res.data.filename, { shouldDirty: true });
-      setInitialFile(res.data.filename);
+      // onChange(res.data.filename, { shouldDirty: true });
+      onChange([...(value ? value : []), res.data.name], { shouldDirty: true });
+      setInitialFile((prev) => [...(prev ? prev : []), res.data.filename]);
     }
   }
 
   const onFileUpload = async (file: File) => {
+    console.log(11111111)
     if (!file) return;
+    console.log(22222222)
+
     if (file.size > ALLOWED_MAX_SIZE) {
       SystemMessage(enqueueSnackbar, t('fileSizeLimit'), { variant: 'error', theme });
       return;
     }
+    console.log(333333333)
+
     disableSave(true);
-    setPreviewFile((prev) => [...prev, URL.createObjectURL(file)]);
+    console.log('preview = ', previewFile)
+    console.log('initialFile = ', initialFile)
+    setPreviewFile((prev) => [...(prev ? prev : []), URL.createObjectURL(file)]);
     try {
       await createFileApi(file);
     } catch (error: any) {
@@ -141,16 +151,22 @@ const FormFileInputMultiple = <T extends FieldValues>({
   const onDelete = async (item: any) => {
     await deleteFile({ filename: initialFile });
     setPreviewFile((prev) => prev.filter(i => i !== item));
-    onChange([]);
+    onChange([...value.filter(i => i !== item)], { shouldDirty: true });
+
+    // onChange([]);
   };
 
   const attachSVGStyle = btnType === 'primary' ? {} : muiStyles.attachBtnStyle;
   const imagePath = (uuid: string) => uuid ? fileService.getFileUrl(uuid) : '';
 
+  const myLoader = ({ src }: { src: string }) => {
+    return fileService.getFileUrl(src);
+  }
+
   return (
     <Box sx={{ ...muiStyles.container, ...sx }} display="flex" flexDirection="column">
       <Box sx={{ ...muiStyles.root, ...rootSx, ...(error && muiStyles.rootError) }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: { xs: 'center', sm: 'center', md: 'center', lg: 'inherit' }, flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' } }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: { xs: 'center', sm: 'inherit', md: 'inherit', lg: 'inherit' }, flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row' } }}>
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row', md: 'row', lg: 'row' } }}>
               <Box component="div" sx={{ display: 'flex', flexDirection: 'column', textAlign: { xs: 'center', sm: 'inherit' } }}>
@@ -160,18 +176,6 @@ const FormFileInputMultiple = <T extends FieldValues>({
             </Box>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', margin: { xs: '24px 0', sm: '24px 0', md: '24px 0', lg: '0' } }}>
-            {initialFile &&
-              initialFile.map((i, index) => {
-                console.log('iiiiiii ', i)
-                return (
-                  <div key={index}>
-                    <IconButton onClick={onDelete} sx={{ height: '32px', width: '32px', mr: '12px', '& > svg': { '& > path': { stroke: '#004B7F' } } }}>
-                      <CleanSvg />
-                    </IconButton>
-                  </div>
-                )
-              })
-            }
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <Box {...(!disabled && getRootProps())} >
                 <CustomButton
@@ -186,8 +190,33 @@ const FormFileInputMultiple = <T extends FieldValues>({
               </Box>
             </Box>
           </Box>
-
         </Box>
+        <Grid sx={{ mt: '24px' }} container spacing={3}>
+          {initialFile &&
+            initialFile.map((i, index) => {
+              return (
+                <Grid key={index} item xs={6} sm={4} md={3} lg={2}>
+                  <IconButton onClick={() => onDelete(i)} sx={{ height: '32px', width: '32px', '& > svg': { '& > path': { stroke: '#004B7F' } } }}>
+                    <CleanSvg />
+                  </IconButton>
+                  <Image
+                    loader={myLoader}
+                    src={i}
+                    alt="Author"
+                    layout="responsive"
+                    objectFit="cover"
+                    width={100}
+                    height={100}
+                    priority={false}
+                    style={{ borderRadius: 4 }}
+                  />
+
+                </Grid>
+              )
+            })
+          }
+
+        </Grid>
         {Boolean(error?.message) && <Tooltip title={error?.message as string}>
           <Box sx={{ display: 'flex', cursor: 'pointer', ml: 2 }}>
             <InputError />
