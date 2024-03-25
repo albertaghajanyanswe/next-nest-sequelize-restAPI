@@ -5,22 +5,22 @@ import { routesAccess } from '@/configs/roles';
 import { routes } from '@/configs';
 
 const links = [
-  {
-    id: 'home',
-    title: 'home',
-    link: routes.home.path,
-    icon: OverviewIcon,
-    disabled: false,
-    roles: routesAccess.home.access,
-  },
-  {
-    id: 'users',
-    title: 'users',
-    link: routes.users.path,
-    icon: BlockedIcon,
-    disabled: false,
-    roles: routesAccess.users.access,
-  },
+  // {
+  //   id: 'home',
+  //   title: 'home',
+  //   link: routes.home.path,
+  //   icon: OverviewIcon,
+  //   disabled: false,
+  //   roles: routesAccess.home.access,
+  // },
+  // {
+  //   id: 'users',
+  //   title: 'users',
+  //   link: routes.users.path,
+  //   icon: BlockedIcon,
+  //   disabled: false,
+  //   roles: routesAccess.users.access,
+  // },
   {
     id: 'products',
     title: 'products',

@@ -112,7 +112,7 @@ function CustomSortField<T extends iFilterSortField>({
     }
     const r = (
       optionsList?.map((opt: any) => opt.type === 'group' ? (
-        <ListSubheader sx={muiStyles.listSubheader}>{opt.label}</ListSubheader>
+        <ListSubheader key={opt.name} sx={muiStyles.listSubheader}>{opt.label}</ListSubheader>
       ) : opt.type === 'separator' ? (
         <Box sx={{ p: '4px 12px 0 12px' }} key={opt.name}><Divider sx={muiStyles.divider} /></Box>
       ) : (

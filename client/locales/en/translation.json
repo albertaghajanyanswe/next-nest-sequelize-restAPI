@@ -101,5 +101,19 @@
     "tableItemSelected": "Item selected",
 
     "emptyProductTitle": "You don`t have a product yet.",
-    "emptyProductDesc": "You will see your products here after creation."
+    "emptyProductDesc": "You will see your products here after creation.",
+
+    "REAL_ESTATE": "Real estate",
+    "TRANSPORT": "Transport",
+    "SERVICES": "Services",
+    "WORK": "Work",
+    "ELECTRONICS": "Electronics",
+    "HOUSE_HOLD_APPLIANCES": "House hold appliances",
+    "HOUSE_AND_GARDEN": "House and garden",
+    "CHILDRENS_WORLD": "Children world",
+    "HOBBY_AND_SPORT": "Hobby and sport",
+    "EQUIPMENT_AND_MATERIALS": "Equipment and materials",
+    "ANIMALS": "Animals",
+    "FOOD_AND_BEVERAGES": "Food and beverages",
+    "OTHER": "Other"
 }

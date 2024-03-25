@@ -182,7 +182,7 @@ const ProductItemPage = () => {
       <Box sx={{ position: 'fixed', width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px' }}>
         <PageTitle handlePageHeaderRef={handlePageHeaderRef} title={productData?.name ? productData?.name : t('createNewProduct')} withBack />
       </Box>
-      <Box sx={{ p: '0 40px 40px 40px', position: 'absolute', mt: `${getPageHeaderHeight()}px` }}>
+      <Box sx={{ backgroundColor: 'white', p: '0 40px 40px 40px', position: 'absolute', mt: `${getPageHeaderHeight()}px` }}>
 
         <FormProvider {...methods}>
           <form noValidate>
@@ -312,7 +312,7 @@ const ProductItemPage = () => {
                   title={t('productCategoryId')}
                   sx={{ ...globalMuiStylesWithTheme(theme).selectField }}
                   sxContainer={{ mt: 0 }}
-                  options={categoriesData?.data?.map((item: any) => ({ label: item.name || '-', value: item.id }))}
+                  options={categoriesData?.data?.map((item: any) => ({ label: t(item.name) || '-', value: item.id }))}
                 />
               </Grid>
               <Grid item xs={12} sm={12}>

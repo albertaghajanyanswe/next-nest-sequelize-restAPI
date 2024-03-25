@@ -10,12 +10,14 @@ import { Product } from './products.model';
 import { StaticFiles } from 'src/staticFiles/staticFiles.model';
 import { Sequelize } from 'sequelize-typescript';
 import { Op } from 'sequelize';
+import { FAVORITE_PRODUCTS_REPOSITORY } from '../shared/constants/index';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @Inject(PRODUCT_REPOSITORY) private productRepository: typeof Product,
     @Inject(STATIC_FILES_REPOSITORY) private staticFilesRepository: typeof StaticFiles,
+    @Inject(FAVORITE_PRODUCTS_REPOSITORY) private favoriteProductRepository: typeof FavoriteProduct,
     @Inject(SEQUELIZE) private readonly sequelize: Sequelize,
     private readonly collectPayload: CollectPayloadService,
   ) { }
@@ -109,6 +111,17 @@ export class ProductsService {
       {
         model: StaticFiles,
         attributes: ['id', 'name', 'userId', 'productId'],
+      },
+      {
+        model: FavoriteProduct,
+      },
+      {
+        model: User,
+        include: [
+          {
+            model: FavoriteProduct,
+          }
+        ]
       },
     ];
     const { rows, count } = await this.productRepository.findAndCountAll(payload);

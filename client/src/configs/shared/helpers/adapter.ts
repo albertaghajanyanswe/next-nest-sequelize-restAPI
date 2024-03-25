@@ -1,6 +1,7 @@
 import { ProductWithImages } from "@/configs/shared/types";
 import { StaticFiles, User } from "@/generated/openapi";
 import { ProductDto } from '../../../app/generated/openapi/api';
+import { FavoriteProductDto } from '../../../../../server/src/favoriteProducts/dto/favorite-product.dto';
 
 function decorateShowField<T extends readonly any[]>(ar: T) {
   return ar as readonly (T[number] & {
@@ -37,7 +38,7 @@ function adaptProductsData(data: Partial<ProductDto>[]) {
       address: item?.address,
       intendedFor: item?.intendedFor,
       // productImage: item?.productImage,
-      favoriteProducts: item?.user?.favoriteProducts,
+      favoriteProducts: (item?.user?.favoriteProducts as unknown as  FavoriteProductDto[]),
       staticFiles: item?.staticFiles
     }
   });

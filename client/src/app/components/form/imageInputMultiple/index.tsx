@@ -148,10 +148,10 @@ const FormFileInputMultiple = <T extends FieldValues>({
 
   const { getRootProps, getInputProps, open } = useDropzone(dropzoneOptions);
 
-  const onDelete = async (item: any) => {
+  const onDelete = async (item: string) => {
     await deleteFile({ filename: initialFile });
     setPreviewFile((prev) => prev.filter(i => i !== item));
-    onChange([...value.filter(i => i !== item)], { shouldDirty: true });
+    onChange([...value.filter((i: string) => i !== item)], { shouldDirty: true });
 
     // onChange([]);
   };
@@ -204,11 +204,11 @@ const FormFileInputMultiple = <T extends FieldValues>({
                     src={i}
                     alt="Author"
                     layout="responsive"
-                    objectFit="cover"
+                    objectFit="contain"
                     width={100}
-                    height={100}
+                    height={120}
                     priority={false}
-                    style={{ borderRadius: 4 }}
+                    style={{ borderRadius: 4, maxHeight: 120, minHeight: 120 }}
                   />
 
                 </Grid>

@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   counterReducer,
   sidebarReducer,
   [usersAPI.reducerPath]: usersAPI.reducer,
-  [uploadsAPI.reducerPath]: uploadsAPI.reducer,
+  uploads: uploadsAPI.reducer,
   [productsAPI.reducerPath]: productsAPI.reducer
 });
 

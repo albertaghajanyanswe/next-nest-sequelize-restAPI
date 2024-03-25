@@ -29,7 +29,6 @@ function CustomFilterDateTimePicker<T extends iFilterDatePickerField>({
 }: iProps<T>) {
 
   const [searchTerm, setSearchTerm] = React.useState(searchValue);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [changeValue, setChangeValue] = React.useState('');
   const debouncedValue = useDebounce(typeof searchTerm === 'object' ? searchTerm : { [field?.id]: searchTerm }, 1000);
 

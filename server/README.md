@@ -72,6 +72,11 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
+# How to run
+- configure postgresql and sequelize
+- npm ci or npm i
+- create new database nest-test
+- npm run start:test
 
 ### Add migration
 - cd server/src/database

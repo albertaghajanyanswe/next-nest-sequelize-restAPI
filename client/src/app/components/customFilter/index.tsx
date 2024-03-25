@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import CustomFilterFormItem from './customFilterFormItem';
-import { iFilterDatePickerField, iFilterParams, iFilterSelectField, iFilterSortField, iFilterTextField } from '../../configs/shared/types';
+import { iFilterDatePickerField, iFilterParams, iFilterSelectField, iFilterSortField, iFilterTextField } from '@/configs/shared/types';
 
 interface iProps {
   onFilterCallback: ((filterObj: {[key: string]: any}) => void) | null;

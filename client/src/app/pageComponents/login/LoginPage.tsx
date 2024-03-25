@@ -43,7 +43,9 @@ const LoginPage = () => {
       SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), { variant: 'success', theme });
       router.push(routes.home.path)
     } catch (error: any) {
-      SystemMessage(enqueueSnackbar, getMessage(t, error), { variant: 'error', theme });
+      console.log('err = ', error)
+      // SystemMessage(enqueueSnackbar, getMessage(t, error), { variant: 'error', theme });
+      SystemMessage(enqueueSnackbar, JSON.stringify(error), { variant: 'error', theme });
     }
     return true
     // eslint-disable-next-line react-hooks/exhaustive-deps

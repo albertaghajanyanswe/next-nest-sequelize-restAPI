@@ -17,6 +17,7 @@ import SystemMessage from "@/app/components/systemMessage";
 import { getMessage } from "@/configs/shared/helpers/helper";
 import EmptyState from "@/app/components/emptyState/EmptyState";
 import CustomPagination from "./customPagination";
+import { FavoriteProductDto } from '../../../generated/openapi/api';
 
 interface iProps<T> {
   loading: boolean;
@@ -151,7 +152,7 @@ function ProductsLayout<T>({
   const handleDeleteFavorite = async (e: React.MouseEvent<HTMLElement>, details: ProductsDataType) => {
     try {
       e.stopPropagation();
-      const res = details?.favoriteProducts?.find(i => i.storedProductId === details.id);
+      const res = details?.favoriteProducts?.find((i: FavoriteProductDto) => i.storedProductId === details.id);
       if (res) {
         await deleteFromFavorite({ id: `${res.id}` });
         SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), { variant: 'success', theme });
@@ -163,7 +164,8 @@ function ProductsLayout<T>({
     }
   }
   const calculateIsFavorite = (product: ProductsDataType) => {
-    const res = product?.favoriteProducts?.find(i => i.storedProductId === product.id);
+    console.log('product = ', product)
+    const res = product?.favoriteProducts?.find((i: FavoriteProductDto) => i.storedProductId === product.id);
     return !!res;
   }
 

@@ -120,7 +120,7 @@ function CustomFilterSelect<T extends iFilterSelectField>({
     }
     return (
       optionsList?.map((opt: any) => opt.type === 'group' ? (
-        <ListSubheader sx={muiStyles.listSubheader}>{opt.label}</ListSubheader>
+        <ListSubheader key={opt.label} sx={muiStyles.listSubheader}>{opt.label}</ListSubheader>
       ) : (
         <MenuItem disableRipple key={opt.value} value={opt.value} sx={muiStyles.menuItem}>
           <Box sx={{ display: 'flex', flexDirection: 'row!important', alignItems: 'center' }}>

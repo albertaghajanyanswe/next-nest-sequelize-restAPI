@@ -19,7 +19,7 @@ const nextConfig = {
         destination: `${API_URL}/api/:path*`
       },
     ]
-  },
+  }
 };
 
 export default nextConfig;

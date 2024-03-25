@@ -25,7 +25,7 @@ function CustomLayout({
     routesAccess[path as keyof typeof routesAccess]?.access?.includes(currentUser?.roles[0].value as UserRole);
 
   return currentUser ? (
-    <Box sx={{ display: 'flex', height: '100%', width: '100%' }}>
+    <Box sx={{ backgroundColor: 'white', display: 'flex', height: '100%', width: '100%' }}>
       <CssBaseline />
       <SideBar />
       <Box
@@ -36,7 +36,7 @@ function CustomLayout({
         {allowed ? children : <>Not Found</>}
       </Box>
     </Box>
-  ) : (<Loading />);
+  ) : (<Loading withDrawer={false}/>);
 };
 
 export default CustomLayout;
