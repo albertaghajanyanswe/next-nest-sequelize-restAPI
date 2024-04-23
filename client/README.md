@@ -1,3 +1,15 @@
+# Steps to run
+ - create .env file
+ - add the following variables
+  ```NEXT_PUBLIC_API_URL='http://localhost:4000'```
+  ```NEXT_PUBLIC_UI_URL='http://localhost:3000'```
+ - npm ci
+ - npm run dev
+
+
+---
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

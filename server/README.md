@@ -1,3 +1,29 @@
+# Steps to run
+ - create .env file
+ - add the following variables
+  ```DB_USERNAME=postgres```
+  ```DB_PASSWORD=<your_pass>```
+  ```DB_NAME_TEST=nest-test```
+  ```DB_NAME_DEVELOPMENT=nest-dev```
+  ```DB_NAME_PRODUCTION=nest-prod```
+  ```DB_HOST=127.0.0.1```
+  ```DB_DIALECT="postgres"```
+  ```DB_PORT=5432```
+  ```JWT_KEY='6d23c4d5-3758-4ce2-b3d5-615ec9ad8a79'```
+  ```DB_CONNECTION_LIMIT=10```
+  ```LOGIN_SECRET_KEY=6d23c4d5-3758-4ce2-b3d5-615ec9ad8a79```
+  ```API_URL=http://localhost:4000```
+  ```CLIENT_URL=http://localhost:3000```
+  ```MAIL_HOST="smtp.gmail.com"```
+  ```MAIL_PORT=465```
+  ```MAIL_USER="<your_email_address>```
+  ```MAIL_PASSWORD="<your_email_password_app_passwords>"```
+ - create postgres database with name <nest-test>
+ - npm ci
+ - npm run start:test
+
+---
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
