@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "openapi": "yarn openapi-generator-cli generate -g typescript-axios -o src/generated/openapi -i openapi/doc.yml"
   },
   "dependencies": {
