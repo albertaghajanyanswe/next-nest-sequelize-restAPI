@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { Box, Grid } from '@mui/material';
@@ -9,27 +9,31 @@ import { isEmail, requiredErrMsg } from '@/configs/shared/helpers/formHelper';
 import StepHOC from '@/app/components/form/FormHOC';
 import { usePathname } from 'next/navigation';
 
-
 interface iProps {
-  handleSubmit: () => (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
+  handleSubmit: () => (
+    e?: React.BaseSyntheticEvent<object, any, any> | undefined
+  ) => Promise<void>;
 }
 
-const FormHOC = StepHOC<iLogin & { nickName: string }>()(
-  ["email", "password", "nickName"]
-);
+const FormHOC = StepHOC<iLogin & { nickName: string }>()([
+  'email',
+  'password',
+  'nickName',
+]);
 
-const Form = FormHOC.Form
+const Form = FormHOC.Form;
 
 const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
   const { t } = useTranslation();
-  const validateEmail = (value: string) => isEmail(value) ? true : t('errors.incorrectEmail');
+  const validateEmail = (value: string) =>
+    isEmail(value) ? true : t('errors.incorrectEmail');
   const pathname = usePathname();
   const asGuest = pathname.includes('/guest');
 
   return (
     <>
       <Grid item xs={12} sm={12}>
-        {asGuest ?
+        {asGuest ? (
           <Form.TextField
             rules={{ required: requiredErrMsg(t, t('nickName')) }}
             name="nickName"
@@ -39,9 +43,13 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
             title={t('nickName')}
             helperTooltip={t('nickName')}
             borderRadius={8}
-          /> :
+          />
+        ) : (
           <Form.TextField
-            rules={{ required: requiredErrMsg(t, t('email')), validate: validateEmail }}
+            rules={{
+              required: requiredErrMsg(t, t('email')),
+              validate: validateEmail,
+            }}
             name="email"
             placeholder={t('email')}
             label={t('email')}
@@ -50,7 +58,7 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
             helperTooltip={t('email')}
             borderRadius={8}
           />
-        }
+        )}
       </Grid>
       <Grid item xs={12} sm={12}>
         <Form.TextField
@@ -64,17 +72,30 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
           borderRadius={8}
           withEyeIcon
           eyeIconSize={16}
-          type='password'
+          type="password"
         />
       </Grid>
       <Grid item xs={12} sm={12}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', mt: 1 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '100%',
+            mt: 1,
+          }}
+        >
           <CustomButton
             label={t('submit')}
-            sx={{ width: '100%', p: '8px 12px', fontSize: '16px', lineHeight: '24px', fontWeight: 600 }}
+            sx={{
+              width: '100%',
+              p: '8px 12px',
+              fontSize: '16px',
+              lineHeight: '24px',
+              fontWeight: 600,
+            }}
             onClick={handleSubmit()}
-            variant='outlined'
-            name='login-submit'
+            variant="outlined"
+            name="login-submit"
           />
         </Box>
       </Grid>

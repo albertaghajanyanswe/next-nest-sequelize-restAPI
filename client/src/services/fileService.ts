@@ -5,10 +5,8 @@ const fileService = {
     if (!uuid) {
       return '';
     }
-    return `${process.env.NEXT_PUBLIC_API_URL}/${PREFIX}/files/${uuid}`
-  }
-}
+    return `${process.env.NEXT_PUBLIC_API_URL}/${PREFIX}/files/${uuid}`;
+  },
+};
 
 export default fileService;
-
-

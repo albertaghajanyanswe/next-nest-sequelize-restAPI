@@ -5,7 +5,7 @@ const stylesWithTheme = (theme: Theme) => ({
     backgroundColor: 'white',
     width: '100%',
     minHeight: '100%',
-    padding: '52px 140px'
+    padding: '52px 140px',
   },
   deleteAccountBlock: {
     display: 'flex',
@@ -17,7 +17,7 @@ const stylesWithTheme = (theme: Theme) => ({
     borderRadius: '16px',
     mt: 5,
     p: 3,
-    flexDirection: {xs: 'column', sm: 'column', md: 'column', lg: 'row'},
+    flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' },
     // [theme.breakpoints.up(724)]: {
     //   flexDirection: 'row',
     // },
@@ -36,7 +36,7 @@ const stylesWithTheme = (theme: Theme) => ({
     fontWeight: 400,
     fontSize: '14px',
     lineHeight: '20px',
-    color: 'primary.textColor3'
+    color: 'primary.textColor3',
   },
   deleteBtn: {
     minWidth: 'max-content',
@@ -47,7 +47,7 @@ const stylesWithTheme = (theme: Theme) => ({
     lineHeight: '16px',
     fontWeight: 500,
     p: '8px 16px',
-    mt: {xs: 2, sm: 2, md: 2, lg: 0},
+    mt: { xs: 2, sm: 2, md: 2, lg: 0 },
     '&:hover': {
       boxShadow: 'none',
       borderWidth: '1px',
@@ -64,7 +64,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderColor: 'primary.red5',
       color: 'primary.red5',
       opacity: '0.9',
-      backgroundColor: 'inherit'
+      backgroundColor: 'inherit',
     },
     '&:disabled': {
       boxShadow: 'none',
@@ -73,7 +73,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderColor: 'primary.red5',
       color: 'primary.red5',
       opacity: '0.5',
-      background: 'white'
+      background: 'white',
     },
   },
   readableFieldBlock: {
@@ -84,18 +84,17 @@ const stylesWithTheme = (theme: Theme) => ({
     borderStyle: 'solid',
     borderColor: 'primary.borderColor2',
     padding: '16px 24px',
-    backgroundColor: 'primary.lightBG1'
+    backgroundColor: 'primary.lightBG1',
   },
-
 
   modalRoot: {
     '& .MuiPaper-root': {
       p: '32px 80px',
       maxWidth: '576px',
       boxShadow: 'none',
-      borderRadius: '24px'
+      borderRadius: '24px',
     },
-    backdropFilter: "blur(12px)",
+    backdropFilter: 'blur(12px)',
     zIndex: 1300,
     //other styles here
   },
@@ -153,7 +152,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.error',
-      opacity: 0.92
+      opacity: 0.92,
     },
     '&:active': {
       boxShadow: 'none',
@@ -161,7 +160,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.error',
-      opacity: 1
+      opacity: 1,
     },
     '&:disabled': {
       boxShadow: 'none',
@@ -170,7 +169,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderStyle: 'solid',
       borderColor: 'primary.error',
       opacity: 0.6,
-      color: 'white'
+      color: 'white',
     },
   },
   cancelBtn: {
@@ -182,6 +181,6 @@ const stylesWithTheme = (theme: Theme) => ({
     height: '32px',
     width: '100%',
     p: '8px 12px',
-  }
+  },
 });
 export { stylesWithTheme };

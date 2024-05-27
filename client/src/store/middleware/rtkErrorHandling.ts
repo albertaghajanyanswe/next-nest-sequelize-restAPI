@@ -1,4 +1,4 @@
-import type { MiddlewareAPI, Middleware } from '@reduxjs/toolkit'
+import type { MiddlewareAPI, Middleware } from '@reduxjs/toolkit';
 // import { toast } from 'react-toastify';
 import { logOut } from '../../services/lsService';
 import { routes } from '@/configs';
@@ -18,4 +18,4 @@ export const rtkQueryErrorLogger: Middleware =
       }
     }
     return next(action);
-  }
+  };

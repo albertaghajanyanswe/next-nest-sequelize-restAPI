@@ -1,9 +1,7 @@
-import RegistrationGuestPage from "@/app/pageComponents/registration/RegistrationGuestPage";
+import RegistrationGuestPage from '@/app/pageComponents/registration/RegistrationGuestPage';
 
 function RegistrationGuest() {
-  return (
-    <RegistrationGuestPage />
-  )
+  return <RegistrationGuestPage />;
 }
 
 export default RegistrationGuest;

@@ -14,9 +14,9 @@ const muiStyles = {
     fontFamily: 'var(--font-poppins)',
     // NOTE: hide text color change for checkboxes
     '&.Mui-focused': {
-      color: 'primary.textColor5'
+      color: 'primary.textColor5',
     },
-    cursor: 'text'
+    cursor: 'text',
   },
   tooltip: {
     maxWidth: '463px',
@@ -33,9 +33,9 @@ const muiStyles = {
       mt: '8px!important',
       backgroundColor: 'primary.btnMainDisabled',
       color: 'primary.main',
-      fontWeight: '500'
-    }
+      fontWeight: '500',
+    },
   },
-}
+};
 
 export { muiStyles };

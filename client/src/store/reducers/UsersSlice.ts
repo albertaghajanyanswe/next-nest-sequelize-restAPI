@@ -12,16 +12,16 @@ const initialState: IUserState = {
   users: [],
   isLoading: false,
   error: '',
-}
+};
 
 export const getUsers = createAsyncThunk(
   'api/users',
   async (params: any, thunkAPI) => {
     try {
-      const users = await userService.getUsers(params)
+      const users = await userService.getUsers(params);
       return users;
     } catch (err: any) {
-      thunkAPI.rejectWithValue(err.message)
+      thunkAPI.rejectWithValue(err.message);
     }
   }
 );
@@ -31,16 +31,14 @@ export const addUser = createAsyncThunk(
     try {
       await userService.createUser({ data: { ...newUser } });
     } catch (err: any) {
-      thunkAPI.rejectWithValue(err.message)
+      thunkAPI.rejectWithValue(err.message);
     }
   }
-)
+);
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getUsers.pending, (state) => {
@@ -89,9 +87,7 @@ export const userSlice = createSlice({
     //   state.isLoading = false;
     //   state.error = action.payload;
     // }
-  }
-})
-
-
+  },
+});
 
 export default userSlice.reducer;

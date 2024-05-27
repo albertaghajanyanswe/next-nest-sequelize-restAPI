@@ -16,9 +16,5 @@ export default function Home() {
   // }
   const { data: currentUser, isLoading } = usersAPI.useGetCurrentUserQuery({});
 
-  return (
-    <main>
-      Home 1
-    </main>
-  );
+  return <main>Home 1</main>;
 }

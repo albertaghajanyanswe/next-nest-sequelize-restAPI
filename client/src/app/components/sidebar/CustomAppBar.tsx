@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { memo } from 'react';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -7,7 +7,7 @@ import variables from '@/configs/variables';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 const CustomAppBar = ({ open, children }: AppBarProps) => {

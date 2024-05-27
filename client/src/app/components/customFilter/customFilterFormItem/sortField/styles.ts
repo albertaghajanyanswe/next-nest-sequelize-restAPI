@@ -1,5 +1,5 @@
-import { DefaultTheme, Theme } from "@mui/system";
-import { globalMuiStylesWithTheme } from "../../../../globalMuiStyles";
+import { DefaultTheme, Theme } from '@mui/system';
+import { globalMuiStylesWithTheme } from '../../../../globalMuiStyles';
 
 const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   select: {
@@ -9,12 +9,12 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     '& > .MuiOutlinedInput-root': {
       '& > .MuiOutlinedInput-input': {
         '&::placeholder': {
-          color: 'primary.textColor6'
+          color: 'primary.textColor6',
         },
         '& > p > em': {
-          color: `${(theme as Theme)?.palette?.primary?.textColor6}!important`
-        }
-      }
+          color: `${(theme as Theme)?.palette?.primary?.textColor6}!important`,
+        },
+      },
     },
     '& > .MuiSelect-select': {
       padding: '8px 16px!important',
@@ -22,8 +22,8 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     '& > .MuiInputBase-sizeSmall': {
       '& > .MuiSelect-select': {
         padding: '8px 16px',
-        backgroundColor: 'red'
-      }
+        backgroundColor: 'red',
+      },
     },
     '& .MuiSelect-select': {
       // whiteSpace: 'break-spaces!important',
@@ -31,7 +31,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       // display: 'flex',
       lineHeight: '24px',
       alignItems: 'center',
-      padding: '9.95px 16px'
+      padding: '9.95px 16px',
     },
     '& .MuiSelect-icon': {
       right: '12px',
@@ -39,30 +39,30 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     },
     '& .MuiSelect-iconOpen': {
       '& > path': {
-        ...globalMuiStylesWithTheme(theme).stroke_004B7F
-      }
+        ...globalMuiStylesWithTheme(theme).stroke_004B7F,
+      },
     },
     '&:hover': {
       '& .MuiSelect-icon': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_226395
-        }
+          ...globalMuiStylesWithTheme(theme).stroke_226395,
+        },
       },
     },
     '&.Mui-focused': {
       '& .MuiSelect-icon': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_226395
-        }
+          ...globalMuiStylesWithTheme(theme).stroke_226395,
+        },
       },
     },
     '&.Mui-error': {
       '& .MuiSelect-icon': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_C62840
-        }
+          ...globalMuiStylesWithTheme(theme).stroke_C62840,
+        },
       },
-    }
+    },
   },
   selectBtnLeft: {
     '& .MuiSelect-icon': {
@@ -73,8 +73,8 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   withStartIconStyle: {
     pl: 2,
     '& .MuiSelect-select': {
-      pl: '4px'
-    }
+      pl: '4px',
+    },
   },
   menuItem: {
     color: 'primary.textColor3',
@@ -96,7 +96,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     fontSize: '14px',
     lineHeight: '20px',
     fontWeight: 400,
-    color: 'primary.textColor1'
+    color: 'primary.textColor1',
   },
   option: {
     color: 'primary.textColor1',
@@ -107,24 +107,24 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
           fontSize: '14px',
           lineHeight: '20px',
           fontWeight: 400,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   fieldContainer: {
-    mb: 0
+    mb: 0,
   },
   titleBlock: {
     mb: 1,
     display: 'flex',
-    maxHeight: '16px'
+    maxHeight: '16px',
   },
   title: {
     fontFamily: 'var(--font-poppins)',
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 600,
-    color: 'primary.textColor3'
+    color: 'primary.textColor3',
   },
   dropdownBlock: {
     overflow: 'auto',
@@ -147,28 +147,28 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
         minHeight: 'auto',
         '& > div:not(.themeShowInSelected):first-of-type': {
           display: 'flex',
-          flexDirection: 'column'
-        }
+          flexDirection: 'column',
+        },
       },
       '& > .MuiMenuItem-root': {
         borderRadius: '4px',
         padding: '12px',
-        lineHeight: '16px'
+        lineHeight: '16px',
       },
       '& > .Mui-selected': {
         padding: '12px',
         lineHeight: '16px',
         backgroundColor: 'primary.borderColor1',
-        borderRadius: '4px'
-      }
-    }
+        borderRadius: '4px',
+      },
+    },
   },
   dropdownHideResetOpt: {
     '& .MuiList-root': {
       '& > li:first-of-type': {
-        display: 'none'
+        display: 'none',
       },
-    }
+    },
   },
   listSubheader: {
     position: 'static',
@@ -177,21 +177,21 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     lineHeight: '12px',
     fontWeight: 700,
     textTransform: 'uppercase',
-    padding: '16px 12px 4px 12px'
+    padding: '16px 12px 4px 12px',
   },
   divider: {
     borderColor: 'primary.borderColor1',
-    "&::before": {
+    '&::before': {
       borderTopWidth: '1px',
       borderTopStyle: 'solid',
       borderTopColor: 'primary.borderColor1',
     },
-    "&::after": {
+    '&::after': {
       borderTopWidth: '1px',
       borderTopStyle: 'solid',
       borderTopColor: 'primary.borderColor1',
     },
   },
-})
+});
 
 export { muiStylesWithTheme };

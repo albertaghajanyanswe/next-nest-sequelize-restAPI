@@ -1,5 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { iLogin, iLoginGuest, iRegistration, iRegistrationGuest, IUser } from '@/configs/shared/types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  iLogin,
+  iLoginGuest,
+  iRegistration,
+  iRegistrationGuest,
+  IUser,
+} from '@/configs/shared/types';
 import { GetUsersDto, UpdateUserDto, UserDto } from '@/generated/openapi';
 // import { axiosInstance } from '../client/axiosHelper';
 import { apiEndpoints } from '@/services/configs';
@@ -40,69 +46,69 @@ export const usersAPI = createApi({
           url: `api${apiEndpoints.users}?params=${encodeURIComponent(JSON.stringify(params))}`,
           // url: `api${apiEndpoints.users}`,
           // params
-        }
+        };
       },
-      providesTags: result => ['Users']
+      providesTags: (result) => ['Users'],
     }),
     getCurrentUser: build.query<UserDto, any>({
       query: () => {
         return {
           url: `api${apiEndpoints.currentUser}`,
-        }
+        };
       },
-      providesTags: ['CurrentUser']
+      providesTags: ['CurrentUser'],
     }),
     updateUser: build.mutation<UserDto, UpdateUserDto & { userId: number }>({
-      query: ({userId, ...data}) => {
+      query: ({ userId, ...data }) => {
         return {
           url: `api${apiEndpoints.user.replace(':userId', `${userId}`)}`,
           method: 'PUT',
-          body: data
-        }
+          body: data,
+        };
       },
     }),
     register: build.mutation<iRegistration, iRegistration>({
       query: (user) => ({
         url: `api${apiEndpoints.registration}`,
         method: 'POST',
-        body: user
+        body: user,
       }),
     }),
     registerGuest: build.mutation<iRegistrationGuest, iRegistrationGuest>({
       query: (user) => ({
         url: `api${apiEndpoints.registrationGuest}`,
         method: 'POST',
-        body: user
+        body: user,
       }),
     }),
     login: build.mutation<any, iLogin>({
       query: (credentials) => ({
         url: `api${apiEndpoints.login}`,
         method: 'POST',
-        body: { email: credentials.email, password: credentials.password }
+        body: { email: credentials.email, password: credentials.password },
       }),
     }),
     postLogin: build.mutation<iLogin, iLogin>({
       query: (credentials) => ({
         url: `api${apiEndpoints.postLogin}`,
         method: 'POST',
-        body: credentials
+        body: credentials,
       }),
     }),
     postLoginGuest: build.mutation<iLoginGuest, iLoginGuest>({
       query: (credentials) => ({
         url: `api${apiEndpoints.postLoginGuest}`,
         method: 'POST',
-        body: credentials
+        body: credentials,
       }),
     }),
     deleteUser: build.mutation<IUser, IUser>({
       query: (user) => ({
         url: `/${apiEndpoints.user.replace(':userId', `${user.id}`)}`,
         method: 'DELETE',
-        body: user.id
+        body: user.id,
       }),
-      invalidatesTags: ['Users']
-    })
+      invalidatesTags: ['Users'],
+    }),
   }),
 });

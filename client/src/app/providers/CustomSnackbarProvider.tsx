@@ -1,9 +1,13 @@
-'use client'
+'use client';
 
 import { SnackbarProvider } from 'notistack';
 import { Box } from '@mui/material';
 
-export const CustomSnackbarProvider = ({ children }: { children: React.ReactNode }) => {
+export const CustomSnackbarProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return (
     <Box
       sx={{ justifyContent: 'center' }}
@@ -18,5 +22,5 @@ export const CustomSnackbarProvider = ({ children }: { children: React.ReactNode
     >
       {children}
     </Box>
-  )
-}
+  );
+};

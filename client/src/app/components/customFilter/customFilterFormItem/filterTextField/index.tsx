@@ -8,7 +8,7 @@ import { useDebounce } from '@/hooks/common/useDebaunce';
 
 interface iProps<T> {
   field: T;
-  onFilterCallback: ((filterObj: {[key: string]: any}) => void) | null;
+  onFilterCallback: ((filterObj: { [key: string]: any }) => void) | null;
   searchValue: any;
   withDefaultSize: boolean;
 }
@@ -20,27 +20,44 @@ function CustomFilterTextField({
   field,
   onFilterCallback,
   searchValue = '',
-  withDefaultSize
+  withDefaultSize,
 }: iProps<iFilterTextField>) {
-
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = React.useState(searchValue);
-  const debouncedValue = useDebounce(typeof searchTerm === 'object' ? searchTerm : {[field?.id]: searchTerm}, 1000);
+  const debouncedValue = useDebounce(
+    typeof searchTerm === 'object' ? searchTerm : { [field?.id]: searchTerm },
+    1000
+  );
 
   useEffect(() => {
-      setSearchTerm({[field.id]: searchValue});
+    setSearchTerm({ [field.id]: searchValue });
   }, [field, searchValue]);
 
   useEffect(() => {
     if (onFilterCallback) {
       onFilterCallback(debouncedValue);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
   return (
-    <Box component="div" sx={{ ...muiStyles.fieldContainer, ...(withDefaultSize ? field.maxWidth ? { maxWidth: field.maxWidth } : { maxWidth: `${DEFAULT_SELECT_MAX_WIDTH}px` } : {}), ...(withDefaultSize ? field.minWidth ? { minWidth: field.minWidth } : { minWidth: `${DEFAULT_SELECT_MIN_WIDTH}px` } : {}) }}>
-    {/* <Box component="div" sx={{ ...muiStyles.fieldContainer }}> */}
+    <Box
+      component="div"
+      sx={{
+        ...muiStyles.fieldContainer,
+        ...(withDefaultSize
+          ? field.maxWidth
+            ? { maxWidth: field.maxWidth }
+            : { maxWidth: `${DEFAULT_SELECT_MAX_WIDTH}px` }
+          : {}),
+        ...(withDefaultSize
+          ? field.minWidth
+            ? { minWidth: field.minWidth }
+            : { minWidth: `${DEFAULT_SELECT_MIN_WIDTH}px` }
+          : {}),
+      }}
+    >
+      {/* <Box component="div" sx={{ ...muiStyles.fieldContainer }}> */}
       <FormControl sx={muiStyles.formControl} variant="outlined">
         <TextField
           className={searchTerm?.[field.id]}
@@ -51,14 +68,14 @@ function CustomFilterTextField({
           value={searchTerm?.[field.id] || ''}
           variant="outlined"
           name={field.id}
-          onChange={event => {
-            setSearchTerm({[field.id]: event.target.value});
+          onChange={(event) => {
+            setSearchTerm({ [field.id]: event.target.value });
           }}
-          InputLabelProps={{style: {fontSize: 14}}}
+          InputLabelProps={{ style: { fontSize: 14 } }}
         />
       </FormControl>
     </Box>
   );
-};
+}
 
 export default CustomFilterTextField;

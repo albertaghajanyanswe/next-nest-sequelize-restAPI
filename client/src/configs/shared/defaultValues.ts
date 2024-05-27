@@ -1,12 +1,12 @@
 export const DEFAULT_VALUES_LOGIN = {
   email: '',
-  password: ''
-}
+  password: '',
+};
 
 export const DEFAULT_VALUES_LOGIN_GUEST = {
   nickName: '',
-  password: ''
-}
+  password: '',
+};
 
 export const DEFAULT_VALUES_REGISTRATION = {
   firstName: '',
@@ -16,7 +16,7 @@ export const DEFAULT_VALUES_REGISTRATION = {
   nickName: '',
   phone: '',
   switchGuestAccount: false,
-}
+};
 
 export const DEFAULT_VALUES_PROFILE = {
   image: '',
@@ -25,7 +25,7 @@ export const DEFAULT_VALUES_PROFILE = {
   nickName: '',
   email: '',
   phone: '',
-}
+};
 
 export const DEFAULT_VALUES_CREATE_PRODUCT = {
   name: '',
@@ -41,4 +41,4 @@ export const DEFAULT_VALUES_CREATE_PRODUCT = {
   productState: undefined,
   staticFiles: [],
   staticFilesNames: [],
-}
+};

@@ -19,7 +19,7 @@ interface iProps<Row> {
   isDeleteAction?: boolean;
   isEmptyCell?: boolean;
   loading?: boolean;
-  handleClickIcon?: (values: Row) => void,
+  handleClickIcon?: (values: Row) => void;
   filteredParams?: any;
   emptyStateTitle?: string;
   emptyStateDesc?: string;
@@ -36,9 +36,8 @@ function CustomTableCell<Row>({
   filteredParams,
   emptyStateTitle,
   emptyStateDesc,
-  actionColumnCallback
+  actionColumnCallback,
 }: iProps<Row>) {
-
   const { t } = useTranslation();
   const onActionIconClick = (e: any, values: any) => {
     e.stopPropagation();
@@ -47,7 +46,10 @@ function CustomTableCell<Row>({
     }
   };
 
-  const isSortedField = () => filteredParams.params?.sort?.field === cellItem?.id || (cellItem?.orderField && filteredParams.params?.sort?.field === cellItem.orderField);
+  const isSortedField = () =>
+    filteredParams.params?.sort?.field === cellItem?.id ||
+    (cellItem?.orderField &&
+      filteredParams.params?.sort?.field === cellItem.orderField);
 
   const cellView = () => {
     if (isEmptyCell) {
@@ -59,65 +61,98 @@ function CustomTableCell<Row>({
           )}
           colSpan={20}
         >
-          {!loading ? (emptyStateTitle && emptyStateDesc) ? (
-            <Box sx={{ ...muiStyles.emptyBlock, width: '100%', mt: '32px' }}>
-              <Box sx={{ ...muiStyles.emptyBlock, maxWidth: '376px' }}>
-                <EmptyStateSvg />
-                <Typography sx={{...muiStyles.noResult, textAlign: 'center', ...globalMuiStyles.font_16_20_600, color: 'primary.textColor1', mt: 2 }}>{emptyStateTitle}</Typography>
-                <Typography sx={{...muiStyles.noResult, textAlign: 'center', ...globalMuiStyles.font_16_24_300, color: 'primary.textColor3', mt: 1 }}>{emptyStateDesc}</Typography>
+          {!loading ? (
+            emptyStateTitle && emptyStateDesc ? (
+              <Box sx={{ ...muiStyles.emptyBlock, width: '100%', mt: '32px' }}>
+                <Box sx={{ ...muiStyles.emptyBlock, maxWidth: '376px' }}>
+                  <EmptyStateSvg />
+                  <Typography
+                    sx={{
+                      ...muiStyles.noResult,
+                      textAlign: 'center',
+                      ...globalMuiStyles.font_16_20_600,
+                      color: 'primary.textColor1',
+                      mt: 2,
+                    }}
+                  >
+                    {emptyStateTitle}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      ...muiStyles.noResult,
+                      textAlign: 'center',
+                      ...globalMuiStyles.font_16_24_300,
+                      color: 'primary.textColor3',
+                      mt: 1,
+                    }}
+                  >
+                    {emptyStateDesc}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          ): (
-              <Typography sx={muiStyles.noResult}>{t('tableNoResult')}</Typography>
-      ) : null
-    }
-        </TableCell >
+            ) : (
+              <Typography sx={muiStyles.noResult}>
+                {t('tableNoResult')}
+              </Typography>
+            )
+          ) : null}
+        </TableCell>
       );
-}
-if (isEditAction) {
-  return (
-    <TableCell
-      align="left"
-      onClick={(e) => onActionIconClick(e, data)}
-      sx={muiStyles.tableCellAction}
-    >
-      <Tooltip title={t('edit')}>
-        <EditIcon color="primary" />
-      </Tooltip>
-    </TableCell>
-  );
-}
+    }
+    if (isEditAction) {
+      return (
+        <TableCell
+          align="left"
+          onClick={(e) => onActionIconClick(e, data)}
+          sx={muiStyles.tableCellAction}
+        >
+          <Tooltip title={t('edit')}>
+            <EditIcon color="primary" />
+          </Tooltip>
+        </TableCell>
+      );
+    }
 
-if (isDeleteAction) {
-  return (
-    <TableCell
-      align="left"
-      onClick={(e) => onActionIconClick(e, data)}
-      sx={muiStyles.tableCellAction}
-    >
-      <Tooltip title={t('delete')}>
-        <HighlightOffIcon color="error" />
-      </Tooltip>
-    </TableCell>
-  );
-}
-if (cellItem?.type === 'customComponent') {
-  return cellItem.component({ data, cellItem, isSortedCeil: isSortedField(), onActionIconClick, actionColumnCallback });
-}
+    if (isDeleteAction) {
+      return (
+        <TableCell
+          align="left"
+          onClick={(e) => onActionIconClick(e, data)}
+          sx={muiStyles.tableCellAction}
+        >
+          <Tooltip title={t('delete')}>
+            <HighlightOffIcon color="error" />
+          </Tooltip>
+        </TableCell>
+      );
+    }
+    if (cellItem?.type === 'customComponent') {
+      return cellItem.component({
+        data,
+        cellItem,
+        isSortedCeil: isSortedField(),
+        onActionIconClick,
+        actionColumnCallback,
+      });
+    }
 
-return (
-  <TableCell
-    sx={muiStyles.tableCellItem}
-    style={getCellPadding(
-      cellItem?.cellPaddingRight || '',
-      cellItem?.cellPaddingLeft || ''
-    )}
-    align={cellItem?.textAlign || 'left'}
-  >
-    {data ? data[cellItem?.id as keyof typeof data] as unknown as React.ReactNode : null}
-  </TableCell>
-);
+    return (
+      <TableCell
+        sx={muiStyles.tableCellItem}
+        style={getCellPadding(
+          cellItem?.cellPaddingRight || '',
+          cellItem?.cellPaddingLeft || ''
+        )}
+        align={cellItem?.textAlign || 'left'}
+      >
+        {data
+          ? (data[
+              cellItem?.id as keyof typeof data
+            ] as unknown as React.ReactNode)
+          : null}
+      </TableCell>
+    );
   };
-return <>{cellView()}</>;
+  return <>{cellView()}</>;
 }
-export default (memo(CustomTableCell) as typeof CustomTableCell);
+export default memo(CustomTableCell) as typeof CustomTableCell;

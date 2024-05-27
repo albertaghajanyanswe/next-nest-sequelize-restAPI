@@ -1,5 +1,5 @@
-import { DefaultTheme, Theme } from "@mui/system";
-import { globalMuiStylesWithTheme } from "@/app/globalMuiStyles";
+import { DefaultTheme, Theme } from '@mui/system';
+import { globalMuiStylesWithTheme } from '@/app/globalMuiStyles';
 
 const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   container: {
@@ -24,14 +24,14 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     // borderColor: 'primary.error',
     // paddingRight: '16px',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   label: {
     color: 'primary.textMainDefault',
     fontSize: '14px',
     lineHeight: '16px',
     fontWeight: '500',
-    width: '100%'
+    width: '100%',
   },
   description: {
     color: 'primary.textColor6',
@@ -39,7 +39,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     lineHeight: '16px',
     fontWeight: '400',
     width: '100%',
-    mt: '4px'
+    mt: '4px',
   },
   formatTxt: {
     fontFamily: 'var(--font-poppins)',
@@ -47,23 +47,23 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     lineHeight: '16px',
     fontWeight: '400',
     color: 'primary.textColor3',
-    ml: '12px'
+    ml: '12px',
   },
   attachBtn: {
     width: 'fit-content',
     padding: '7px 16px',
     fontWeight: 500,
     fontSize: '14px',
-    height: 'auto'
+    height: 'auto',
   },
   attachBtnStyle: {
-    '& > span':{
+    '& > span': {
       '& > svg': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_004B7F
-        }
-      }
-    }
+          ...globalMuiStylesWithTheme(theme).stroke_004B7F,
+        },
+      },
+    },
   },
   actionBtn: {
     width: 'fit-content',
@@ -72,14 +72,14 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     lineHeight: '16px',
     padding: '8px 8px 8px 4px',
     minWidth: '90px',
-    justifyContent: 'left'
+    justifyContent: 'left',
   },
   removeBtn: {
     color: 'primary.red1',
     '& > span': {
       '& > svg': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_D04C60
+          ...globalMuiStylesWithTheme(theme).stroke_D04C60,
         },
       },
     },
@@ -89,22 +89,21 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_d16374
-          }
-        }
-      }
-    }
+            ...globalMuiStylesWithTheme(theme).stroke_d16374,
+          },
+        },
+      },
+    },
   },
-  renameBtn: {
-  },
+  renameBtn: {},
   attachIcon: {
     display: 'flex',
     alignItems: 'center',
     '& > svg': {
       '& > path': {
-        ...globalMuiStylesWithTheme(theme).stroke_9FAEBD
-      }
-    }
+        ...globalMuiStylesWithTheme(theme).stroke_9FAEBD,
+      },
+    },
   },
   loadingProgress: {
     padding: '51px 30px',
@@ -118,14 +117,14 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     mb: 1,
     display: 'flex',
     maxHeight: '16px',
-    width: '100%'
+    width: '100%',
   },
   title: {
     fontFamily: 'var(--font-poppins)',
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 600,
-    color: 'primary.textColor3'
+    color: 'primary.textColor3',
   },
   accordion: {
     boxShadow: 'none',
@@ -135,12 +134,12 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       '& > .MuiAccordionSummary-expandIconWrapper': {
         position: 'absolute',
         top: '10px',
-        right: 0
-      }
+        right: 0,
+      },
     },
     '& > .MuiAccordionSummary-root.Mui-expanded': {
       minHeight: 'fit-content',
-    }
+    },
   },
   accordionDisable: {
     '& > .MuiAccordionSummary-content': {
@@ -162,8 +161,8 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     },
     '& > .MuiAccordionSummary-content.Mui-expanded': {
       marginTop: 0,
-      marginBottom: 0
-    }
+      marginBottom: 0,
+    },
   },
   nameInput: {
     fontFamily: 'var(--font-poppins)',
@@ -173,14 +172,14 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     color: 'primary.textColor4',
     '& > .MuiInput-input.Mui-disabled': {
       WebkitTextFillColor: (theme as Theme)?.palette.primary.textColor4,
-    }
+    },
   },
   suffix: {
     fontSize: '12px',
     fontWeight: '400',
     lineHeight: '16px',
     position: 'absolute',
-    color: 'primary.textColor6'
+    color: 'primary.textColor6',
   },
   font12: {
     fontSize: '12px',
@@ -196,15 +195,15 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     width: '100%',
     backgroundColor: 'primary.lightBG3',
     borderRadius: '16px',
-    mt: '20px'
+    mt: '20px',
   },
   infoTxt: {
     fontFamily: 'var(--font-poppins)',
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: '400',
-    color: 'primary.textColor4'
-  }
-})
+    color: 'primary.textColor4',
+  },
+});
 
-export  {muiStylesWithTheme};
+export { muiStylesWithTheme };

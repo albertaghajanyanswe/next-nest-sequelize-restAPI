@@ -46,9 +46,8 @@ const CustomModal: FC<iProps> = ({
   withDividers = true,
   closeBtnStyle = 'primary',
   footerActionNode,
-  additionalBlockInTitle
+  additionalBlockInTitle,
 }) => {
-
   const theme = useTheme();
   const muiStyles = muiStylesWithTheme(theme);
   return (
@@ -59,47 +58,55 @@ const CustomModal: FC<iProps> = ({
         open={open}
         onClose={handleClose}
         sx={{ ...muiStyles.root, ...sx }}
-        scroll='paper'
+        scroll="paper"
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        {title &&
+        {title && (
           <DialogTitle sx={{ ...muiStyles.modalTitleRoot, ...sxTitleRoot }}>
             <Box sx={{ width: '100%' }}>
               <Box sx={{ display: 'flex' }}>
-                <Typography sx={{ ...muiStyles.modalTitle, ...sxTitle }}>{title}</Typography>
-                {withCloseButton ? closeBtnStyle === 'primary' ? (
-                  <IconButton
-                    aria-label="close"
-                    onClick={handleClose}
-                  >
-                    <CloseIcon />
-                  </IconButton>) : (
-                  <IconButton onClick={handleClose} sx={muiStyles.iconBtn} disableRipple>
-                    <ModalCloseSVG />
-                  </IconButton>
+                <Typography sx={{ ...muiStyles.modalTitle, ...sxTitle }}>
+                  {title}
+                </Typography>
+                {withCloseButton ? (
+                  closeBtnStyle === 'primary' ? (
+                    <IconButton aria-label="close" onClick={handleClose}>
+                      <CloseIcon />
+                    </IconButton>
+                  ) : (
+                    <IconButton
+                      onClick={handleClose}
+                      sx={muiStyles.iconBtn}
+                      disableRipple
+                    >
+                      <ModalCloseSVG />
+                    </IconButton>
+                  )
                 ) : null}
               </Box>
-              <Box>
-                {additionalBlockInTitle && additionalBlockInTitle}
-              </Box>
+              <Box>{additionalBlockInTitle && additionalBlockInTitle}</Box>
             </Box>
           </DialogTitle>
-        }
-        <DialogContent sx={{ ...muiStyles.contentRoot, padding: 0, ...sxContentRoot }} dividers={withDividers}>{children}</DialogContent>
-        {footerActionNode ? (
-          footerActionNode
-        ) : (
-          withFooterAction && <DialogActions>
-            <Button onClick={handleClose} color='secondary'>
-              {leftBtnText}
-            </Button>
-            <Button onClick={handleSubmit} color='primary'>
-              {rightBtnText}
-            </Button>
-          </DialogActions>
         )}
-
+        <DialogContent
+          sx={{ ...muiStyles.contentRoot, padding: 0, ...sxContentRoot }}
+          dividers={withDividers}
+        >
+          {children}
+        </DialogContent>
+        {footerActionNode
+          ? footerActionNode
+          : withFooterAction && (
+              <DialogActions>
+                <Button onClick={handleClose} color="secondary">
+                  {leftBtnText}
+                </Button>
+                <Button onClick={handleSubmit} color="primary">
+                  {rightBtnText}
+                </Button>
+              </DialogActions>
+            )}
       </Dialog>
     </Box>
   );

@@ -1,5 +1,5 @@
-import { apiEndpoints } from "../configs"
-import { usersAPI } from "@/services/rtk/UsersApi";
+import { apiEndpoints } from '../configs';
+import { usersAPI } from '@/services/rtk/UsersApi';
 
 const uploadsAPI = usersAPI.injectEndpoints({
   endpoints: (build) => ({
@@ -8,21 +8,24 @@ const uploadsAPI = usersAPI.injectEndpoints({
         return {
           url: `api${apiEndpoints.uploadsAvatar}`,
           method: 'POST',
-          body: formData
-        }
+          body: formData,
+        };
       },
-      invalidatesTags: ['CurrentUser']
+      invalidatesTags: ['CurrentUser'],
     }),
     deleteAvatar: build.mutation<{ filename: string }, { filename: string }>({
       query: ({ filename }) => {
         return {
           url: `api${apiEndpoints.deleteAvatar.replace(':filename', filename)}`,
           method: 'DELETE',
-        }
+        };
       },
-      invalidatesTags: ['CurrentUser']
+      invalidatesTags: ['CurrentUser'],
     }),
-    uploadStaticFile: build.mutation<{ filename: string }, { formData: FormData }>({
+    uploadStaticFile: build.mutation<
+      { filename: string },
+      { formData: FormData }
+    >({
       query: ({ formData }) => {
         // const bodyData = new FormData();
         // bodyData.append('file', formData.get('file') as any);
@@ -31,13 +34,13 @@ const uploadsAPI = usersAPI.injectEndpoints({
         return {
           url: `api${apiEndpoints.uploadsStaticFile}`,
           method: 'POST',
-          body: formData
-        }
+          body: formData,
+        };
       },
-      invalidatesTags: ['CurrentUser']
+      invalidatesTags: ['CurrentUser'],
     }),
   }),
   overrideExisting: false,
-})
+});
 
 export { uploadsAPI };

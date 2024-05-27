@@ -7,7 +7,7 @@ const muiStyles = {
       lineHeight: '24px',
       fontWeight: 400,
       color: 'primary.textColor4',
-    }
+    },
   },
   errorLabel: {
     '& > .MuiTypography-root': {
@@ -15,12 +15,12 @@ const muiStyles = {
       lineHeight: '24px',
       fontWeight: 400,
       color: 'primary.error',
-    }
+    },
   },
   errorLabelBlock: {
     '& span': {
-      color: 'primary.error'
-    }
-  }
+      color: 'primary.error',
+    },
+  },
 };
 export { muiStyles };

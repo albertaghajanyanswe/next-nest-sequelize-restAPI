@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect } from 'react';
 import MuiDrawer, { DrawerProps } from '@mui/material/Drawer';
 import { useTheme, Theme, CSSObject } from '@mui/material/styles';
@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/hooks/reactQuery/redux';
 
 interface IDrawerProps extends DrawerProps {
   open?: boolean;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 const openedMixin = (theme: Theme): CSSObject => {
@@ -19,7 +19,7 @@ const openedMixin = (theme: Theme): CSSObject => {
       duration: theme.transitions.duration.enteringScreen,
     }),
     overflowX: 'hidden',
-  }
+  };
 };
 
 const closedMixin = (theme: Theme): CSSObject => {
@@ -33,7 +33,7 @@ const closedMixin = (theme: Theme): CSSObject => {
     [theme.breakpoints.up('sm')]: {
       width: `calc(${theme.spacing(8)} + 1px)`,
     },
-  }
+  };
 };
 
 const CustomDrawer = ({ open, children }: IDrawerProps) => {
@@ -43,11 +43,11 @@ const CustomDrawer = ({ open, children }: IDrawerProps) => {
 
   useEffect(() => {
     dispatch(toggleSidebarByValue(!!open));
-  }, [])
+  }, []);
 
   useEffect(() => {
     dispatch(toggleSidebarByValue(!!open));
-  }, [open])
+  }, [open]);
 
   return (
     <MuiDrawer
@@ -67,8 +67,8 @@ const CustomDrawer = ({ open, children }: IDrawerProps) => {
           '& .MuiDrawer-paper': closedMixin(theme),
         }),
         '& > .MuiPaper-root': {
-          backgroundColor: theme.palette.primary.main
-        }
+          backgroundColor: theme.palette.primary.main,
+        },
       }}
     >
       {children}

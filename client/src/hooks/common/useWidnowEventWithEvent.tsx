@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useEvent } from "./useEvent";
+import { useEvent } from './useEvent';
 
 type GetWindowEvent<Type extends string> = Type extends keyof WindowEventMap
   ? WindowEventMap[Type]
@@ -28,7 +28,7 @@ export function UseWindowEventExampleWithEvent() {
     diffY: 0,
   });
 
-  useWindowEvent("mousemove", (e) => {
+  useWindowEvent('mousemove', (e) => {
     setMousePosition({
       x: e.clientX,
       y: e.clientY,

@@ -1,5 +1,5 @@
 // todo: add and using all variables from theme
-import { Theme } from "@mui/system";
+import { Theme } from '@mui/system';
 
 const stylesWithTheme = (theme: Theme) => ({
   layout: {
@@ -17,18 +17,18 @@ const stylesWithTheme = (theme: Theme) => ({
     textAlign: 'center',
     [theme.breakpoints.up(450)]: {
       width: 'auto',
-      marginLeft: "auto",
-      marginRight: "auto",
+      marginLeft: 'auto',
+      marginRight: 'auto',
       boxShadow: '1px 2px 10px 0px #3a4e9975',
     },
     [theme.breakpoints.up(570)]: {
       width: 500,
-      marginLeft: "auto",
-      marginRight: "auto",
+      marginLeft: 'auto',
+      marginRight: 'auto',
       boxShadow: '1px 2px 10px 0px #3a4e9975',
     },
     [theme.breakpoints.down(570)]: {
-      boxShadow: 'none'
+      boxShadow: 'none',
     },
   },
   description: {
@@ -43,11 +43,11 @@ const stylesWithTheme = (theme: Theme) => ({
     color: theme.palette.primary.main,
     '&:hover': {
       color: theme.palette.primary.btnMainHover,
-    }
+    },
   },
   submit: {
     height: 50,
   },
 });
 
-export {stylesWithTheme};
+export { stylesWithTheme };

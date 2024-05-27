@@ -4,20 +4,20 @@ const muiStyles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '32px 40px',
-    flexDirection: {xs: 'column', sm: 'column', md: 'row'},
+    flexDirection: { xs: 'column', sm: 'column', md: 'row' },
     backgroundColor: 'white',
     minWidth: 'max-content',
   },
   leftRoot: {
     display: 'flex',
     alignItems: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   rightRoot: {
     display: 'flex',
-    justifyContent: {xs: 'center', sm: 'center', md: 'space-between'},
-    flexDirection: {xs: 'column', sm: 'column', md: 'row'},
-    alignItems: 'center'
+    justifyContent: { xs: 'center', sm: 'center', md: 'space-between' },
+    flexDirection: { xs: 'column', sm: 'column', md: 'row' },
+    alignItems: 'center',
   },
   title: {
     fontFamily: 'var(--font-poppins)',
@@ -33,7 +33,7 @@ const muiStyles = {
     lineHeight: '32px',
     fontWeight: 400,
     color: 'primary.textColor4',
-    mt: 1
+    mt: 1,
   },
   search: {
     mr: 2,
@@ -43,7 +43,7 @@ const muiStyles = {
     borderWidth: '1.5px',
     borderStyle: 'solid',
     borderColor: 'primary.borderColor1',
-    width: 'fit-content'
+    width: 'fit-content',
   },
 };
 export { muiStyles };

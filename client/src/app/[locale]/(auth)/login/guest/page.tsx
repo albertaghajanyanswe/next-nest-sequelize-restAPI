@@ -1,9 +1,7 @@
-import LoginGuestPage from "@/app/pageComponents/login/LoginGuestPage";
+import LoginGuestPage from '@/app/pageComponents/login/LoginGuestPage';
 
 function LoginGuest() {
-  return (
-    <LoginGuestPage />
-  )
+  return <LoginGuestPage />;
 }
 
 export default LoginGuest;

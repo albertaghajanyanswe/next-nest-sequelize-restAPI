@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useMemo } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import getTheme from './base';
@@ -14,14 +14,14 @@ function CustomThemeProvider(props: any) {
 
   let currentTheme = 'light';
   // Prevents SSR issues
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     currentTheme = window.localStorage.getItem('appTheme') || 'light';
   }
   const [themeName, _setThemeName] = useState(currentTheme);
   const theme = getTheme(themeName);
 
   const setThemeName = (name: string) => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       window.localStorage.setItem('appTheme', name);
     }
     _setThemeName(name);
@@ -33,14 +33,12 @@ function CustomThemeProvider(props: any) {
       setTheme: setThemeName,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [themeName],
+    [themeName]
   );
 
   return (
     <CustomThemeContext.Provider value={contextValue}>
-      <ThemeProvider theme={theme}>
-          {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </CustomThemeContext.Provider>
   );
 }

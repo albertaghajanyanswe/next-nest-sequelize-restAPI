@@ -1,48 +1,48 @@
 const routes = {
   home: {
     path: '/',
-    title: 'pages.home'
+    title: 'pages.home',
   },
   login: {
     path: '/login',
-    title: 'pages.login'
+    title: 'pages.login',
   },
   loginGuest: {
     path: '/login/guest',
-    title: 'pages.login'
+    title: 'pages.login',
   },
   registration: {
     path: '/registration',
-    title: 'pages.registration'
+    title: 'pages.registration',
   },
   registrationGuest: {
     path: '/registration/guest',
-    title: 'pages.registration'
+    title: 'pages.registration',
   },
   users: {
     path: '/users',
-    title: 'pages.users'
+    title: 'pages.users',
   },
   user: {
     path: '/users/:id',
-    title: 'pages.user'
+    title: 'pages.user',
   },
   products: {
     path: '/products',
-    title: 'pages.products'
+    title: 'pages.products',
   },
   productEdit: {
     path: '/products/:id',
-    title: 'pages.product'
+    title: 'pages.product',
   },
   productCreate: {
     path: '/products/create',
-    title: 'pages.createProduct'
+    title: 'pages.createProduct',
   },
   settings: {
     path: '/settings',
-    title: 'pages.settings'
+    title: 'pages.settings',
   },
-}
+};
 
 export default routes;

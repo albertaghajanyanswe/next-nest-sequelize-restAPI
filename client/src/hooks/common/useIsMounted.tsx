@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 export function useIsMounted() {
   const isMounted = useRef(false);
@@ -27,7 +27,7 @@ export function UseIsMountedExample() {
   const isMounted = useIsMounted();
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos/")
+    fetch('https://jsonplaceholder.typicode.com/todos/')
       .then((response) => response.json())
       .then((items) => {
         if (!isMounted.current) {

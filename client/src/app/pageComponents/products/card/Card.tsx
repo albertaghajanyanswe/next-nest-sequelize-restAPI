@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { Box, useTheme } from "@mui/system";
-import { muiStylesWithTheme } from "./styles";
+'use client';
+import React from 'react';
+import { Box, useTheme } from '@mui/system';
+import { muiStylesWithTheme } from './styles';
 import {
   Card,
   CardActions,
@@ -11,22 +11,22 @@ import {
   Divider,
   IconButton,
   Typography,
-} from "@mui/material";
-import { t } from "i18next";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { ProductsDataType } from "@/configs/shared/helpers/adapter";
-import { useRouter } from "next/navigation";
-import { routes } from "@/configs";
-import { globalMuiStyles } from "@/app/globalMuiStyles";
-import CustomButton from "@/app/components/customButton";
-import { useTranslation } from "react-i18next";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { StaticFiles } from "@/generated/openapi";
-import Image from "next/image";
-import fileService from "@/services/fileService";
+} from '@mui/material';
+import { t } from 'i18next';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { ProductsDataType } from '@/configs/shared/helpers/adapter';
+import { useRouter } from 'next/navigation';
+import { routes } from '@/configs';
+import { globalMuiStyles } from '@/app/globalMuiStyles';
+import CustomButton from '@/app/components/customButton';
+import { useTranslation } from 'react-i18next';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
+import { StaticFiles } from '@/generated/openapi';
+import Image from 'next/image';
+import fileService from '@/services/fileService';
 
 const settings = {
   dots: true,
@@ -59,14 +59,14 @@ function ProductItemCard<T>({
 
   const handleOnClick = () => {
     router.push(
-      routes.productEdit.path.replace(":id", details.id as unknown as string)
+      routes.productEdit.path.replace(':id', details.id as unknown as string)
     );
   };
 
   const bgColors = {
-    FOR_SALE: "primary.borderColor2",
-    FOR_RENT: "primary.orange2",
-    FOR_FREE_GIVING: "primary.green2",
+    FOR_SALE: 'primary.borderColor2',
+    FOR_RENT: 'primary.orange2',
+    FOR_FREE_GIVING: 'primary.green2',
   };
 
   const images = (details?.staticFiles as any)?.map((i: StaticFiles) => i.name);
@@ -94,20 +94,20 @@ function ProductItemCard<T>({
   return (
     <Card
       sx={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        position: "relative",
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'relative',
       }}
     >
       <Chip
         sx={{
           zIndex: 1000,
-          position: "absolute",
-          top: "12px",
-          right: "12px",
-          height: "24px",
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+          height: '24px',
           backgroundColor:
             bgColors[details.intendedFor as keyof typeof bgColors],
         }}
@@ -120,8 +120,8 @@ function ProductItemCard<T>({
         <Typography
           sx={{
             ...globalMuiStyles.font_16_20_600,
-            textAlign: "start",
-            color: "primary.textColor1",
+            textAlign: 'start',
+            color: 'primary.textColor1',
           }}
         >
           {details.name}
@@ -129,9 +129,9 @@ function ProductItemCard<T>({
         <Typography
           sx={{
             ...globalMuiStyles.font_16_20_500,
-            textAlign: "start",
-            mt: "4px",
-            color: "primary.textColor1",
+            textAlign: 'start',
+            mt: '4px',
+            color: 'primary.textColor1',
           }}
         >
           {details.price} {details.currency}
@@ -140,8 +140,8 @@ function ProductItemCard<T>({
           <Typography
             sx={{
               ...globalMuiStyles.font_14_16_400,
-              textAlign: "start",
-              color: "primary.textColor1",
+              textAlign: 'start',
+              color: 'primary.textColor1',
             }}
           >
             {details.province} {details.city} {details.address}
@@ -156,7 +156,7 @@ function ProductItemCard<T>({
           {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
         <CustomButton
-          label={t("view")}
+          label={t('view')}
           onClick={handleOnClick}
           variant="outlined"
           btnType="tertiary"

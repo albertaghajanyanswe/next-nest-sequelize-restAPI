@@ -5,11 +5,11 @@ const muiStyles = {
     textAlign: 'center',
     '& > svg': {
       marginTop: '4px',
-      fontSize: '1.4rem'
+      fontSize: '1.4rem',
     },
     '& > svg:hover': {
       background: 'rgba(61, 61, 61, 0.2)',
-      borderRadius: '50%'
+      borderRadius: '50%',
     },
   },
   tableCellItem: {
@@ -32,6 +32,6 @@ const muiStyles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 };
 export { muiStyles };

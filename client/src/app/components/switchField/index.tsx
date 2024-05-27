@@ -1,6 +1,12 @@
 import React from 'react';
-import { FieldValues, Path, useController } from "react-hook-form";
-import { Box, FormControl, FormControlLabel, Switch, Typography } from '@mui/material';
+import { FieldValues, Path, useController } from 'react-hook-form';
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  Switch,
+  Typography,
+} from '@mui/material';
 
 import { muiStyles } from './styles';
 
@@ -10,7 +16,7 @@ const FormSwitchField = <T extends FieldValues>({
   sx = {},
   sxLabel = {},
   label = '',
-  labelElement = null
+  labelElement = null,
 }: {
   rules?: any;
   name: Path<T>;
@@ -19,10 +25,13 @@ const FormSwitchField = <T extends FieldValues>({
   label?: string;
   labelElement?: React.ReactNode;
 }) => {
-  const { field: { onChange, value }, fieldState: { error } } = useController<T>({
+  const {
+    field: { onChange, value },
+    fieldState: { error },
+  } = useController<T>({
     rules,
-    name
-  })
+    name,
+  });
   return (
     <FormControl>
       <FormControlLabel
@@ -38,13 +47,25 @@ const FormSwitchField = <T extends FieldValues>({
             checked={Boolean(value)}
           />
         }
-        sx={{ ...muiStyles.label, ...sxLabel, ...(Boolean(error?.message) && muiStyles.errorLabel), }}
+        sx={{
+          ...muiStyles.label,
+          ...sxLabel,
+          ...(Boolean(error?.message) && muiStyles.errorLabel),
+        }}
         label={
-          labelElement ? <Box sx={{ ...(Boolean(error?.message) && muiStyles.errorLabelBlock) }}>{labelElement}</Box> : <Typography sx={sxLabel}>{label}</Typography>
+          labelElement ? (
+            <Box
+              sx={{ ...(Boolean(error?.message) && muiStyles.errorLabelBlock) }}
+            >
+              {labelElement}
+            </Box>
+          ) : (
+            <Typography sx={sxLabel}>{label}</Typography>
+          )
         }
       />
     </FormControl>
-  )
+  );
 };
 
 export default FormSwitchField;

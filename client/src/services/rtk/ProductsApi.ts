@@ -1,5 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { GetProductsDto, Product, ProductDto, GetCategoriesDto } from '@/generated/openapi';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  GetProductsDto,
+  Product,
+  ProductDto,
+  GetCategoriesDto,
+} from '@/generated/openapi';
 // import { axiosInstance } from '../client/axiosHelper';
 import { apiEndpoints } from '@/services/configs';
 import { getCurrentUser } from '@/services/lsService';
@@ -29,58 +34,61 @@ export const productsAPI = createApi({
         return {
           url: `api${apiEndpoints.products}?params=${encodeURIComponent(JSON.stringify(params))}`,
           // params
-        }
+        };
       },
-      providesTags: result => ['Products']
+      providesTags: (result) => ['Products'],
     }),
     getProduct: build.query<ProductDto, any>({
       query: ({ id }) => {
         return {
           url: `api${apiEndpoints.product.replace(':id', id)}`,
-        }
+        };
       },
-      providesTags: result => ['Product']
+      providesTags: (result) => ['Product'],
     }),
-    updateProduct: build.mutation<Product, Partial<ProductDto> & { productId: number }>({
+    updateProduct: build.mutation<
+      Product,
+      Partial<ProductDto> & { productId: number }
+    >({
       query: ({ productId, ...data }) => {
         return {
           url: `api${apiEndpoints.product.replace(':id', `${productId}`)}`,
           method: 'PUT',
-          body: data
-        }
+          body: data,
+        };
       },
-      invalidatesTags: result => ['Products', 'Product']
+      invalidatesTags: (result) => ['Products', 'Product'],
     }),
     createProduct: build.mutation<ProductDto, Partial<ProductDto>>({
       query: (product) => ({
         url: `api${apiEndpoints.createProducts}`,
         method: 'POST',
-        body: product
+        body: product,
       }),
-      invalidatesTags: result => ['Products']
+      invalidatesTags: (result) => ['Products'],
     }),
     getAllCategories: build.query<GetCategoriesDto, any>({
       query: (params) => {
         return {
           url: `api${apiEndpoints.categories}?params=${encodeURIComponent(JSON.stringify(params))}`,
-        }
+        };
       },
-      providesTags: result => ['Categories']
+      providesTags: (result) => ['Categories'],
     }),
     addToFavorite: build.mutation<ProductDto, { productId: string }>({
       query: (body) => ({
         url: `api${apiEndpoints.addToFavorite}`,
         method: 'POST',
-        body: body
+        body: body,
       }),
-      invalidatesTags: result => ['Products']
+      invalidatesTags: (result) => ['Products'],
     }),
     deleteFromFavorite: build.mutation<ProductDto, { id: string }>({
       query: ({ id }) => ({
         url: `api${apiEndpoints.deleteFavorite.replace(':id', id)}`,
         method: 'DELETE',
       }),
-      invalidatesTags: result => ['Products']
+      invalidatesTags: (result) => ['Products'],
     }),
   }),
 });

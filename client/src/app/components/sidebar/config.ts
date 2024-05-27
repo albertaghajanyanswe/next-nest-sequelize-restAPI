@@ -34,7 +34,7 @@ const links = [
     title: '',
     link: '',
     icon: '',
-    type: 'divider'
+    type: 'divider',
   },
   {
     id: 'settings',
@@ -44,7 +44,6 @@ const links = [
     disabled: false,
     roles: routesAccess.settings.access,
   },
-
 ];
 
 export { links };

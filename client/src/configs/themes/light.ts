@@ -1,4 +1,8 @@
-import { createTheme, PaletteOptions, SimplePaletteColorOptions } from '@mui/material/styles';
+import {
+  createTheme,
+  PaletteOptions,
+  SimplePaletteColorOptions,
+} from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   // eslint-disable-next-line
@@ -209,66 +213,66 @@ const theme = createTheme({
       styleOverrides: {
         input: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiGrid: {
       styleOverrides: {
         root: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiTypography: {
       styleOverrides: {
         root: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiFormLabel: {
       styleOverrides: {
         root: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiFormHelperText: {
       styleOverrides: {
         root: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiFormControl: {
       styleOverrides: {
         root: {
           '&.themeDatePickerForLabel': {
             '& label': {
-              marginTop: '4px'
-            }
+              marginTop: '4px',
+            },
           },
           '&.themeDatePickerForLabelReverse': {
             '& label': {
-              marginLeft: '36px'
-            }
-          }
-        }
-      }
+              marginLeft: '36px',
+            },
+          },
+        },
+      },
     },
     MuiInputLabel: {
       styleOverrides: {
         root: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiOutlinedInput: {
       styleOverrides: {
@@ -280,21 +284,21 @@ const theme = createTheme({
             color: '#b7b7b7',
             opacity: 1,
             fontFamily: 'var(--font-poppins)',
-            fontSize: '14px'
+            fontSize: '14px',
           },
         },
 
         root: {
           '& .MuiInputBase-inputSizeSmall': {
-            padding: '12.5px 16px'
+            padding: '12.5px 16px',
           },
           '& .MuiInputBase-sizeSmall': {
-            padding: '12.5px 16px'
+            padding: '12.5px 16px',
           },
           fontFamily: 'var(--font-poppins)',
           '&:hover': {
             '& .MuiOutlinedInput-notchedOutline': {
-              border: '1px solid #6EA3C9'
+              border: '1px solid #6EA3C9',
             },
           },
           '&.Mui-focused': {
@@ -304,7 +308,7 @@ const theme = createTheme({
             // },
             '& .MuiOutlinedInput-notchedOutline': {
               border: '1px solid #457BAC',
-              boxShadow: '0px 0px 0px 2px rgba(207, 227, 242, 0.6)'
+              boxShadow: '0px 0px 0px 2px rgba(207, 227, 242, 0.6)',
             },
           },
           '&.Mui-error': {
@@ -313,7 +317,7 @@ const theme = createTheme({
             },
             '&.Mui-focused': {
               '& .MuiOutlinedInput-notchedOutline': {
-                boxShadow: '0px 0px 0px 2px rgba(198, 40, 64, 0.1)'
+                boxShadow: '0px 0px 0px 2px rgba(198, 40, 64, 0.1)',
               },
             },
           },
@@ -333,8 +337,8 @@ const theme = createTheme({
       styleOverrides: {
         indicator: {
           // borderRadius: '4px 4px 0 0'
-        }
-      }
+        },
+      },
     },
     MuiMenuItem: {
       styleOverrides: {
@@ -360,7 +364,7 @@ const theme = createTheme({
               },
             },
           },
-        }
+        },
       },
     },
     MuiList: {
@@ -382,7 +386,7 @@ const theme = createTheme({
               display: 'flex',
             },
             backgroundColor: '#F3FAFF',
-          }
+          },
         },
       },
     },
@@ -398,16 +402,16 @@ const theme = createTheme({
     MuiStepper: {
       styleOverrides: {
         root: {
-          alignItems: 'end'
+          alignItems: 'end',
         },
-      }
+      },
     },
     MuiStepLabel: {
       styleOverrides: {
         label: {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
+        },
+      },
     },
     MuiDialogTitle: {
       styleOverrides: {

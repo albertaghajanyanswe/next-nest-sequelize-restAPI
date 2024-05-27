@@ -7,5 +7,5 @@ export function useModal(defaultState: boolean) {
   }, []);
   const closeModal = useCallback(() => setIsOpen(false), []);
 
-  return {isOpen, openModal, closeModal};
-};
+  return { isOpen, openModal, closeModal };
+}

@@ -1,21 +1,20 @@
 'use client';
-import TablePaginationComponent from "@/app/components/customTable/customPaginationComponent";
-import { iFilterParams } from "@/configs/shared/types";
-import { useState } from "react";
+import TablePaginationComponent from '@/app/components/customTable/customPaginationComponent';
+import { iFilterParams } from '@/configs/shared/types';
+import { useState } from 'react';
 
 function CustomPagination({
   rowsPerPageOptions,
   count,
   filteredParams,
   setFilteredParams,
-  handleFooterRef
+  handleFooterRef,
 }: {
-  rowsPerPageOptions: number[],
-  count: number,
+  rowsPerPageOptions: number[];
+  count: number;
   filteredParams: iFilterParams;
   setFilteredParams: (params: iFilterParams) => void;
   handleFooterRef?: (el: HTMLDivElement | null) => void;
-
 }) {
   const { limit, skip } = filteredParams?.params;
   const page = skip / limit;
@@ -54,7 +53,7 @@ function CustomPagination({
       isSticky
       handleFooterRef={handleFooterRef}
     />
-  )
+  );
 }
 
 export default CustomPagination;

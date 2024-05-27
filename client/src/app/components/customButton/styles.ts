@@ -1,6 +1,6 @@
-import { keyframes } from "@emotion/react";
-import { Theme } from "@mui/system";
-import { globalMuiStylesWithTheme } from "@/app/globalMuiStyles";
+import { keyframes } from '@emotion/react';
+import { Theme } from '@mui/system';
+import { globalMuiStylesWithTheme } from '@/app/globalMuiStyles';
 
 const spin = keyframes`
   0% {
@@ -79,7 +79,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_457BAC
+            ...globalMuiStylesWithTheme(theme).stroke_457BAC,
           },
         },
       },
@@ -90,7 +90,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderStyle: 'solid',
       borderColor: 'primary.btnMainHover',
       color: 'primary.btnMainHover',
-      backgroundColor: 'inherit'
+      backgroundColor: 'inherit',
     },
     '&:disabled': {
       boxShadow: 'none',
@@ -102,7 +102,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_CFE3F2
+            ...globalMuiStylesWithTheme(theme).stroke_CFE3F2,
           },
         },
       },
@@ -129,7 +129,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_457BAC
+            ...globalMuiStylesWithTheme(theme).stroke_457BAC,
           },
         },
       },
@@ -140,7 +140,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderStyle: 'solid',
       borderColor: 'primary.btnMainHover',
       color: 'primary.btnMainPressed',
-      backgroundColor: 'primary.btnMainHover'
+      backgroundColor: 'primary.btnMainHover',
     },
     '&:disabled': {
       boxShadow: 'none',
@@ -152,7 +152,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9
+            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9,
           },
         },
       },
@@ -168,7 +168,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
         opacity: '0.6',
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9
+            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9,
           },
         },
       },
@@ -190,7 +190,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     '& > span': {
       '& > svg': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_004B7F
+          ...globalMuiStylesWithTheme(theme).stroke_004B7F,
         },
       },
     },
@@ -205,7 +205,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_457BAC
+            ...globalMuiStylesWithTheme(theme).stroke_457BAC,
           },
         },
       },
@@ -221,7 +221,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_226395
+            ...globalMuiStylesWithTheme(theme).stroke_226395,
           },
         },
       },
@@ -236,7 +236,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_CFE3F2
+            ...globalMuiStylesWithTheme(theme).stroke_CFE3F2,
           },
         },
       },
@@ -267,7 +267,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderStyle: 'solid',
       borderColor: 'primary.borderColor2',
       color: 'primary.btnMainPressed',
-      backgroundColor: 'primary.borderColor2'
+      backgroundColor: 'primary.borderColor2',
     },
     '&:disabled': {
       boxShadow: 'none',
@@ -279,7 +279,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       '& > span': {
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9
+            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9,
           },
         },
       },
@@ -295,7 +295,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
         opacity: '0.6',
         '& > svg': {
           '& > path': {
-            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9
+            ...globalMuiStylesWithTheme(theme).stroke_ECF4F9,
           },
         },
       },
@@ -310,31 +310,31 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     fontWeight: 500,
   },
   medium: {
-    height: '48px'
+    height: '48px',
   },
   big: {
-    height: '56px'
+    height: '56px',
   },
   onlyIcon: {
     padding: '7px 12px',
     '& > span': {
-      margin: 0
-    }
+      margin: 0,
+    },
   },
   loadingPrimary: {
     display: 'flex',
     '& > svg': {
       animation: `${spin} 2s linear infinite;`,
       '& > path': {
-        stroke: 'white'
-      }
-    }
+        stroke: 'white',
+      },
+    },
   },
   loading: {
     display: 'flex',
     '& > svg': {
-      animation: `${spin} 2s linear infinite;`
-    }
-  }
+      animation: `${spin} 2s linear infinite;`,
+    },
+  },
 });
 export { stylesCallback };

@@ -1,4 +1,4 @@
-import { DefaultTheme, Theme } from "@mui/system";
+import { DefaultTheme, Theme } from '@mui/system';
 
 const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   block: {
@@ -7,7 +7,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.borderColor2',
     padding: '16px',
-    mt: 2
+    mt: 2,
   },
   flexCenter: {
     display: 'flex',

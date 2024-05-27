@@ -5,15 +5,13 @@ import { axiosInstance } from '@/services/client/axiosHelper';
 
 const PREFIX = 'api';
 
-let uploadApi = new UploadsApi(undefined, PREFIX, axiosInstance)
+let uploadApi = new UploadsApi(undefined, PREFIX, axiosInstance);
 
 const uploadService = {
-  uploadFile: async ({formData}: {formData:  any}) => {
+  uploadFile: async ({ formData }: { formData: any }) => {
     // authApi = new DefaultApi(new Configuration({ username: data.email, password: data.password}));
-    return await uploadApi.uploadControllerUploadFile({data: formData});
+    return await uploadApi.uploadControllerUploadFile({ data: formData });
   },
-}
+};
 
 export default uploadService;
-
-

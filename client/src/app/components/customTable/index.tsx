@@ -1,6 +1,15 @@
 'use client';
 import React, { useState, useMemo, memo, useCallback } from 'react';
-import { Table, TableBody, TableRow, TableContainer, Paper, Skeleton, Box, Tooltip } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableRow,
+  TableContainer,
+  Paper,
+  Skeleton,
+  Box,
+  Tooltip,
+} from '@mui/material';
 import CustomTableHead from './customTableHead';
 import CustomTableCell from './customTableCell';
 import TablePaginationComponent from './customPaginationComponent';
@@ -30,7 +39,7 @@ interface iProps<Row, Key> {
   loading?: boolean;
   handleEditAction?: (values: Row) => void;
   handleDeleteAction?: (values: Row) => void;
-  rowUniqueKey: Key,
+  rowUniqueKey: Key;
   handleClickIcon?: (row: Row) => void;
   toolbarView?: React.ReactNode;
   withPagination?: boolean;
@@ -64,7 +73,7 @@ function CustomTable<Row, Key extends keyof Row>({
   handleFooterRef,
   emptyStateTitle = '',
   emptyStateDesc = '',
-  actionColumnCallback
+  actionColumnCallback,
 }: iProps<Row, Key>) {
   const { t } = useTranslation();
   const { limit, skip } = filteredParams?.params;
@@ -118,15 +127,21 @@ function CustomTable<Row, Key extends keyof Row>({
     if (handleRowClick) {
       return handleRowClick(row);
     }
-  }
+  };
 
   const renderCustomTableCell = useMemo(() => {
     return tableData?.map((row: any) => (
-      <Tooltip key={row[rowUniqueKey]} title={(typeof handleRowClick === 'function') ? t('clickToRow') : ''}>
+      <Tooltip
+        key={row[rowUniqueKey]}
+        title={typeof handleRowClick === 'function' ? t('clickToRow') : ''}
+      >
         <TableRow
           onClick={() => onTableRowClick(row)}
           key={row[rowUniqueKey]}
-          sx={{ ...muiStyles.tableRow, ...((typeof handleRowClick === 'function') && muiStyles.clickableRow) }}
+          sx={{
+            ...muiStyles.tableRow,
+            ...(typeof handleRowClick === 'function' && muiStyles.clickableRow),
+          }}
         >
           {fields.map((item: iTableField, index) => (
             <CustomTableCell<Row>
@@ -164,35 +179,66 @@ function CustomTable<Row, Key extends keyof Row>({
     <Box component="div" sx={{ ...muiStyles.border }}>
       <Paper sx={{ ...(!withBorders ? muiStyles.paperRootNoBorder : {}) }}>
         {toolbarView && toolbarView}
-        <TableContainer sx={{ ...muiStyles.tableContainer, ...muiStyles.customScroll, ...sxTableContainer, maxHeight: isSticky ? `calc(100vh - ${maxHeightMinus}px)` : '100%' }}>
+        <TableContainer
+          sx={{
+            ...muiStyles.tableContainer,
+            ...muiStyles.customScroll,
+            ...sxTableContainer,
+            maxHeight: isSticky ? `calc(100vh - ${maxHeightMinus}px)` : '100%',
+          }}
+        >
           {loading ? (
             <div>
               <Skeleton height="80px" width="100%" animation="pulse" />
-              <Skeleton sx={{ mt: '-24px' }} height="200px" width="100%" animation="pulse" />
+              <Skeleton
+                sx={{ mt: '-24px' }}
+                height="200px"
+                width="100%"
+                animation="pulse"
+              />
             </div>
           ) : (
-            <Table stickyHeader={isSticky} sx={muiStyles.table} size="small" padding="checkbox">
+            <Table
+              stickyHeader={isSticky}
+              sx={muiStyles.table}
+              size="small"
+              padding="checkbox"
+            >
               <CustomTableHead
                 sortObj={sortObj}
                 onRequestSort={tableData?.length > 0 ? handleRequestSort : null}
                 rowCount={tableData?.length}
                 fields={fields}
                 filteredParams={filteredParams}
-                withEditAction={(!!tableData?.length && (typeof handleEditAction === 'function')) ? true : false}
-                withDeleteAction={(!!tableData?.length && (typeof handleDeleteAction === 'function')) ? true : false}
+                withEditAction={
+                  !!tableData?.length && typeof handleEditAction === 'function'
+                    ? true
+                    : false
+                }
+                withDeleteAction={
+                  !!tableData?.length &&
+                  typeof handleDeleteAction === 'function'
+                    ? true
+                    : false
+                }
               />
               <TableBody sx={loading ? muiStyles.tableBody : {}}>
                 {renderCustomTableCell}
                 {!tableData?.length && (
                   <TableRow style={{ height: 60 }}>
-                    <CustomTableCell<Row> isEmptyCell loading={loading} emptyStateTitle={emptyStateTitle} emptyStateDesc={emptyStateDesc} />
+                    <CustomTableCell<Row>
+                      isEmptyCell
+                      loading={loading}
+                      emptyStateTitle={emptyStateTitle}
+                      emptyStateDesc={emptyStateDesc}
+                    />
                   </TableRow>
                 )}
               </TableBody>
             </Table>
           )}
         </TableContainer>
-        {(withPagination && !loading) && (
+        {withPagination && !loading && (
           <TablePaginationComponent
             rowsPerPageOptions={rowsPerPageOptions}
             count={count}
@@ -202,7 +248,8 @@ function CustomTable<Row, Key extends keyof Row>({
             onRowsPerPageChange={handleChangeRowsPerPage}
             isSticky={isSticky}
             handleFooterRef={handleFooterRef}
-          />)}
+          />
+        )}
         {/* {(withPagination && !loading && tableData?.length > 0) && (
           <TablePagination
             component='div'

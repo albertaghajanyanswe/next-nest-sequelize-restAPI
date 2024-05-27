@@ -13,7 +13,7 @@ import { useDebounce } from '@/hooks/common/useDebaunce';
 
 interface iProps<T> {
   field: T;
-  onFilterCallback: ((filterObj: {[key: string]: any}) => void) | null;
+  onFilterCallback: ((filterObj: { [key: string]: any }) => void) | null;
   searchValue: any;
   withDefaultSize: boolean;
 }
@@ -25,26 +25,28 @@ function CustomFilterDateTimePicker<T extends iFilterDatePickerField>({
   field,
   onFilterCallback,
   searchValue = '',
-  withDefaultSize
+  withDefaultSize,
 }: iProps<T>) {
-
   const [searchTerm, setSearchTerm] = React.useState(searchValue);
   const [changeValue, setChangeValue] = React.useState('');
-  const debouncedValue = useDebounce(typeof searchTerm === 'object' ? searchTerm : { [field?.id]: searchTerm }, 1000);
+  const debouncedValue = useDebounce(
+    typeof searchTerm === 'object' ? searchTerm : { [field?.id]: searchTerm },
+    1000
+  );
 
   const handleChange = (value: any) => {
     setSearchTerm({ [field.id]: value });
-  }
+  };
 
   const handleChangeKeyboard = (value: any) => {
-    const dateIsValid = moment(value, "L", true).isValid();
+    const dateIsValid = moment(value, 'L', true).isValid();
     if (dateIsValid) {
       setSearchTerm({ [field.id]: value });
     } else {
       setSearchTerm({ [field.id]: '' });
     }
     setChangeValue(value);
-  }
+  };
 
   useEffect(() => {
     setSearchTerm({ [field.id]: searchValue });
@@ -57,17 +59,35 @@ function CustomFilterDateTimePicker<T extends iFilterDatePickerField>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
-
   return (
-    <Box component="div" sx={{ ...muiStyles.fieldContainer, ...(withDefaultSize ? field.maxWidth ? { maxWidth: field.maxWidth } : { maxWidth: `${DEFAULT_SELECT_MAX_WIDTH}px` } : {}), ...(withDefaultSize ? field.minWidth ? { minWidth: field.minWidth } : { minWidth: `${DEFAULT_SELECT_MIN_WIDTH}px` } : {}) }}>
-    {/* <Box component="div" sx={{ ...muiStyles.fieldContainer, width: {xs: 'calc(100% - 24px)', sm: '100%'} }}> */}
+    <Box
+      component="div"
+      sx={{
+        ...muiStyles.fieldContainer,
+        ...(withDefaultSize
+          ? field.maxWidth
+            ? { maxWidth: field.maxWidth }
+            : { maxWidth: `${DEFAULT_SELECT_MAX_WIDTH}px` }
+          : {}),
+        ...(withDefaultSize
+          ? field.minWidth
+            ? { minWidth: field.minWidth }
+            : { minWidth: `${DEFAULT_SELECT_MIN_WIDTH}px` }
+          : {}),
+      }}
+    >
+      {/* <Box component="div" sx={{ ...muiStyles.fieldContainer, width: {xs: 'calc(100% - 24px)', sm: '100%'} }}> */}
       {/* <FormControl sx={{ ...muiStyles.fieldContainer, width: {xs: 'calc(100% - 24px)', sm: '100%'} }} fullWidth variant="outlined"> */}
-      <FormControl sx={{ ...muiStyles.fieldContainer, width: '100%' }} fullWidth variant="outlined">
+      <FormControl
+        sx={{ ...muiStyles.fieldContainer, width: '100%' }}
+        fullWidth
+        variant="outlined"
+      >
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DateTimePicker
             {...(field.views && { views: field.views })}
             {...(field.inputFormat && { inputFormat: field.inputFormat })}
-            label=''
+            label=""
             value={searchTerm?.[field.id] || '' || changeValue}
             onChange={(value, keyboardInputValue) => {
               if (keyboardInputValue || !value) {
@@ -97,12 +117,11 @@ function CustomFilterDateTimePicker<T extends iFilterDatePickerField>({
             //   />
             //   )
             // }}
-
           />
         </LocalizationProvider>
       </FormControl>
     </Box>
   );
-};
+}
 
 export default CustomFilterDateTimePicker;

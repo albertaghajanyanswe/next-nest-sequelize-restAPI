@@ -2,8 +2,8 @@
 
 import React, { useRef } from 'react';
 import { Box, IconButton, TextField } from '@mui/material';
-import  SearchSVG from '@/assets/24/search.svg';
-import  CloseSVG from '@/assets/24/close.svg';
+import SearchSVG from '@/assets/24/search.svg';
+import CloseSVG from '@/assets/24/close.svg';
 import { muiStylesWithTheme } from './styles';
 import { useTheme } from '@mui/system';
 import { t } from 'i18next';
@@ -16,19 +16,16 @@ function CustomSearch({
   placeholder,
   searchOpened,
   setSearchOpened,
-  disabled = false
-
+  disabled = false,
 }: {
-  onSearchCallback: ((searchValue: string) => void),
-  searchValue: string,
-  disableFieldsOnSearch?: any,
-  placeholder?: string,
-  searchOpened: boolean,
-  setSearchOpened: (val: boolean) => void,
-  disabled?: boolean
-
-}
-) {
+  onSearchCallback: (searchValue: string) => void;
+  searchValue: string;
+  disableFieldsOnSearch?: any;
+  placeholder?: string;
+  searchOpened: boolean;
+  setSearchOpened: (val: boolean) => void;
+  disabled?: boolean;
+}) {
   const theme = useTheme();
   const muiStyles = muiStylesWithTheme(theme);
   // const [isOpen, setOpen] = React.useState(Boolean(searchValue));
@@ -41,13 +38,17 @@ function CustomSearch({
     if (disableFieldsOnSearch && typeof disableFieldsOnSearch === 'function') {
       disableFieldsOnSearch(true);
     }
-  }
+  };
 
   const handleOpenOrClose = () => {
     const newValue = !searchOpened;
     // setOpen(newValue);
     setSearchOpened(newValue);
-    if (searchTerm && handleDisableFieldsOnSearch && typeof handleDisableFieldsOnSearch === 'function') {
+    if (
+      searchTerm &&
+      handleDisableFieldsOnSearch &&
+      typeof handleDisableFieldsOnSearch === 'function'
+    ) {
       handleDisableFieldsOnSearch();
     }
     setSearchTerm('');
@@ -61,7 +62,7 @@ function CustomSearch({
     if (inputRef && inputRef?.current) {
       inputRef.current.focus();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputRef.current, searchOpened]);
 
   React.useEffect(() => {
@@ -70,25 +71,42 @@ function CustomSearch({
   }, [debouncedValue]);
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end', flexGrow: 1 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'end',
+        flexGrow: 1,
+      }}
+    >
       <TextField
         placeholder={placeholder || t('search')}
         value={searchTerm}
-        onChange={event => {
+        onChange={(event) => {
           setSearchTerm(event.target.value);
           handleDisableFieldsOnSearch();
         }}
         id="search"
-        sx={{ ...muiStyles.searchInput, display: searchOpened ? 'inherit' : 'none' }}
+        sx={{
+          ...muiStyles.searchInput,
+          display: searchOpened ? 'inherit' : 'none',
+        }}
         inputRef={inputRef}
       />
-      <Box component='div' sx={muiStyles.rightRoot}>
-        <IconButton disabled={disabled} disableRipple aria-label="search" color="primary" sx={muiStyles.search} onClick={handleOpenOrClose}>
+      <Box component="div" sx={muiStyles.rightRoot}>
+        <IconButton
+          disabled={disabled}
+          disableRipple
+          aria-label="search"
+          color="primary"
+          sx={muiStyles.search}
+          onClick={handleOpenOrClose}
+        >
           {searchOpened ? <CloseSVG /> : <SearchSVG />}
         </IconButton>
       </Box>
     </Box>
   );
-};
+}
 
 export default CustomSearch;

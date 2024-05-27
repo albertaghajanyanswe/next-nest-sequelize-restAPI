@@ -5,19 +5,19 @@ const muiStyles = {
     p: 0,
     textAlign: 'start',
     justifyContent: 'space-between',
-    minHeight: {xs: '40px'},
+    minHeight: { xs: '40px' },
     display: 'flex',
     flexGrow: 1,
-    mb: 3
+    mb: 3,
   },
   filters: {
     width: '100%',
     display: 'flex',
-    'WebkitFlexWrap': 'wrap',
+    WebkitFlexWrap: 'wrap',
     flexWrap: 'wrap',
     '& > div:not(:last-child)': {
-      mr: 2
-    }
+      mr: 2,
+    },
   },
   actions: {
     display: 'flex',

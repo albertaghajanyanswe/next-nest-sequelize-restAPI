@@ -1,5 +1,5 @@
-import { DefaultTheme, Theme } from "@mui/system";
-import { globalMuiStylesWithTheme } from "@/app/globalMuiStyles";
+import { DefaultTheme, Theme } from '@mui/system';
+import { globalMuiStylesWithTheme } from '@/app/globalMuiStyles';
 
 const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   selectBtnLeft: {
@@ -11,8 +11,8 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   withStartIconStyle: {
     pl: 2,
     '& .MuiSelect-select': {
-      pl: '4px'
-    }
+      pl: '4px',
+    },
   },
   menuItem: {
     display: 'flex',
@@ -25,19 +25,19 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   },
   fieldContainer: {
     mt: '20px',
-    mb: 0
+    mb: 0,
   },
   titleBlock: {
     mb: 1,
     display: 'flex',
-    maxHeight: '16px'
+    maxHeight: '16px',
   },
   title: {
     fontFamily: 'var(--font-poppins)',
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 600,
-    color: 'primary.textColor3'
+    color: 'primary.textColor3',
   },
   dropdownBlock: {
     overflow: 'auto',
@@ -54,21 +54,21 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       '& > li': {
         '& > div:not(.themeShowInSelected):first-of-type': {
           display: 'flex',
-          flexDirection: 'column'
-        }
+          flexDirection: 'column',
+        },
       },
       '& > .MuiMenuItem-root': {
         borderRadius: '4px',
         padding: '12px',
-        lineHeight: '16px'
+        lineHeight: '16px',
       },
       '& > .Mui-selected': {
         padding: '12px',
         lineHeight: '16px',
         backgroundColor: 'primary.borderColor1',
-        borderRadius: '4px'
-      }
-    }
+        borderRadius: '4px',
+      },
+    },
   },
   dropdownBlockMultiselect: {
     overflow: 'auto',
@@ -85,28 +85,28 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       '& > li': {
         '& > div:not(.themeShowInSelected):first-of-type': {
           display: 'flex',
-          flexDirection: 'column'
-        }
+          flexDirection: 'column',
+        },
       },
       '& > .MuiMenuItem-root': {
         borderRadius: '4px',
         padding: '12px 12px 12px 0',
-        lineHeight: '16px'
+        lineHeight: '16px',
       },
       '& > .Mui-selected': {
         padding: '12px 12px 12px 0',
         lineHeight: '16px',
         backgroundColor: 'primary.borderColor1',
-        borderRadius: '4px'
-      }
-    }
+        borderRadius: '4px',
+      },
+    },
   },
   dropdownHideResetOpt: {
     '& .MuiList-root': {
       '& > li:first-of-type': {
-        display: 'none'
+        display: 'none',
       },
-    }
+    },
   },
   small: {
     '& > svg': {
@@ -123,15 +123,15 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
         height: '14px',
         x: 1,
         y: 1,
-      }
-    }
+      },
+    },
   },
   menuItemOpt: {
     fontFamily: 'var(--font-poppins)',
     fontWeight: 400,
     fontSize: '14px',
     lineHeight: '16px',
-    color: 'primary.textColor1'
+    color: 'primary.textColor1',
   },
   listSubheader: {
     position: 'static',
@@ -140,22 +140,22 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     lineHeight: '12px',
     fontWeight: 700,
     textTransform: 'uppercase',
-    padding: '16px 12px 4px 12px'
+    padding: '16px 12px 4px 12px',
   },
   menuItemStyle: {
     '&.Mui-disabled': {
       opacity: 0.6,
       '& .MuiTypography-root': {
-        color: 'primary.textColor3'
-      }
-    }
+        color: 'primary.textColor3',
+      },
+    },
   },
   select: {
     '& .MuiSelect-select': {
       whiteSpace: 'break-spaces!important',
       wordBreak: 'break-word',
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     '& .MuiSelect-icon': {
       right: '12px',
@@ -163,30 +163,30 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     },
     '& .MuiSelect-iconOpen': {
       '& > path': {
-        ...globalMuiStylesWithTheme(theme).stroke_004B7F
-      }
+        ...globalMuiStylesWithTheme(theme).stroke_004B7F,
+      },
     },
     '&:hover': {
       '& .MuiSelect-icon': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_226395
-        }
+          ...globalMuiStylesWithTheme(theme).stroke_226395,
+        },
       },
     },
     '&.Mui-focused': {
       '& .MuiSelect-icon': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_226395
-        }
+          ...globalMuiStylesWithTheme(theme).stroke_226395,
+        },
       },
     },
     '&.Mui-error': {
       '& .MuiSelect-icon': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_C62840
-        }
+          ...globalMuiStylesWithTheme(theme).stroke_C62840,
+        },
       },
-    }
+    },
   },
-})
-export  {muiStylesWithTheme};
+});
+export { muiStylesWithTheme };

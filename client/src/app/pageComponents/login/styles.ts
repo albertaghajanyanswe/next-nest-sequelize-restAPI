@@ -1,4 +1,4 @@
-import { Theme } from "@mui/system";
+import { Theme } from '@mui/system';
 // import loginBg from '../../assets/login-1.jpg';
 
 const stylesWithTheme = (theme: Theme) => ({
@@ -7,7 +7,7 @@ const stylesWithTheme = (theme: Theme) => ({
     width: '100%',
     display: 'flex',
     backgroundColor: 'white',
-    fontFamily: 'var(--font-poppins)'
+    fontFamily: 'var(--font-poppins)',
     // backgroundImage: `url(${loginBg})`
   },
   container: {
@@ -18,12 +18,12 @@ const stylesWithTheme = (theme: Theme) => ({
     textAlign: 'center',
     [theme.breakpoints.up(392)]: {
       width: '392px',
-      marginLeft: "auto",
-      marginRight: "auto",
+      marginLeft: 'auto',
+      marginRight: 'auto',
       boxShadow: '1px 2px 10px 0px #3a4e9975',
     },
     [theme.breakpoints.down(450)]: {
-      boxShadow: 'none'
+      boxShadow: 'none',
     },
   },
   description: {
@@ -38,11 +38,11 @@ const stylesWithTheme = (theme: Theme) => ({
     color: theme.palette.primary.main,
     '&:hover': {
       color: theme.palette.primary.btnMainHover,
-    }
+    },
   },
   submit: {
     height: 50,
   },
 });
 
-export {stylesWithTheme};
+export { stylesWithTheme };

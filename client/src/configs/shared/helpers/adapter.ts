@@ -1,12 +1,12 @@
-import { ProductWithImages } from "@/configs/shared/types";
-import { StaticFiles, User } from "@/generated/openapi";
+import { ProductWithImages } from '@/configs/shared/types';
+import { StaticFiles, User } from '@/generated/openapi';
 import { ProductDto } from '../../../app/generated/openapi/api';
 import { FavoriteProductDto } from '../../../../../server/src/favoriteProducts/dto/favorite-product.dto';
 
 function decorateShowField<T extends readonly any[]>(ar: T) {
   return ar as readonly (T[number] & {
     show: (data: { currentUser?: User }) => boolean;
-  })[]
+  })[];
 }
 
 // Users table data
@@ -17,9 +17,9 @@ function adaptUsersTableData(data: User[]) {
       firstName: item?.firstName,
       lastName: item?.lastName,
       email: item?.email,
-    }
+    };
   });
-};
+}
 
 export type ProductsDataType = ReturnType<typeof adaptProductsData>[number];
 
@@ -38,16 +38,13 @@ function adaptProductsData(data: Partial<ProductDto>[]) {
       address: item?.address,
       intendedFor: item?.intendedFor,
       // productImage: item?.productImage,
-      favoriteProducts: (item?.user?.favoriteProducts as unknown as  FavoriteProductDto[]),
-      staticFiles: item?.staticFiles
-    }
+      favoriteProducts: item?.user
+        ?.favoriteProducts as unknown as FavoriteProductDto[],
+      staticFiles: item?.staticFiles,
+    };
   });
-};
+}
 
 export type UsersTableDataType = ReturnType<typeof adaptUsersTableData>[number];
 
-export {
-  adaptUsersTableData,
-  adaptProductsData,
-  decorateShowField
-};
+export { adaptUsersTableData, adaptProductsData, decorateShowField };

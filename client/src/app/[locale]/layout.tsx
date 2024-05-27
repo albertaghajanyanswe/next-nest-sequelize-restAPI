@@ -21,7 +21,11 @@ export default async function Layout({ children, params: { locale } }: any) {
     <CustomSnackbarProvider>
       <ReduxProvider>
         <ReactQueryClientProvider>
-          <TranslationProvider locale={locale} resources={resources} namespaces={i18nNamespaces}>
+          <TranslationProvider
+            locale={locale}
+            resources={resources}
+            namespaces={i18nNamespaces}
+          >
             {children}
           </TranslationProvider>
         </ReactQueryClientProvider>

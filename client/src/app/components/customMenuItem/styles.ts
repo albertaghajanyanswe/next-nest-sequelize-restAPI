@@ -1,17 +1,17 @@
-import { Theme } from "@mui/system";
+import { Theme } from '@mui/system';
 
 export const stylesWithTheme = (theme: Theme) => ({
   menuItem: {
     color: 'primary.textColor1',
     maxHeight: 'inherit',
-    fontWeight: 400
+    fontWeight: 400,
   },
   listItem: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   listItemIcon: {
-    minWidth: '40px'
+    minWidth: '40px',
   },
   linkActive: {
     color: theme.palette.primary.main,
@@ -19,7 +19,7 @@ export const stylesWithTheme = (theme: Theme) => ({
   listItemText: {
     '& > span:first-of-type': {
       fontWeight: '400',
-      fontSize: '14px'
-    }
-  }
-})
+      fontSize: '14px',
+    },
+  },
+});

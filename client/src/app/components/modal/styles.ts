@@ -1,21 +1,21 @@
-import { DefaultTheme, Theme } from "@mui/system";
-import { globalMuiStylesWithTheme } from "../../globalMuiStyles";
+import { DefaultTheme, Theme } from '@mui/system';
+import { globalMuiStylesWithTheme } from '../../globalMuiStyles';
 
 const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
   root: {
     '& .MuiPaper-root': {
       maxWidth: '464px',
       p: 5,
-    }
+    },
   },
   modalRoot: {
     '& .MuiPaper-root': {
       p: 4,
       maxWidth: '576px',
       boxShadow: 'none',
-      borderRadius: '24px'
+      borderRadius: '24px',
     },
-    backdropFilter: "blur(12px)",
+    backdropFilter: 'blur(12px)',
     zIndex: 1000,
     //other styles here
   },
@@ -23,7 +23,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     p: 0,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   modalTitle: {
     width: '100%',
@@ -50,25 +50,25 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     '&:hover': {
       '& > svg': {
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_457BAC
-        }
-      }
+          ...globalMuiStylesWithTheme(theme).stroke_457BAC,
+        },
+      },
     },
     '&:active': {
       backgroundColor: 'primary.borderColor1',
       '& > svg': {
         '& > rect:first-of-type': {
-          ...globalMuiStylesWithTheme(theme).stroke_F1F4FA
+          ...globalMuiStylesWithTheme(theme).stroke_F1F4FA,
         },
         '& > path': {
-          ...globalMuiStylesWithTheme(theme).stroke_226395
-        }
-      }
+          ...globalMuiStylesWithTheme(theme).stroke_226395,
+        },
+      },
     },
   },
   scroll: {
     pr: '12px',
-    ...globalMuiStylesWithTheme(theme).scroll_4_24_B5C3D3
+    ...globalMuiStylesWithTheme(theme).scroll_4_24_B5C3D3,
   },
   modalTitleTxt: {
     fontFamily: 'var(--font-poppins)',
@@ -103,7 +103,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.error',
-      opacity: 0.92
+      opacity: 0.92,
     },
     '&:active': {
       boxShadow: 'none',
@@ -111,7 +111,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.error',
-      opacity: 1
+      opacity: 1,
     },
     '&:disabled': {
       boxShadow: 'none',
@@ -119,7 +119,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.error',
-      opacity: 0.6
+      opacity: 0.6,
     },
   },
   cancelBtn: {
@@ -131,7 +131,6 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     height: '32px',
     width: '100%',
     p: '8px 12px',
-  }
-
+  },
 });
 export { muiStylesWithTheme };

@@ -1,4 +1,4 @@
-import { Theme } from "@mui/system";
+import { Theme } from '@mui/system';
 // import { variables } from "../../configs";
 
 const stylesWithTheme = (theme: Theme) => ({
@@ -6,16 +6,16 @@ const stylesWithTheme = (theme: Theme) => ({
     // NOTE: custom scroll bar (not worked for mozila)
     '&::-webkit-scrollbar': {
       width: '4px',
-      height: '4px'
+      height: '4px',
     },
     '&::-webkit-scrollbar-track': {
       boxShadow: `inset 0 0 5px white`,
-      borderRadius: '10px'
+      borderRadius: '10px',
     },
 
     '&::-webkit-scrollbar-thumb': {
       background: '#B5C3D3',
-      borderRadius: '10px'
+      borderRadius: '10px',
     },
   },
   paper: {
@@ -26,22 +26,22 @@ const stylesWithTheme = (theme: Theme) => ({
     boxShadow: '0px 4px 16px rgba(181, 195, 211, 0.25)',
     borderRadius: '8px',
     '& > ul': {
-      p: '4px'
-    }
+      p: '4px',
+    },
   },
   welcomeUser: {
     fontFamily: 'var(--font-poppins)',
     fontWeight: 400,
     fontSize: '14px',
     lineHeight: '20px',
-    color: 'primary.btnMainDisabled'
+    color: 'primary.btnMainDisabled',
   },
   userName: {
     fontFamily: 'var(--font-poppins)',
     fontWeight: 600,
     fontSize: '14px',
     lineHeight: '20px',
-    color: 'white'
+    color: 'white',
   },
   listItem: {
     padding: '0 8px',
@@ -57,17 +57,16 @@ const stylesWithTheme = (theme: Theme) => ({
       '& .MuiListItemIcon-root': {
         '& > svg': {
           '& path': {
-            color: 'white'
-
-          }
-        }
+            color: 'white',
+          },
+        },
       },
       '& .MuiListItemText-root': {
         '& .MuiTypography-root': {
           fontFamily: 'var(--font-poppins)',
-        }
-      }
-    }
+        },
+      },
+    },
   },
   listItemActive: {
     fontFamily: 'var(--font-poppins)',
@@ -83,37 +82,37 @@ const stylesWithTheme = (theme: Theme) => ({
       '& .MuiListItemIcon-root': {
         '& > svg': {
           '& path': {
-            stroke: 'white'
-          }
-        }
-      }
-    }
+            stroke: 'white',
+          },
+        },
+      },
+    },
   },
   listItemBtnActive: {
-    backgroundColor: 'primary.btnMainPressed'
+    backgroundColor: 'primary.btnMainPressed',
   },
   activeLinkIcon: {
     '& > svg': {
       '& path': {
-        stroke: 'white'
-      }
-    }
+        stroke: 'white',
+      },
+    },
   },
   activeLinkTitle: {
     '& .MuiTypography-root': {
       fontFamily: 'var(--font-poppins)',
       fontWeight: 500,
-      letterSpacing: "-0.00300em"
-    }
+      letterSpacing: '-0.00300em',
+    },
   },
   divider: {
     borderColor: 'primary.btnMainPressed',
-    "&::before": {
+    '&::before': {
       borderTopWidth: '1px',
       borderTopStyle: 'solid',
       borderTopColor: 'primary.btnMainPressed',
     },
-    "&::after": {
+    '&::after': {
       borderTopWidth: '1px',
       borderTopStyle: 'solid',
       borderTopColor: 'primary.btnMainPressed',
@@ -126,7 +125,7 @@ const stylesWithTheme = (theme: Theme) => ({
       fontFamily: 'var(--font-poppins)',
       fontSize: '14px',
       lineHeight: '16px',
-    }
+    },
   },
 });
 export { stylesWithTheme };

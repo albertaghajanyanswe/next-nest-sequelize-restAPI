@@ -1,7 +1,10 @@
 'use client';
 import React, { FC, memo } from 'react';
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
-import { getCellPadding, getWidth } from '@/app/components/customTable/config/tableStyleHelper';
+import {
+  getCellPadding,
+  getWidth,
+} from '@/app/components/customTable/config/tableStyleHelper';
 import TableConfigs from '../config/tableConfigs';
 
 // import {ReactComponent as TableArrowsSVG} from '../../../assets/16/table-arrows.svg';
@@ -15,7 +18,7 @@ interface iSortObj {
   field: string;
 }
 interface iProps {
-  sortObj: iSortObj,
+  sortObj: iSortObj;
   onRequestSort: ((e: any, property: string) => void) | null;
   rowCount: number;
   fields: iTableField[];
@@ -53,9 +56,9 @@ const CustomTableHead: FC<iProps> = (props) => {
               rowCount > 0
                 ? headCell
                 : {
-                  cellPaddingRight: TableConfigs.defaultCellPadding,
-                  cellPaddingLeft: TableConfigs.defaultCellPadding,
-                };
+                    cellPaddingRight: TableConfigs.defaultCellPadding,
+                    cellPaddingLeft: TableConfigs.defaultCellPadding,
+                  };
             return (
               <TableCell
                 key={id}
@@ -68,7 +71,12 @@ const CustomTableHead: FC<iProps> = (props) => {
               >
                 {headCell.sortable && (
                   <TableSortLabel
-                    sx={{...muiStyles.sortLbl, ...(filteredParams?.params?.sort?.field === id && { color: `${theme.palette.primary.textColor1}!important`})}}
+                    sx={{
+                      ...muiStyles.sortLbl,
+                      ...(filteredParams?.params?.sort?.field === id && {
+                        color: `${theme.palette.primary.textColor1}!important`,
+                      }),
+                    }}
                     // IconComponent={TableArrowsSVG}
                     active={filteredParams?.params?.sort?.field === id}
                     direction={
@@ -85,14 +93,31 @@ const CustomTableHead: FC<iProps> = (props) => {
               </TableCell>
             );
           } else {
-            return <TableCell key={headCell.id} style={{ width: headCell.width, paddingRight: '16px', paddingLeft: '16px' }} />
+            return (
+              <TableCell
+                key={headCell.id}
+                style={{
+                  width: headCell.width,
+                  paddingRight: '16px',
+                  paddingLeft: '16px',
+                }}
+              />
+            );
           }
         })}
-        {withEditAction && (<TableCell style={{ width: '24px', paddingRight: '16px', paddingLeft: '24px' }} />)}
-        {withDeleteAction && (<TableCell style={{ width: '24px', paddingRight: '16px', paddingLeft: '24px' }} />)}
+        {withEditAction && (
+          <TableCell
+            style={{ width: '24px', paddingRight: '16px', paddingLeft: '24px' }}
+          />
+        )}
+        {withDeleteAction && (
+          <TableCell
+            style={{ width: '24px', paddingRight: '16px', paddingLeft: '24px' }}
+          />
+        )}
       </TableRow>
     </TableHead>
   );
-}
+};
 
 export default memo(CustomTableHead);

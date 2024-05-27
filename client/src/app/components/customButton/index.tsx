@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { FC, memo } from 'react';
 import Button from '@mui/material/Button';
 
@@ -41,9 +41,8 @@ const CustomButton: FC<iProps> = ({
   href = '',
   name,
   value,
-  id
+  id,
 }) => {
-
   const theme = useTheme();
   const muiStyles = stylesCallback(theme);
 
@@ -53,9 +52,9 @@ const CustomButton: FC<iProps> = ({
       : btnType === 'secondary'
         ? muiStyles.secondaryBtn
         : btnType === 'tertiary'
-          ? muiStyles.tertiaryBtn :
-          btnType === 'tabBtn' ?
-            muiStyles.tabBtn
+          ? muiStyles.tertiaryBtn
+          : btnType === 'tabBtn'
+            ? muiStyles.tabBtn
             : muiStyles.ghostBtn;
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -66,13 +65,13 @@ const CustomButton: FC<iProps> = ({
   };
 
   /*
-  * to show loading uncomment the following lines
-  **startIcon={<LoopIcon />}
-  **loadingPosition="start"
-  **loadingIndicator={<Box sx={{...muiStyles.loading, ...(btnType === 'primary' && muiStyles.loadingPrimary)}}><LoadingSvg /></Box>}
-  * comment the following line
-  **loadingIndicator={<></>}
-  */
+   * to show loading uncomment the following lines
+   **startIcon={<LoopIcon />}
+   **loadingPosition="start"
+   **loadingIndicator={<Box sx={{...muiStyles.loading, ...(btnType === 'primary' && muiStyles.loadingPrimary)}}><LoadingSvg /></Box>}
+   * comment the following line
+   **loadingIndicator={<></>}
+   */
 
   return loading ? (
     <LoadingButton
@@ -85,7 +84,11 @@ const CustomButton: FC<iProps> = ({
       disableRipple
       variant={variant}
       sx={{
-        ...muiStyles.button, ...btnStyle, ...muiStyles[size], ...(onlyIcon && muiStyles.onlyIcon), ...sx
+        ...muiStyles.button,
+        ...btnStyle,
+        ...muiStyles[size],
+        ...(onlyIcon && muiStyles.onlyIcon),
+        ...sx,
       }}
       type={type}
       disabled={disabled || loading}
@@ -93,40 +96,47 @@ const CustomButton: FC<iProps> = ({
     >
       {label}
     </LoadingButton>
-  ) : !href ?
-    (
-      <Button
-        startIcon={startIcon}
-        endIcon={endIcon}
-        disableRipple
-        variant={variant}
-        onClick={handleClick}
-        sx={{ ...muiStyles.button, ...btnStyle, ...muiStyles[size], ...(onlyIcon && muiStyles.onlyIcon), ...sx }}
-        type={type}
-        disabled={disabled || loading}
-        name={name}
-        value={value}
-        id={id}
-        data-testid={name}
-      >
-        {label}
-      </Button>
-    ) : (
-      <Button
-        startIcon={startIcon}
-        endIcon={endIcon}
-        disableRipple
-        variant={variant}
-        sx={{ ...muiStyles.button, ...btnStyle, ...muiStyles[size], ...sx }}
-        type={type}
-        disabled={disabled}
-        // component={Link}
-        href={href}
-        id={id}
-        name={name}
-        data-testid={name}
-      >{label}</Button>
-    );
+  ) : !href ? (
+    <Button
+      startIcon={startIcon}
+      endIcon={endIcon}
+      disableRipple
+      variant={variant}
+      onClick={handleClick}
+      sx={{
+        ...muiStyles.button,
+        ...btnStyle,
+        ...muiStyles[size],
+        ...(onlyIcon && muiStyles.onlyIcon),
+        ...sx,
+      }}
+      type={type}
+      disabled={disabled || loading}
+      name={name}
+      value={value}
+      id={id}
+      data-testid={name}
+    >
+      {label}
+    </Button>
+  ) : (
+    <Button
+      startIcon={startIcon}
+      endIcon={endIcon}
+      disableRipple
+      variant={variant}
+      sx={{ ...muiStyles.button, ...btnStyle, ...muiStyles[size], ...sx }}
+      type={type}
+      disabled={disabled}
+      // component={Link}
+      href={href}
+      id={id}
+      name={name}
+      data-testid={name}
+    >
+      {label}
+    </Button>
+  );
 };
 
 export default memo(CustomButton);

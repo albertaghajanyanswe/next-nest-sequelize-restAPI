@@ -1,4 +1,4 @@
-import { Theme } from "@mui/system";
+import { Theme } from '@mui/system';
 
 const muiStylesWithTheme = (theme: Theme) => ({
   root: {
@@ -19,7 +19,7 @@ const muiStylesWithTheme = (theme: Theme) => ({
     p: 4,
     display: 'flex',
     flexDirection: 'column',
-    mt: '120px'
+    mt: '120px',
   },
   viewAll: {
     whiteSpace: 'nowrap',
@@ -38,17 +38,17 @@ const muiStylesWithTheme = (theme: Theme) => ({
     maxWidth: '992px',
     flexWrap: 'wrap',
     [theme.breakpoints.down('lg')]: {
-      maxWidth: '748px'
+      maxWidth: '748px',
     },
     [theme.breakpoints.down('md')]: {
-      maxWidth: '500px'
+      maxWidth: '500px',
     },
     [theme.breakpoints.down('sm')]: {
       maxWidth: '7497%8px',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
     },
-  }
+  },
 });
 
 export { muiStylesWithTheme };

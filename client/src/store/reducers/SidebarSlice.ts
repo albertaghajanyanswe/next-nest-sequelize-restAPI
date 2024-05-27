@@ -1,16 +1,16 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { lsConstants } from "@/configs/shared/constants";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { lsConstants } from '@/configs/shared/constants';
 
 interface ISidebarState {
-  isSideBarOpen: boolean,
-  titleName: string,
-  titleId: string,
-  activeLink: string,
+  isSideBarOpen: boolean;
+  titleName: string;
+  titleId: string;
+  activeLink: string;
   sidebarMenus: {
-    home: true,
-    users: true,
-    settings: true,
-  }
+    home: true;
+    users: true;
+    settings: true;
+  };
 }
 
 const initialState: ISidebarState = {
@@ -22,8 +22,8 @@ const initialState: ISidebarState = {
     home: true,
     users: true,
     settings: true,
-  }
-}
+  },
+};
 export const sidebarSlice = createSlice({
   name: 'sidebarState',
   initialState,
@@ -38,15 +38,29 @@ export const sidebarSlice = createSlice({
       state.isSideBarOpen = !state.isSideBarOpen;
     },
     openAllSideBarMenus(state) {
-      Object.keys(state.sidebarMenus).forEach(i => {
+      Object.keys(state.sidebarMenus).forEach((i) => {
         state.sidebarMenus[i as keyof typeof state.sidebarMenus] = true;
       });
-      localStorage.setItem(lsConstants.SIDE_BAR_MENUS, JSON.stringify(state.sidebarMenus));
+      localStorage.setItem(
+        lsConstants.SIDE_BAR_MENUS,
+        JSON.stringify(state.sidebarMenus)
+      );
     },
     toggleSideBarMenu(state, action: PayloadAction<string>) {
-      const oldObj = localStorage.getItem(lsConstants.SIDE_BAR_MENUS) ? JSON.parse(localStorage.getItem(lsConstants.SIDE_BAR_MENUS) as string) : {};
-      localStorage.setItem(lsConstants.SIDE_BAR_MENUS, JSON.stringify({...oldObj, [action.payload]: oldObj ? !oldObj[action.payload] : true}));
-      state.sidebarMenus = {...oldObj, [action.payload]: oldObj ? !oldObj[action.payload] : true};
+      const oldObj = localStorage.getItem(lsConstants.SIDE_BAR_MENUS)
+        ? JSON.parse(localStorage.getItem(lsConstants.SIDE_BAR_MENUS) as string)
+        : {};
+      localStorage.setItem(
+        lsConstants.SIDE_BAR_MENUS,
+        JSON.stringify({
+          ...oldObj,
+          [action.payload]: oldObj ? !oldObj[action.payload] : true,
+        })
+      );
+      state.sidebarMenus = {
+        ...oldObj,
+        [action.payload]: oldObj ? !oldObj[action.payload] : true,
+      };
     },
     setActiveLink(state, action: PayloadAction<string>) {
       state.activeLink = action.payload;
@@ -59,8 +73,8 @@ export const sidebarSlice = createSlice({
     },
     setId(state, action: PayloadAction<string>) {
       state.titleId = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export default sidebarSlice.reducer;

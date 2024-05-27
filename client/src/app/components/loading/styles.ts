@@ -13,19 +13,19 @@ const muiStyles = {
     height: '100vh',
     position: 'absolute',
     top: 0,
-    opacity: 0.6
+    opacity: 0.6,
   },
   title: {
     margin: '20px 0',
     fontSize: '32px',
     fontWeight: 'bold',
-    color: 'primary.textColor4'
+    color: 'primary.textColor4',
   },
   description: {
     margin: '0 0 30px 0',
     fontSize: '20px',
     fontWeight: '500',
-    color: 'primary.textColor4'
+    color: 'primary.textColor4',
   },
 };
 export { muiStyles };

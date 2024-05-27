@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { FC, useState } from 'react';
 import { Box, CssBaseline } from '@mui/material';
 import { routesAccess } from '@/configs/roles';
@@ -11,32 +11,45 @@ import { usersAPI } from '@/services/rtk/UsersApi';
 import { UserRole } from '@/configs/shared/types';
 import Loading from '@/app/components/loading';
 
-function CustomLayout({
-  children
-}:{ children: React.ReactNode }) {
+function CustomLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   // const currentUser = getCurrentUser()?.user || {};
 
-  const {data: currentUser} = usersAPI.useGetCurrentUserQuery({});
+  const { data: currentUser } = usersAPI.useGetCurrentUserQuery({});
 
   const path = pathname.split('/')[1] as string;
-  const allowed = !routesAccess[path as keyof typeof routesAccess] ||
-    routesAccess[path as keyof typeof routesAccess]?.access?.includes(currentUser?.roles[0].value as UserRole);
+  const allowed =
+    !routesAccess[path as keyof typeof routesAccess] ||
+    routesAccess[path as keyof typeof routesAccess]?.access?.includes(
+      currentUser?.roles[0].value as UserRole
+    );
 
   return currentUser ? (
-    <Box sx={{ backgroundColor: 'white', display: 'flex', height: '100%', width: '100%' }}>
+    <Box
+      sx={{
+        backgroundColor: 'white',
+        display: 'flex',
+        height: '100%',
+        width: '100%',
+      }}
+    >
       <CssBaseline />
       <SideBar />
       <Box
         component="main"
-        sx={{ flexGrow: 1, width: { xs: `calc(100% - ${variables.drawerWidth})` } }}
+        sx={{
+          flexGrow: 1,
+          width: { xs: `calc(100% - ${variables.drawerWidth})` },
+        }}
       >
         <CustomDrawerHeader />
         {allowed ? children : <>Not Found</>}
       </Box>
     </Box>
-  ) : (<Loading withDrawer={false}/>);
-};
+  ) : (
+    <Loading withDrawer={false} />
+  );
+}
 
 export default CustomLayout;

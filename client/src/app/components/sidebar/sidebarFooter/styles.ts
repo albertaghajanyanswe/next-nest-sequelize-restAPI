@@ -1,4 +1,4 @@
-import { Theme } from "@mui/system";
+import { Theme } from '@mui/system';
 
 export const stylesWithTheme = (theme: Theme) => ({
   footer: {
@@ -8,10 +8,10 @@ export const stylesWithTheme = (theme: Theme) => ({
   },
   footerTexts: {
     padding: '6px 16px 6px 32px',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   versionText: {
-    marginBottom: '8px'
+    marginBottom: '8px',
   },
   footerOpenedMode: {
     display: 'flex',
@@ -27,7 +27,7 @@ export const stylesWithTheme = (theme: Theme) => ({
     fontSize: 12,
     color: theme.palette.primary.footerTextColor,
     textAlign: 'left',
-    height: '15px'
+    height: '15px',
   },
   footerCollapseAction: {
     color: theme.palette.primary.footerTextColor,
@@ -36,14 +36,14 @@ export const stylesWithTheme = (theme: Theme) => ({
     alignItems: 'center',
   },
   footerActionOpenedMode: {
-    marginRight: '23px'
+    marginRight: '23px',
   },
   footerActionBtn: {
     cursor: 'pointer',
     color: theme.palette.primary.sideBarIconColor,
     opacity: '0.8',
     '&:hover': {
-      color: theme.palette.primary.main
-    }
-  }
+      color: theme.palette.primary.main,
+    },
+  },
 });

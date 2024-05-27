@@ -21,9 +21,5 @@ export default function Home() {
   // }
   const { data: currentUser, isLoading } = usersAPI.useGetCurrentUserQuery({});
 
-  return (
-    <main className={styles.main}>
-      Home
-    </main>
-  );
+  return <main className={styles.main}>Home</main>;
 }

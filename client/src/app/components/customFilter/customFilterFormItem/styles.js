@@ -1,8 +1,7 @@
 export default () => ({
   customTextField: {
-    "& input::placeholder": {
-      fontSize: "10px"
-    }
-  }
-
-})
+    '& input::placeholder': {
+      fontSize: '10px',
+    },
+  },
+});

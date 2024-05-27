@@ -1,19 +1,19 @@
 const muiStyles = {
   fieldContainer: {
     mt: '20px',
-    mb: 0
+    mb: 0,
   },
   phone: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   inputField: {
     width: '100%',
     '& > .MuiOutlinedInput-input': {
       '&::placeholder': {
-        color: 'primary.textColor6'
-      }
+        color: 'primary.textColor6',
+      },
     },
     '& > .MuiOutlinedInput-root': {
       fontFamily: 'var(--font-poppins)',
@@ -29,27 +29,27 @@ const muiStyles = {
               height: '100%',
               '& > img': {
                 borderRadius: '50%',
-                height: '100%'
-              }
-            }
-          }
-        }
+                height: '100%',
+              },
+            },
+          },
+        },
       },
       '& > input': {
         padding: '14px 16px 14px 0',
         '&::placeholder': {
-          color: 'primary.textColor6'
+          color: 'primary.textColor6',
         },
-      }
+      },
     },
     '& > .MuiInputBase-sizeSmall': {
       '& > input': {
         padding: '10px 16px 10px 0',
         '&::placeholder': {
-          color: 'primary.textColor6'
+          color: 'primary.textColor6',
         },
-      }
-    }
+      },
+    },
   },
   errorIcon: {
     display: 'flex',
@@ -72,16 +72,16 @@ const muiStyles = {
       borderRadius: '12px',
       '&::-webkit-scrollbar': {
         width: '4px',
-        height: '24px'
+        height: '24px',
       },
       '&::-webkit-scrollbar-track': {
         boxShadow: `inset 0 0 5px white`,
-        borderRadius: '10px'
+        borderRadius: '10px',
       },
-  
+
       '&::-webkit-scrollbar-thumb': {
         background: '#B5C3D3',
-        borderRadius: '10px'
+        borderRadius: '10px',
       },
       '& > ul': {
         '& > li': {
@@ -101,24 +101,24 @@ const muiStyles = {
                 height: '20px',
                 '& > img': {
                   height: '20px',
-                  borderRadius: '50%'
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                  borderRadius: '50%',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   descriptionBlock: {
-    mt: '2px'
+    mt: '2px',
   },
   descriptionText: {
     fontFamily: 'var(--font-poppins)',
     fontSize: '12px',
     lineHeight: '16px',
     fontWeight: 400,
-    color: 'primary.textColor3'
+    color: 'primary.textColor3',
   },
-}
-export { muiStyles }
+};
+export { muiStyles };

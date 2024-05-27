@@ -11,7 +11,7 @@ const muiStyles = {
       lineHeight: '16px',
       fontWeight: '500',
       color: 'primary.textColor3',
-    }
+    },
   },
   sortLbl: {
     // todo disable rotate sort icon
@@ -22,14 +22,14 @@ const muiStyles = {
     // todo always show sort icon
     '& > .MuiTableSortLabel-icon': {
       opacity: 0.6,
-      color: 'primary.textColor6'
+      color: 'primary.textColor6',
     },
     '&.Mui-active': {
       '& > .MuiTableSortLabel-icon': {
         opacity: 0.6,
-        color: 'primary.textColor1'
+        color: 'primary.textColor1',
       },
-    }
-  }
+    },
+  },
 };
 export { muiStyles };

@@ -1,11 +1,11 @@
-import { globalMuiStylesWithTheme } from "@/app/globalMuiStyles";
-import { Theme } from "@mui/system";
+import { globalMuiStylesWithTheme } from '@/app/globalMuiStyles';
+import { Theme } from '@mui/system';
 
 const muiStylesWithTheme = (theme: Theme) => ({
   favoriteSVG: {
     '& > svg': {
       '& > path': {
-        ...globalMuiStylesWithTheme(theme).fill_DA9C50
+        ...globalMuiStylesWithTheme(theme).fill_DA9C50,
       },
     },
   },
@@ -75,7 +75,7 @@ const muiStylesWithTheme = (theme: Theme) => ({
       fontWeight: 700,
       fontSize: '11px',
       margin: 0,
-    }
+    },
   },
   cardDetails: {
     display: 'flex',
@@ -83,7 +83,7 @@ const muiStylesWithTheme = (theme: Theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },
-  }
-})
+  },
+});
 
-export { muiStylesWithTheme }
+export { muiStylesWithTheme };

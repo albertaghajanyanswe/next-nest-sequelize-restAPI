@@ -26,14 +26,25 @@ import CustomButton from '@/app/components/customButton';
 import { uploadsAPI } from '@/services/rtk/UploadsApi';
 import { useAppSelector } from '../../../hooks/reactQuery/redux';
 
-const FormHOC = StepHOC<iCreateProduct>()(
-  ["name", "description", "otherInfo", "price", "currency", "province", "city", "address", "categoryId", "intendedFor", "productState", "staticFilesNames"]
-);
+const FormHOC = StepHOC<iCreateProduct>()([
+  'name',
+  'description',
+  'otherInfo',
+  'price',
+  'currency',
+  'province',
+  'city',
+  'address',
+  'categoryId',
+  'intendedFor',
+  'productState',
+  'staticFilesNames',
+]);
 
-const Form = FormHOC.Form
+const Form = FormHOC.Form;
 
 const ProductItemPage = () => {
-  const {isSideBarOpen} = useAppSelector((state) => state.sidebarReducer);
+  const { isSideBarOpen } = useAppSelector((state) => state.sidebarReducer);
 
   const theme = useTheme();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -46,7 +57,8 @@ const ProductItemPage = () => {
 
   const params = useParams();
   const productId = params.productId;
-  const { data: productData, isLoading: isGetLoading } = productsAPI.useGetProductQuery({ id: productId }, { skip: !productId });
+  const { data: productData, isLoading: isGetLoading } =
+    productsAPI.useGetProductQuery({ id: productId }, { skip: !productId });
   const { data: categoriesData } = productsAPI.useGetAllCategoriesQuery({});
 
   const initialData = {
@@ -61,66 +73,89 @@ const ProductItemPage = () => {
     categoryId: productData?.categoryId || undefined,
     intendedFor: productData?.intendedFor || undefined,
     productState: productData?.productState || undefined,
-    staticFilesNames: productData?.staticFiles?.map(i => i.name) || [],
-  }
+    staticFilesNames: productData?.staticFiles?.map((i) => i.name) || [],
+  };
 
   const methods = useForm<iCreateProduct>({
-    defaultValues: ({ ...DEFAULT_VALUES_CREATE_PRODUCT, ...initialData }),
-    mode: 'onChange'
+    defaultValues: { ...DEFAULT_VALUES_CREATE_PRODUCT, ...initialData },
+    mode: 'onChange',
   });
 
   const pageHeaderRef = useRef<any>();
   const handlePageHeaderRef = useCallback((el: HTMLDivElement | null) => {
-    pageHeaderRef.current = el
+    pageHeaderRef.current = el;
   }, []);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const getPageHeaderHeight = useCallback(() => (pageHeaderRef.current?.clientHeight || 0), [pageHeaderRef.current?.clientHeight, isGetLoading])
+  const getPageHeaderHeight = useCallback(
+    () => pageHeaderRef.current?.clientHeight || 0,
+    [pageHeaderRef.current?.clientHeight, isGetLoading]
+  );
 
   const footerRef = useRef<any>();
   const handleFooterRef = useCallback((el: HTMLDivElement | null) => {
-    footerRef.current = el
+    footerRef.current = el;
   }, []);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const getFooterHeight = useCallback(() => (footerRef.current?.clientHeight || 0), [footerRef.current?.clientHeight, isGetLoading])
-
+  const getFooterHeight = useCallback(
+    () => footerRef.current?.clientHeight || 0,
+    [footerRef.current?.clientHeight, isGetLoading]
+  );
 
   const isDirty = methods.formState.isDirty;
   const hasError = Object.keys(methods.formState.errors).length > 0;
 
   const handleCancel = () => {
     originalValue.current = initialData;
-    methods.reset({ ...DEFAULT_VALUES_CREATE_PRODUCT, ...initialData }, {
-      keepErrors: false,
-      keepDirty: false,
-    })
+    methods.reset(
+      { ...DEFAULT_VALUES_CREATE_PRODUCT, ...initialData },
+      {
+        keepErrors: false,
+        keepDirty: false,
+      }
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [createProduct, { error: createError }] = productsAPI.useCreateProductMutation();
+  const [createProduct, { error: createError }] =
+    productsAPI.useCreateProductMutation();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [updateProduct, { error: updateError, isError: updateIsError }] = productsAPI.useUpdateProductMutation();
+  const [updateProduct, { error: updateError, isError: updateIsError }] =
+    productsAPI.useUpdateProductMutation();
 
   const { handleSubmit } = methods;
 
-  const handleSave = useCallback(() => handleSubmit(async (data: any) => {
-    console.log('data = ', data)
-    try {
-      setDisableSubmit(true)
-      methods.reset(data, { keepErrors: true, keepDirty: false });
-      if (productId) {
-        await updateProduct({ ...data, productId: (productId as unknown as number) }).unwrap();
-      } else {
-        await createProduct({ ...data }).unwrap();
-        router.push(routes.products.path);
-      }
-      SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), { variant: 'success', theme });
-    } catch (error: any) {
-      SystemMessage(enqueueSnackbar, getMessage(t, error), { variant: 'error', theme });
-    } finally {
-      setDisableSubmit(false)
-    }
-  }), [])
+  const handleSave = useCallback(
+    () =>
+      handleSubmit(async (data: any) => {
+        console.log('data = ', data);
+        try {
+          setDisableSubmit(true);
+          methods.reset(data, { keepErrors: true, keepDirty: false });
+          if (productId) {
+            await updateProduct({
+              ...data,
+              productId: productId as unknown as number,
+            }).unwrap();
+          } else {
+            await createProduct({ ...data }).unwrap();
+            router.push(routes.products.path);
+          }
+          SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), {
+            variant: 'success',
+            theme,
+          });
+        } catch (error: any) {
+          SystemMessage(enqueueSnackbar, getMessage(t, error), {
+            variant: 'error',
+            theme,
+          });
+        } finally {
+          setDisableSubmit(false);
+        }
+      }),
+    []
+  );
 
   const originalValue = useRef(currentUser || DEFAULT_VALUES_CREATE_PRODUCT);
 
@@ -128,10 +163,13 @@ const ProductItemPage = () => {
     // eslint-disable-next-line eqeqeq
     if (currentUser && originalValue.current != initialData) {
       originalValue.current = initialData;
-      methods.reset({ ...DEFAULT_VALUES_CREATE_PRODUCT, ...initialData }, {
-        keepErrors: true,
-        keepDirty: true,
-      })
+      methods.reset(
+        { ...DEFAULT_VALUES_CREATE_PRODUCT, ...initialData },
+        {
+          keepErrors: true,
+          keepDirty: true,
+        }
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productData, methods.reset]);
@@ -147,16 +185,22 @@ const ProductItemPage = () => {
   const handleDelete = async () => {
     try {
       // await mutateDeleteAccount({});
-      SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), { variant: 'success' });
+      SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), {
+        variant: 'success',
+      });
       router.push(routes.login.path);
     } catch (error: any) {
-      SystemMessage(enqueueSnackbar, getMessage(t, error), { variant: 'error', theme });
+      SystemMessage(enqueueSnackbar, getMessage(t, error), {
+        variant: 'error',
+        theme,
+      });
     } finally {
       closeModal();
     }
-  }
+  };
 
-  const [uploadStaticFile, { isLoading: isLoadingStatic }] = uploadsAPI.useUploadStaticFileMutation();
+  const [uploadStaticFile, { isLoading: isLoadingStatic }] =
+    uploadsAPI.useUploadStaticFileMutation();
 
   const handleUpload = async ({ formData }: any) => {
     const bodyData = new FormData();
@@ -167,41 +211,67 @@ const ProductItemPage = () => {
     console.log('formData = ', formData);
     const res = await uploadStaticFile({ formData: bodyData });
     return res;
-  }
+  };
 
   if (isGetLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   if (productId && !isGetLoading && !productData) {
-    return <NotFound />
+    return <NotFound />;
   }
 
   return (
     <Box>
-      <Box sx={{ position: 'fixed', width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px' }}>
-        <PageTitle handlePageHeaderRef={handlePageHeaderRef} title={productData?.name ? productData?.name : t('createNewProduct')} withBack />
+      <Box
+        sx={{
+          position: 'fixed',
+          width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`,
+          backgroundColor: 'white',
+          zIndex: 1,
+          boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px',
+        }}
+      >
+        <PageTitle
+          handlePageHeaderRef={handlePageHeaderRef}
+          title={productData?.name ? productData?.name : t('createNewProduct')}
+          withBack
+        />
       </Box>
-      <Box sx={{ backgroundColor: 'white', p: '0 40px 40px 40px', position: 'absolute', mt: `${getPageHeaderHeight()}px` }}>
-
+      <Box
+        sx={{
+          backgroundColor: 'white',
+          p: '0 40px 40px 40px',
+          position: 'absolute',
+          mt: `${getPageHeaderHeight()}px`,
+        }}
+      >
         <FormProvider {...methods}>
           <form noValidate>
-            <Grid container spacing={3} sx={{ mt: 0, mb: `${getFooterHeight()}px` }}>
-            <Grid item xs={12}>
-              <Form.FileInputMultiple
-                name='staticFilesNames'
-                label={t('productPhoto')}
-                setDisableSave={setDisableSubmit}
-                rootSx={{ borderRadius: '24px' }}
-                btnType='secondary'
-                labelSx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 400 }}
-                description={t('productPhotoDesc')}
-                sx={{ mt: 0 }}
-                uploadFile={handleUpload}
-                deleteFile={() => {}}
-                uploadFileLoading={isLoadingStatic}
-              />
-            </Grid>
+            <Grid
+              container
+              spacing={3}
+              sx={{ mt: 0, mb: `${getFooterHeight()}px` }}
+            >
+              <Grid item xs={12}>
+                <Form.FileInputMultiple
+                  name="staticFilesNames"
+                  label={t('productPhoto')}
+                  setDisableSave={setDisableSubmit}
+                  rootSx={{ borderRadius: '24px' }}
+                  btnType="secondary"
+                  labelSx={{
+                    fontSize: '16px',
+                    lineHeight: '24px',
+                    fontWeight: 400,
+                  }}
+                  description={t('productPhotoDesc')}
+                  sx={{ mt: 0 }}
+                  uploadFile={handleUpload}
+                  deleteFile={() => {}}
+                  uploadFileLoading={isLoadingStatic}
+                />
+              </Grid>
               <Grid item xs={12} sm={12}>
                 <Form.TextField
                   rules={{ required: requiredErrMsg(t, 'name') }}
@@ -257,7 +327,7 @@ const ProductItemPage = () => {
                   sxContainer={{ mt: 0 }}
                   title={t('productPrice')}
                   borderRadius={8}
-                  pattern='^\d{0,3}$'
+                  pattern="^\d{0,3}$"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -312,7 +382,10 @@ const ProductItemPage = () => {
                   title={t('productCategoryId')}
                   sx={{ ...globalMuiStylesWithTheme(theme).selectField }}
                   sxContainer={{ mt: 0 }}
-                  options={categoriesData?.data?.map((item: any) => ({ label: t(item.name) || '-', value: item.id }))}
+                  options={categoriesData?.data?.map((item: any) => ({
+                    label: t(item.name) || '-',
+                    value: item.id,
+                  }))}
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -332,25 +405,42 @@ const ProductItemPage = () => {
           </form>
         </FormProvider>
       </Box>
-      <Box ref={handleFooterRef} sx={{ minWidth: 'max-content', display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, position: 'fixed', bottom: 0, p: '24px 40px', width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`, backgroundColor: 'white', zIndex: 1, boxShadow: 'rgba(33, 35, 38, 0.1) 0px -12px 10px -12px' }}>
+      <Box
+        ref={handleFooterRef}
+        sx={{
+          minWidth: 'max-content',
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          position: 'fixed',
+          bottom: 0,
+          p: '24px 40px',
+          width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`,
+          backgroundColor: 'white',
+          zIndex: 1,
+          boxShadow: 'rgba(33, 35, 38, 0.1) 0px -12px 10px -12px',
+        }}
+      >
         <CustomButton
           label={productId ? t('cancel') : t('clear')}
-          btnType='secondary'
+          btnType="secondary"
           onClick={handleCancel}
-          sx={{ width: { xs: '100%', sm: '50%' }, margin: { xs: '0 0 24px 0', sm: '0 24px 0 0' } }}
+          sx={{
+            width: { xs: '100%', sm: '50%' },
+            margin: { xs: '0 0 24px 0', sm: '0 24px 0 0' },
+          }}
           disabled={disableSubmit || !isDirty}
         />
         <CustomButton
           label={productId ? t('update') : t('submit')}
-          variant='contained'
-          btnType='primary'
+          variant="contained"
+          btnType="primary"
           onClick={handleSave()}
           sx={{ width: { xs: '100%', sm: '50%' } }}
           disabled={disableSubmit || !isDirty || hasError}
         />
       </Box>
     </Box>
-  )
+  );
 };
 
 export default ProductItemPage;

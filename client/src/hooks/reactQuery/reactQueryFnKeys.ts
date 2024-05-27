@@ -3,7 +3,7 @@ const queryFnKeys = {
     users: 'users',
     addUsers: 'addUsers',
     deleteUsers: 'deleteUsers',
-  }
-}
+  },
+};
 
 export { queryFnKeys };

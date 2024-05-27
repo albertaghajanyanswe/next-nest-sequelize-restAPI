@@ -1,4 +1,7 @@
-import { ProductIntendedForEnum, ProductProductStateEnum } from "@/generated/openapi";
+import {
+  ProductIntendedForEnum,
+  ProductProductStateEnum,
+} from '@/generated/openapi';
 
 const SETTINGS = {
   apiUrl: process.env.REACT_APP_API_URL,
@@ -74,9 +77,9 @@ const SETTINGS = {
   ],
   regexp: {
     // eslint-disable-next-line
-    number: '^(|(?!0\d)(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)$',
-    percentage: /^$|^100$|^(?:\d{0,2}(?:\.\d{0,2})?)$/
-  }
+    number: '^(|(?!0d)(d+(.d*)?|.d+)([eE][-+]?d+)?)$',
+    percentage: /^$|^100$|^(?:\d{0,2}(?:\.\d{0,2})?)$/,
+  },
 };
 
 export default SETTINGS;
