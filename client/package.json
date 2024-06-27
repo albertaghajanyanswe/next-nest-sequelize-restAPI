@@ -32,6 +32,7 @@
     "mui-tel-input": "^5.1.2",
     "next": "^14.1.4",
     "next-auth": "^4.24.6",
+    "next-connect": "^1.0.0",
     "next-i18n-router": "^5.3.1",
     "notistack": "^3.0.1",
     "openapi-typescript-fetch": "^2.0.0",
