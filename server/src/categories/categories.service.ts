@@ -1,14 +1,16 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CollectPayloadService } from 'src/payloadHelper/collectPayload.service';
-import { CATEGORY_REPOSITORY } from 'src/shared/constants';
+import { CATEGORY_REPOSITORY, SEQUELIZE } from 'src/shared/constants';
 import { Category } from './categories.model';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { GetCategoriesDto } from './dto/get-categories.dto';
+import { Sequelize } from 'sequelize-typescript';
 
 @Injectable()
 export class CategoriesService {
   constructor(
     @Inject(CATEGORY_REPOSITORY) private categoryRepository: typeof Category,
+    @Inject(SEQUELIZE) private readonly sequelize: Sequelize,
     private readonly collectPayload: CollectPayloadService,
   ) {}
 

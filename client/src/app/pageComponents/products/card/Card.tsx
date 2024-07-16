@@ -131,7 +131,8 @@ function ProductItemCard<T>({
             ...globalMuiStyles.font_16_20_500,
             textAlign: 'start',
             mt: '4px',
-            color: 'primary.textColor1',
+            color: 'primary.success',
+            fontStyle: 'italic'
           }}
         >
           {details.price} {details.currency}
@@ -142,6 +143,7 @@ function ProductItemCard<T>({
               ...globalMuiStyles.font_14_16_400,
               textAlign: 'start',
               color: 'primary.textColor1',
+              fontStyle: 'italic'
             }}
           >
             {details.province} {details.city} {details.address}

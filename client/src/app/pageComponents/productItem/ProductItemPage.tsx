@@ -327,7 +327,7 @@ const ProductItemPage = () => {
                   sxContainer={{ mt: 0 }}
                   title={t('productPrice')}
                   borderRadius={8}
-                  pattern="^\d{0,3}$"
+                  pattern="^\d{0,9}$"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>

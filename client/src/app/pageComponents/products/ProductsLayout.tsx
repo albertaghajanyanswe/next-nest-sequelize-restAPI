@@ -224,6 +224,8 @@ function ProductsLayout<T>({
         onSearchCallback={onSearchCallback}
         filteredParams={filteredParams}
       />
+      <Box sx={muiStyles.tableRoot}>{toolbarView && toolbarView}</Box>
+
       <Box sx={muiStyles.tableRoot}>
         {tableSources.data.length === 0 && !loading ? (
           <EmptyState
@@ -232,7 +234,6 @@ function ProductsLayout<T>({
           />
         ) : (
           <>
-            {toolbarView && toolbarView}
             <Grid container spacing={3}>
               {(tableSources.data as ProductsDataType[]).map((product) => (
                 <Grid item xs={12} sm={6} md={6} lg={4} xl={4} key={product.id}>

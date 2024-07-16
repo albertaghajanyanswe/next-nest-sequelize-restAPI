@@ -16,6 +16,7 @@ import { productsImageProviders } from './productImages/productsImage.providers'
 import { FavoriteProductsModule } from './favoriteProducts/favoriteProducts.module';
 import { StaticFilesModule } from './staticFiles/staticFiles.module';
 import { staticFilesProviders } from './staticFiles/staticFiles.providers';
+import { CollectPayloadModule } from './payloadHelper/collectPayload.module';
 
 @Module({
   imports: [
@@ -30,8 +31,9 @@ import { staticFilesProviders } from './staticFiles/staticFiles.providers';
     FavoriteProductsModule,
     StaticFilesModule,
     AuthModule,
+    CollectPayloadModule
   ],
   controllers: [UploadController, FileController],
   providers: [...productsImageProviders, ...staticFilesProviders],
 })
-export class AppModule {}
+export class AppModule { }

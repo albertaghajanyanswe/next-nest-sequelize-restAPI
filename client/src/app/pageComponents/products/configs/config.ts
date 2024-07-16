@@ -4,7 +4,7 @@ import SETTINGS from '@/configs/shared/settings';
 const options = (t: any) => ({
   fields: [],
   rowsPerPageOptions: [1, 2, 3, 4, 5, 10, 25, 50, 100],
-  searchFields: ['name', 'description'],
+  searchFields: ['name', 'description', 'otherInfo'],
   filterFields: decorateShowField([
     {
       id: 'intendedFor_in',

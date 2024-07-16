@@ -9,14 +9,13 @@
   ```DB_HOST=127.0.0.1```
   ```DB_DIALECT="postgres"```
   ```DB_PORT=5432```
-  ```JWT_KEY='6d23c4d5-3758-4ce2-b3d5-615ec9ad8a79'```
+  ```JWT_KEY='<your_jwt_key>'```
   ```DB_CONNECTION_LIMIT=10```
-  ```LOGIN_SECRET_KEY=6d23c4d5-3758-4ce2-b3d5-615ec9ad8a79```
   ```API_URL=http://localhost:4000```
   ```CLIENT_URL=http://localhost:3000```
   ```MAIL_HOST="smtp.gmail.com"```
   ```MAIL_PORT=465```
-  ```MAIL_USER="<your_email_address>```
+  ```MAIL_USER=<your_email_address>```
   ```MAIL_PASSWORD="<your_email_password_app_passwords>"```
  - create postgres database with name <nest-test>
  - npm ci
