@@ -1,3 +1,4 @@
 import routes from './route';
+import variables from './variables';
 
-export { routes };
+export { routes, variables };

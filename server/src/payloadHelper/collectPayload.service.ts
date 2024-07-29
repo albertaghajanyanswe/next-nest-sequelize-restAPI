@@ -1,8 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Op } from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
+import { SEQUELIZE } from 'src/shared/constants';
 
 @Injectable()
 export class CollectPayloadService {
+  constructor(
+    @Inject(SEQUELIZE) private readonly sequelize: Sequelize,
+  ) { }
+
   safeJsonParser = (params) => {
     try {
       const { limit, skip: offset, sort, filter, search } = JSON.parse(JSON.stringify(params));
@@ -65,7 +71,6 @@ export class CollectPayloadService {
             // res.where[i] = { [Op.startsWith]: filter[i] };
           }
 
-          console.log('\n\n 111 customFilterNames = ', customFilterNames)
           for (const i in customFilterNames) {
             const name = customFilterNames[i];
             if (customFilter[name].in) {
@@ -80,8 +85,14 @@ export class CollectPayloadService {
               res.where[Op.or] = [];
               hasSearchInMainTable = true;
             }
+            // const obj = {};
+            // obj[search.fields[i]] = this.sequelize.where(
+            //   this.sequelize.fn('LOWER', this.sequelize.fn('REPLACE', this.sequelize.col(search.fields[i]), ' ', '')),
+            //   { [Op.like]: `%${search.value.toLowerCase().replace(/\s/g, '')}%` }
+            // );
+            // res.where[Op.or].push(obj);
             const obj = {};
-            obj[search.fields[i]] = { [Op.like]: `%${search.value}%` };
+            obj[search.fields[i]] = { [Op.iLike]: `%${search.value}%` };
             res.where[Op.or].push(obj);
           }
         }

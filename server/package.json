@@ -11,6 +11,7 @@
     "start": "nest start",
     "start:dev": "cross-env NODE_ENV=development nest start --watch",
     "start:test": "cross-env NODE_ENV=test nest start --watch",
+    "start:test:all": "npm run start:test & npm run migrate:test",
     "start:debug": "nest start --debug --watch",
     "start:prod": "cross-env NODE_ENV=production node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -20,6 +21,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate:test": "npx sequelize-cli db:migrate --env test",
+    "undo:migrate:test": "npx sequelize-cli db:migrate:undo --env test",
     "migrate:dev": "npx sequelize-cli db:migrate --env development",
     "migrate:prod": "npx sequelize-cli db:migrate --env production"
   },

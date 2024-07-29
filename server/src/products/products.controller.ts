@@ -19,7 +19,6 @@ export class ProductsController {
   @UseGuards(AuthGuard('jwt'))
   @Get('/:id')
   getProductById(@CurrentUser() currentUser: User, @Param('id') id: string) {
-    console.log('currentUser = ', currentUser)
     return this.productService.getProductById(id, currentUser.id);
   }
 

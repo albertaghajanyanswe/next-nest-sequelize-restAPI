@@ -3,6 +3,7 @@ import { Category } from 'src/categories/categories.model';
 import { User } from 'src/users/users.model';
 import { Product } from '../products.model';
 import { IntendedForEnum, ProductStateEnum } from './create-product.dto';
+import { StaticFiles } from '../../staticFiles/staticFiles.model';
 
 export class ProductDto {
   @ApiProperty({ example: '1', description: 'Unique id' })
@@ -49,6 +50,10 @@ export class ProductDto {
 
   @ApiProperty({ type: User })
   readonly user: User;
+
+
+  @ApiProperty({ type: [StaticFiles] })
+  readonly staticFiles: StaticFiles[];
 }
 
 export class GetProductsDto {
