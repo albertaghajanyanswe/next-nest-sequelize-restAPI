@@ -16,9 +16,9 @@ import CustomAppBar from '../sidebar/CustomAppBar';
 function CustomLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const currentUser = getCurrentUser()?.user || {};
+  // const currentUser = getCurrentUser()?.user || {};
 
-  // const { data: currentUser } = usersAPI.useGetCurrentUserQuery({});
+  const { data: currentUser } = usersAPI.useGetCurrentUserQuery({});
 
   const path = pathname.split('/')[1] as string;
   const allowed =
