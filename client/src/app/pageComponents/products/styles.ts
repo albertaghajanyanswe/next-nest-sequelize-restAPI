@@ -11,7 +11,7 @@ const muiStylesWithTheme = (theme: Theme) => ({
   tableRoot: {
     p: '0 24px',
     minWidth: '276px',
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(250,250,250,1)',
     height: '100%',
     width: '100%',
   },

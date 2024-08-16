@@ -9,7 +9,7 @@ const stylesWithTheme = (theme: Theme) => ({
       height: '4px',
     },
     '&::-webkit-scrollbar-track': {
-      boxShadow: `inset 0 0 5px white`,
+      boxShadow: `inset 0 0 5px rgb(250,250,250,1)`,
       borderRadius: '10px',
     },
 
@@ -19,7 +19,7 @@ const stylesWithTheme = (theme: Theme) => ({
     },
   },
   paper: {
-    background: 'white',
+    background: 'rgb(250,250,250,1)',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'primary.borderColor1',
@@ -34,36 +34,38 @@ const stylesWithTheme = (theme: Theme) => ({
     fontWeight: 400,
     fontSize: '14px',
     lineHeight: '20px',
-    color: 'primary.btnMainDisabled',
+    color: 'primary.btnMainPressed',
   },
   userName: {
     fontFamily: 'var(--font-poppins)',
     fontWeight: 600,
     fontSize: '14px',
     lineHeight: '20px',
-    color: 'white',
+    color: 'primary.btnMainPressed',
   },
   listItem: {
     padding: '0 8px',
     margin: '4px 0',
     fontFamily: 'var(--font-poppins)',
-    borderRightWidth: '4px',
+    borderRightWidth: '0px',
     borderRightStyle: 'solid',
-    borderRightColor: 'primary.main',
+    borderRightColor: 'primary.btnMain',
     '& > .MuiButtonBase-root': {
       borderRadius: 1,
     },
     '&:hover': {
+      borderRightWidth: '4px',
       '& .MuiListItemIcon-root': {
         '& > svg': {
           '& path': {
-            color: 'white',
+            color: 'rgb(250,250,250,1)',
           },
         },
       },
       '& .MuiListItemText-root': {
         '& .MuiTypography-root': {
-          fontFamily: 'var(--font-poppins)',
+          // color: 'inherit',
+          // fontFamily: 'var(--font-poppins)',
         },
       },
     },
@@ -72,29 +74,41 @@ const stylesWithTheme = (theme: Theme) => ({
     fontFamily: 'var(--font-poppins)',
     borderRightWidth: '4px',
     borderRightStyle: 'solid',
-    borderRightColor: 'primary.borderColor8',
+    borderRightColor: 'primary.btnMain',
   },
   listItemBtn: {
     minHeight: '48px',
     px: 2.5,
     '&:hover': {
-      background: theme.palette.primary.btnMainPressed,
+      background: theme.palette.primary.btnMain,
+      '& .MuiListItemText-root': {
+        '& .MuiTypography-root': {
+          color: 'rgb(250,250,250,1)',
+        },
+      },
       '& .MuiListItemIcon-root': {
         '& > svg': {
           '& path': {
-            stroke: 'white',
+            stroke: 'rgb(250,250,250,1)',
           },
         },
       },
     },
   },
   listItemBtnActive: {
-    backgroundColor: 'primary.btnMainPressed',
+    backgroundColor: 'primary.btnMain',
+  },
+  linkIcon: {
+    '& > svg': {
+      '& path': {
+        stroke: theme.palette.primary.textColor1,
+      },
+    },
   },
   activeLinkIcon: {
     '& > svg': {
       '& path': {
-        stroke: 'white',
+        stroke: 'rgb(250,250,250,1)',
       },
     },
   },
@@ -103,28 +117,32 @@ const stylesWithTheme = (theme: Theme) => ({
       fontFamily: 'var(--font-poppins)',
       fontWeight: 500,
       letterSpacing: '-0.00300em',
+      color: 'rgb(250,250,250,1)'
     },
   },
   divider: {
-    borderColor: 'primary.btnMainPressed',
+    borderColor: 'primary.main',
+    borderBottomWidth: '2px',
+    borderRadius: '2px',
     '&::before': {
-      borderTopWidth: '1px',
+      borderTopWidth: '2px',
       borderTopStyle: 'solid',
       borderTopColor: 'primary.btnMainPressed',
     },
     '&::after': {
-      borderTopWidth: '1px',
+      borderTopWidth: '2px',
       borderTopStyle: 'solid',
       borderTopColor: 'primary.btnMainPressed',
     },
   },
   linkText: {
-    color: 'white',
+    color: 'primary.textColor1',
     '& > span': {
       //      ...notoFont.style,
       fontFamily: 'var(--font-poppins)',
       fontSize: '14px',
       lineHeight: '16px',
+      fontWeight: 600
     },
   },
 });

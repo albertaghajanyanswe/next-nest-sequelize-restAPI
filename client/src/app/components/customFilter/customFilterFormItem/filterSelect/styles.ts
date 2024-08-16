@@ -26,9 +26,6 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
       },
     },
     '& .MuiSelect-select': {
-      // whiteSpace: 'break-spaces!important',
-      // wordBreak: 'break-word',
-      // display: 'flex',
       lineHeight: '24px',
       alignItems: 'center',
       padding: '9.95px 16px',
@@ -81,7 +78,7 @@ const muiStylesWithTheme = (theme?: Theme | DefaultTheme | undefined) => ({
     height: '40px',
     display: 'flex',
     justifyContent: 'space-between',
-    // whiteSpace: 'break-spaces',
+    // rgb(250,250,250,1)Space: 'break-spaces',
     // wordBreak: 'break-word',
     mt: '4px',
     '& > .MuiTypography-root': {

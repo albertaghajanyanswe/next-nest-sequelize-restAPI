@@ -42,44 +42,6 @@ import variables from '@/configs/variables';
 import { stringAvatar } from '@/configs/shared/helpers/helper';
 import Image from 'next/image';
 
-export const ArrowLeftBtn = ({
-  color,
-  ...props
-}: {
-  color?: any;
-  props?: any;
-}) => {
-  const theme = useTheme();
-  return (
-    <svg
-      {...props}
-      width="34"
-      height="34"
-      viewBox="0 0 34 34"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="1" y="1" width="32" height="32" rx="16" fill="white" />
-      <path
-        d="M21.6663 16.9997H12.333M12.333 16.9997L16.9997 21.6663M12.333 16.9997L16.9997 12.333"
-        stroke={color || (theme as Theme)?.palette?.primary?.main}
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <rect
-        x="1"
-        y="1"
-        width="32"
-        height="32"
-        rx="16"
-        stroke={color || (theme as Theme)?.palette?.primary?.borderColor1}
-        strokeWidth="1.25"
-      />
-    </svg>
-  );
-};
-
 function CustomSideBar() {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
@@ -92,30 +54,24 @@ function CustomSideBar() {
   const { isSideBarOpen: sidebarOpen } = useAppSelector(
     (state) => state.sidebarReducer
   );
-  const { toggleSidebarByValue } = sidebarSlice.actions;
 
   React.useEffect(() => {}, [sidebarOpen]);
 
   const isAppBarOpen = isMobile || isTablet ? false : sidebarOpen;
   const { setActiveLink } = sidebarSlice.actions;
   const dispatch = useAppDispatch();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { activeLink } = useAppSelector((state) => state.sidebarReducer);
 
   const router = useRouter();
   const pathname = usePathname();
-  const isLinkActive = (link: string) => pathname === link;
-
-  const openSideBar = () => {
-    dispatch(toggleSidebarByValue(isMobile || isTablet ? false : true));
-  };
-
-  const closeSideBar = () => {
-    dispatch(toggleSidebarByValue(false));
-  };
+  const isLinkActive = (link: string) =>
+    pathname === link || pathname.includes(link);
 
   const handleClick = (link: string) => {
     dispatch(setActiveLink(link));
+    console.log('lonk = ', link);
+    if (link === '/login') {
+      logOut();
+    }
     router.push(link, undefined);
   };
 
@@ -127,25 +83,14 @@ function CustomSideBar() {
 
   const { data: currentUser, isLoading } = usersAPI.useGetCurrentUserQuery({});
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const menuOpened = Boolean(anchorEl);
-
-  const handleClickMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   const drawerList = useMemo(() => {
     return (
       currentUser && (
-        <Box component="div" sx={{ backgroundColor: 'primary.main', mt: 5 }}>
-          <List sx={{ background: 'inherit', p: 0 }}>
+        <Box component="div" sx={{ mt: 5 }}>
+          <List sx={{ background: 'rgb(250,250,250,1)', p: '0!important' }}>
             {links.map((item) =>
               item.type === 'divider' ? (
-                <Box key={item.id} sx={{ p: '8px 12px' }}>
+                <Box key={item.id} sx={{ p: '12px' }}>
                   <Divider sx={muiStyles.divider} />
                 </Box>
               ) : (
@@ -182,8 +127,8 @@ function CustomSideBar() {
                           sx={{
                             minWidth: 0,
                             mr: isAppBarOpen ? 3 : '0',
+                            ...muiStyles.linkIcon,
                             ...(isLinkActive(item.link) &&
-                              item.id !== 'departments' &&
                               muiStyles.activeLinkIcon),
                             justifyContent: 'center',
                           }}
@@ -219,118 +164,11 @@ function CustomSideBar() {
     router.push(routes.login.path, undefined);
   };
 
-  const isGuest = currentUser?.roles[0]?.value === 'GUEST';
-
-  const appBarContent = useMemo(() => {
-    return (
-      <Toolbar
-        sx={{ backgroundColor: 'white', color: theme.palette.primary.main }}
-      >
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={openSideBar}
-          edge="start"
-          sx={{
-            marginRight: 5,
-            ...(isAppBarOpen && { display: 'none' }),
-          }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            width: '100%',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Typography variant="h6" noWrap component="div" />
-          <Box sx={{ display: 'flex' }}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              {isGuest ? (
-                <Box sx={{ mr: 1 }}>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 500 }} noWrap>
-                    GUEST
-                  </Typography>
-                  <Typography sx={{ fontSize: '12px' }} noWrap>
-                    {currentUser?.nickName}
-                  </Typography>
-                </Box>
-              ) : (
-                <Box sx={{ mr: 1 }}>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 500 }} noWrap>
-                    {currentUser?.firstName} {currentUser?.lastName}
-                  </Typography>
-                  <Typography sx={{ fontSize: '12px' }} noWrap>
-                    {currentUser?.email}
-                  </Typography>
-                </Box>
-              )}
-            </Box>
-            <Tooltip title={currentUser?.email}>
-              <IconButton name="menu" onClick={handleClickMenu}>
-                <Avatar src={fileService.getFileUrl(currentUser?.image)}>
-                  {currentUser?.firstName.charAt(0) || 'G'}
-                  {currentUser?.lastName.charAt(0) || 'G'}
-                </Avatar>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              elevation={0}
-              anchorEl={anchorEl}
-              keepMounted
-              open={menuOpened}
-              onClose={handleClose}
-              PaperProps={{
-                sx: {
-                  ...muiStyles.paper,
-                  maxHeight: variables.menuItemHeightValue * 4,
-                },
-              }}
-            >
-              <CustomMenuItem text={t('logout')} onClick={handleLogout}>
-                <LogoutIcon
-                  style={{
-                    fontSize: '14px',
-                    color: theme.palette.primary.textColor1,
-                  }}
-                />
-              </CustomMenuItem>
-            </Menu>
-          </Box>
-        </Box>
-      </Toolbar>
-    );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [anchorEl, handleLogout, menuOpened, sidebarOpen]);
+  const userName = `${currentUser?.firstName || 'Guest'} ${currentUser?.lastName || 'Guest'}`;
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <CustomAppBar position="fixed" open={isAppBarOpen}>
-        {appBarContent}
-      </CustomAppBar>
       <CustomDrawer open={isAppBarOpen}>
-        <CustomDrawerHeader>
-          <IconButton onClick={closeSideBar}>
-            {theme.direction === 'rtl' ? (
-              <ChevronRightIcon />
-            ) : (
-              <ArrowLeftBtn />
-            )}
-          </IconButton>
-        </CustomDrawerHeader>
-        <Divider />
-
         <Box>
           <Box
             onClick={handleClickLogo}
@@ -354,11 +192,15 @@ function CustomSideBar() {
             >
               <Box component="div">
                 <Avatar
-                  {...stringAvatar(
-                    `${currentUser?.firstName || 'Guest'} ${currentUser?.lastName || 'Guest'}`,
-                    isAppBarOpen ? 72 : 36,
-                    isAppBarOpen ? 72 : 36
-                  )}
+                  sx={{
+                    ...stringAvatar(
+                      `${currentUser?.firstName || 'Guest'} ${currentUser?.lastName || 'Guest'}`,
+                      isAppBarOpen ? 72 : 36,
+                      isAppBarOpen ? 72 : 36
+                    ).sx,
+                    backgroundColor: 'primary.main',
+                  }}
+                  children={`${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`}
                   src={fileService.getFileUrl(currentUser?.image)}
                 />
               </Box>

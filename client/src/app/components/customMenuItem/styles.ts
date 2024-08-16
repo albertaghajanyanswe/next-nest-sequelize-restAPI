@@ -18,8 +18,8 @@ export const stylesWithTheme = (theme: Theme) => ({
   },
   listItemText: {
     '& > span:first-of-type': {
-      fontWeight: '400',
-      fontSize: '14px',
+      fontWeight: '600',
+      fontSize: '16px',
     },
   },
 });

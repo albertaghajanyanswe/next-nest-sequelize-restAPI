@@ -19,15 +19,15 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     minWidth: 'fit-content',
     height: '44px',
     boxShadow: 'none',
-    borderRadius: '4px',
+    borderRadius: '.5rem',
   },
   primaryBtn: {
-    color: 'white',
-    backgroundColor: 'primary.btnMainPressed',
-    borderRadius: '500px',
+    color: 'rgb(250,250,250,1)',
+    backgroundColor: 'primary.btnMain',
+    borderRadius: '.5rem',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'primary.btnMainPressed',
+    borderColor: 'primary.btnMain',
     fontSize: '16px',
     lineHeight: '24px',
     fontWeight: 500,
@@ -68,7 +68,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.btnMainPressed',
     color: 'primary.main',
-    borderRadius: '500px',
+    borderRadius: '.5rem',
     '&:hover': {
       boxShadow: 'none',
       borderWidth: '1px',
@@ -98,7 +98,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.btnMainDisabled',
-      background: 'white',
+      background: 'rgb(250,250,250,1)',
       '& > span': {
         '& > svg': {
           '& > path': {
@@ -118,7 +118,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.borderColor1',
     color: 'primary.btnMain',
-    borderRadius: '500px',
+    borderRadius: '.5rem',
     '&:hover': {
       boxShadow: 'none',
       borderWidth: '1px',
@@ -148,7 +148,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.textColor2',
-      background: 'white',
+      background: 'rgb(250,250,250,1)',
       '& > span': {
         '& > svg': {
           '& > path': {
@@ -163,7 +163,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.textColor2',
-      background: 'white',
+      background: 'rgb(250,250,250,1)',
       '& > span': {
         opacity: '0.6',
         '& > svg': {
@@ -183,10 +183,10 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     // border: 'none',
     // borderWidth: '1px',
     // borderStyle: 'solid',
-    // borderColor: 'white',
+    // borderColor: 'rgb(250,250,250,1)',
     border: 'none',
     color: 'primary.btnMain',
-    borderRadius: '500px',
+    borderRadius: '.5rem',
     '& > span': {
       '& > svg': {
         '& > path': {
@@ -200,7 +200,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       border: 'none',
       // borderWidth: '1px',
       // borderStyle: 'solid',
-      // borderColor: 'white',
+      // borderColor: 'rgb(250,250,250,1)',
       color: 'primary.btnMainHover',
       '& > span': {
         '& > svg': {
@@ -214,7 +214,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       border: 'none',
       // borderWidth: '1px',
       // borderStyle: 'solid',
-      // borderColor: 'white',
+      // borderColor: 'rgb(250,250,250,1)',
       background: 'inherit',
       boxShadow: 'none',
       color: 'primary.btnMainPressed',
@@ -231,7 +231,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       border: 'none',
       // borderWidth: '1px',
       // borderStyle: 'solid',
-      // borderColor: 'white',
+      // borderColor: 'rgb(250,250,250,1)',
       color: 'primary.textColor2',
       '& > span': {
         '& > svg': {
@@ -251,7 +251,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.borderColor2',
     color: 'primary.btnMain',
-    borderRadius: '500px',
+    borderRadius: '.5rem',
     backgroundColor: 'primary.lightBG1',
     '&:hover': {
       boxShadow: 'none',
@@ -290,7 +290,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.textColor2',
-      background: 'white',
+      background: 'rgb(250,250,250,1)',
       '& > span': {
         opacity: '0.6',
         '& > svg': {
@@ -326,7 +326,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     '& > svg': {
       animation: `${spin} 2s linear infinite;`,
       '& > path': {
-        stroke: 'white',
+        stroke: 'rgb(250,250,250,1)',
       },
     },
   },

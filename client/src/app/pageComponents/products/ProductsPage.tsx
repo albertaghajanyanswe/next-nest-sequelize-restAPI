@@ -67,6 +67,7 @@ function ProductsPage() {
     <Box
       component="div"
       sx={{ ...muiStyles.root, height: `calc(100% - ${toolbarMinHeight}px)` }}
+      className="AAAAAAA"
     >
       <ProductsLayout<ProductsDataType>
         loading={isLoading}

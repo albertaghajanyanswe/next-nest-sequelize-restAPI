@@ -27,6 +27,7 @@ import Slider from 'react-slick';
 import { StaticFiles } from '@/generated/openapi';
 import Image from 'next/image';
 import fileService from '@/services/fileService';
+import NoProductImage from '@/assets/no-product.png';
 
 const settings = {
   dots: true,
@@ -113,9 +114,40 @@ function ProductItemCard<T>({
         }}
         label={t(`${details.intendedFor}`)}
       />
-      <Box component={Slider} {...settings}>
-        {images.map((i: string) => image(i))}
-      </Box>
+      {images.length ? (
+        <Box component={Slider} {...settings} sx={{ minHeight: 246 }}>
+          {images.map((i: string) => image(i))}
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              textAlign: 'center',
+              borderRadius: '6px',
+              alignItems: 'center',
+              width: '95%',
+              height: '95%',
+              boxShadow: `0px 2px 12px 0px #b7b7b7`,
+            }}
+          >
+            <Typography
+              sx={{ width: '80%', fontSize: 24, color: 'primary.textColor3' }}
+            >
+              No product image available
+            </Typography>
+          </Box>
+        </Box>
+      )}
       <CardContent sx={{ mt: 2 }}>
         <Typography
           sx={{
@@ -132,7 +164,7 @@ function ProductItemCard<T>({
             textAlign: 'start',
             mt: '4px',
             color: 'primary.success',
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           }}
         >
           {details.price} {details.currency}
@@ -143,7 +175,7 @@ function ProductItemCard<T>({
               ...globalMuiStyles.font_14_16_400,
               textAlign: 'start',
               color: 'primary.textColor1',
-              fontStyle: 'italic'
+              fontStyle: 'italic',
             }}
           >
             {details.province} {details.city} {details.address}

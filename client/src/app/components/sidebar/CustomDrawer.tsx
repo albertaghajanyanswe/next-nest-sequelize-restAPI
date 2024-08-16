@@ -67,7 +67,8 @@ const CustomDrawer = ({ open, children }: IDrawerProps) => {
           '& .MuiDrawer-paper': closedMixin(theme),
         }),
         '& > .MuiPaper-root': {
-          backgroundColor: theme.palette.primary.main,
+          // backgroundColor: theme.palette.primary.main,
+          backgroundColor: 'rgb(250,250,250,1)'
         },
       }}
     >

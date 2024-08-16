@@ -9,6 +9,7 @@ const CustomDrawerHeader = ({ children }: { children?: React.ReactNode }) => {
     <Box
       component="div"
       sx={{
+        boxShadow: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',

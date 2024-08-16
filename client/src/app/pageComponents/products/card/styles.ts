@@ -15,7 +15,7 @@ const muiStylesWithTheme = (theme: Theme) => ({
     width: '230px',
     border: '1px solid rgb(215, 217, 222)',
     margin: '0 8px 24px 8px',
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(250,250,250,1)',
     justifyContent: 'space-between',
     cursor: 'pointer',
     [theme.breakpoints.down('sm')]: {

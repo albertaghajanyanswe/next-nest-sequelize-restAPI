@@ -3,7 +3,7 @@
 import React, { useCallback } from 'react';
 import { useTheme } from '@mui/system';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 import { stylesWithTheme } from './styles';
@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import SystemMessage from '../../components/systemMessage';
 import { useSnackbar } from 'notistack';
+import CustomButton from '@/app/components/customButton';
 
 const LoginGuestPage = () => {
   const { t } = useTranslation();
@@ -66,30 +67,46 @@ const LoginGuestPage = () => {
           <form noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography color="primary" variant="h5">
-                  {t('title')}
+                <Typography variant="h5" color="primary.textColor1" sx={{ fontWeight: '600' }}>
+                  {t('loginWelcome')}
+                </Typography>
+                <Typography
+                  variant="h5"
+                  color="primary.textColor1"
+                  sx={{ fontSize: 14, mt: 2 }}
+                >
+                  {t('enterCredGuest')}
                 </Typography>
               </Grid>
               <LoginForm handleSubmit={handleSubmitLogin} />
               <Grid item xs={12}>
-                <Typography
-                  component={Link}
-                  sx={styles.link}
-                  href={routes.login.path}
-                >
-                  {' '}
-                  {t('signIn')}
-                </Typography>
+                <Divider>{t('or')}</Divider>
               </Grid>
               <Grid item xs={12}>
-                {t('createAccount')}
+                <CustomButton
+                  href={routes.login.path}
+                  label={t('login')}
+                  sx={{
+                    width: '100%',
+                    p: '8px 12px',
+                    fontSize: '16px',
+                    lineHeight: '24px',
+                    fontWeight: 600,
+                  }}
+                  variant="outlined"
+                  name="login-submit"
+                  btnType="secondary"
+                />
+              </Grid>
+              <Grid item xs={12} sx={{ mt: 12 }}>
+                {t('notAccountYet')}
                 <Typography
                   component={Link}
                   sx={styles.link}
                   href={routes.registration.path}
                 >
                   {' '}
-                  {t('register')}
+                  {t('createAccount')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>

@@ -1,35 +1,22 @@
 // todo: add and using all variables from theme
 import { Theme } from '@mui/system';
+import AuthImage from '../../../assets/auth.jpg';
 
 const stylesWithTheme = (theme: Theme) => ({
   layout: {
     height: '100svh',
     width: '100%',
     display: 'flex',
-    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(250,250,250,1)',
     // backgroundImage: `url(${loginBg})`
   },
   container: {
-    margin: 'auto',
-    // marginTop: '7%',
-    width: 'auto',
-    borderRadius: '4px',
-    textAlign: 'center',
-    [theme.breakpoints.up(450)]: {
-      width: 'auto',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      boxShadow: '1px 2px 10px 0px #3a4e9975',
-    },
-    [theme.breakpoints.up(570)]: {
-      width: 500,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      boxShadow: '1px 2px 10px 0px #3a4e9975',
-    },
-    [theme.breakpoints.down(570)]: {
-      boxShadow: 'none',
-    },
+    width: '100%',
+    [theme.breakpoints.up(768)]: {
+      width: '568px'
+    }
   },
   description: {
     fontWeight: 400,

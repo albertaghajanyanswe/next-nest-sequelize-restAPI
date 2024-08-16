@@ -32,16 +32,15 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
 
   return (
     <>
-      <Grid item xs={12} sm={12}>
+      <Grid item xs={12} sm={12} sx={{ mt: 3 }}>
         {asGuest ? (
           <Form.TextField
             rules={{ required: requiredErrMsg(t, t('nickName')) }}
             name="nickName"
             placeholder={t('nickName')}
-            label={t('nickName')}
             sxContainer={{ mt: 0 }}
             title={t('nickName')}
-            helperTooltip={t('nickName')}
+            titleTooltip={t('nickName')}
             borderRadius={8}
           />
         ) : (
@@ -52,10 +51,9 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
             }}
             name="email"
             placeholder={t('email')}
-            label={t('email')}
             sxContainer={{ mt: 0 }}
             title={t('email')}
-            helperTooltip={t('email')}
+            titleTooltip={t('email')}
             borderRadius={8}
           />
         )}
@@ -65,10 +63,9 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
           rules={{ required: requiredErrMsg(t, t('password')) }}
           name="password"
           placeholder={t('password')}
-          label={t('password')}
           sxContainer={{ mt: 0 }}
           title={t('password')}
-          helperTooltip={t('password')}
+          titleTooltip={t('password')}
           borderRadius={8}
           withEyeIcon
           eyeIconSize={16}
@@ -85,7 +82,7 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
           }}
         >
           <CustomButton
-            label={t('submit')}
+            label={asGuest ? t('loginGuest') : t('login')}
             sx={{
               width: '100%',
               p: '8px 12px',

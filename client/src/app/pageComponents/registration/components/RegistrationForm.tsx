@@ -56,10 +56,9 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             rules={{ required: requiredErrMsg(t, t('firstName')) }}
             name="firstName"
             placeholder={t('firstName')}
-            label={t('firstName')}
             sxContainer={{ mt: 0 }}
             title={t('firstName')}
-            helperTooltip={t('firstName')}
+            titleTooltip={t('firstName')}
             borderRadius={8}
           />
         </Grid>
@@ -70,10 +69,9 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             rules={{ required: requiredErrMsg(t, t('lastName')) }}
             name="lastName"
             placeholder={t('lastName')}
-            label={t('lastName')}
             sxContainer={{ mt: 0 }}
             title={t('lastName')}
-            helperTooltip={t('lastName')}
+            titleTooltip={t('lastName')}
             borderRadius={8}
           />
         </Grid>
@@ -87,10 +85,9 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             }}
             name="email"
             placeholder={t('email')}
-            label={t('email')}
             sxContainer={{ mt: 0 }}
             title={t('email')}
-            helperTooltip={t('email')}
+            titleTooltip={t('email')}
             borderRadius={8}
           />
         </Grid>
@@ -101,10 +98,9 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             rules={{ required: requiredErrMsg(t, t('nickName')) }}
             name="nickName"
             placeholder={t(`nickName`)}
-            label={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
             sxContainer={{ mt: 0 }}
             title={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
-            helperTooltip={
+            titleTooltip={
               switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)
             }
             borderRadius={8}
@@ -116,10 +112,9 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
           rules={{ required: requiredErrMsg(t, t('password')) }}
           name="password"
           placeholder={t(`password`)}
-          label={switchGuestAccountValue ? t(`guestPassword`) : t(`password`)}
           sxContainer={{ mt: 0 }}
           title={switchGuestAccountValue ? t(`guestPassword`) : t(`password`)}
-          helperTooltip={
+          titleTooltip={
             switchGuestAccountValue ? t(`guestPassword`) : t(`password`)
           }
           borderRadius={8}
@@ -134,10 +129,9 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             rules={{ required: requiredErrMsg(t, t('nickName')) }}
             name="nickName"
             placeholder={t(`nickName`)}
-            label={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
             sxContainer={{ mt: 0 }}
             title={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
-            helperTooltip={
+            titleTooltip={
               switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)
             }
             borderRadius={8}
@@ -166,7 +160,7 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
           }}
         >
           <CustomButton
-            label={t('submit')}
+            label={t('signUp')}
             btnType="primary"
             sx={{
               width: '100%',

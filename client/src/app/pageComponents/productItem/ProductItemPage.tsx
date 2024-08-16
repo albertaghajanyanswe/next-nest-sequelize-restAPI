@@ -227,7 +227,7 @@ const ProductItemPage = () => {
         sx={{
           position: 'fixed',
           width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`,
-          backgroundColor: 'white',
+          backgroundColor: 'rgb(250,250,250,1)',
           zIndex: 1,
           boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px',
         }}
@@ -240,7 +240,7 @@ const ProductItemPage = () => {
       </Box>
       <Box
         sx={{
-          backgroundColor: 'white',
+          backgroundColor: 'rgb(250,250,250,1)',
           p: '0 40px 40px 40px',
           position: 'absolute',
           mt: `${getPageHeaderHeight()}px`,
@@ -277,7 +277,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'name') }}
                   name="name"
                   placeholder={t('productName')}
-                  label={t('productName')}
                   sxContainer={{ mt: 0 }}
                   title={t('productName')}
                   borderRadius={8}
@@ -310,7 +309,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'productDescription') }}
                   name="description"
                   placeholder={t('productDescription')}
-                  label={t('productDescription')}
                   sxContainer={{ mt: 0 }}
                   title={t('productDescription')}
                   borderRadius={8}
@@ -323,7 +321,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'productPrice') }}
                   name="price"
                   placeholder={t('productPrice')}
-                  label={t('productPrice')}
                   sxContainer={{ mt: 0 }}
                   title={t('productPrice')}
                   borderRadius={8}
@@ -346,7 +343,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'productProvince') }}
                   name="province"
                   placeholder={t('productProvince')}
-                  label={t('productProvince')}
                   sxContainer={{ mt: 0 }}
                   title={t('productProvince')}
                   borderRadius={8}
@@ -357,7 +353,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'productCity') }}
                   name="city"
                   placeholder={t('productCity')}
-                  label={t('productCity')}
                   sxContainer={{ mt: 0 }}
                   title={t('productCity')}
                   borderRadius={8}
@@ -368,7 +363,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'productAddress') }}
                   name="address"
                   placeholder={t('productAddress')}
-                  label={t('productAddress')}
                   sxContainer={{ mt: 0 }}
                   title={t('productAddress')}
                   borderRadius={8}
@@ -393,7 +387,6 @@ const ProductItemPage = () => {
                   rules={{ required: requiredErrMsg(t, 'productOtherInfo') }}
                   name="otherInfo"
                   placeholder={t('productOtherInfo')}
-                  label={t('productOtherInfo')}
                   sxContainer={{ mt: 0 }}
                   title={t('productOtherInfo')}
                   borderRadius={8}
@@ -415,7 +408,7 @@ const ProductItemPage = () => {
           bottom: 0,
           p: '24px 40px',
           width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`,
-          backgroundColor: 'white',
+          backgroundColor: 'rgb(250,250,250,1)',
           zIndex: 1,
           boxShadow: 'rgba(33, 35, 38, 0.1) 0px -12px 10px -12px',
         }}

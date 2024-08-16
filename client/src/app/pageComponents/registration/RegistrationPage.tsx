@@ -67,8 +67,8 @@ const RegistrationPage = () => {
         <FormProvider {...methods}>
           <form noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Typography color="primary" variant="h5">
+              <Grid item xs={12} sx={{ mb: 2 }}>
+                <Typography variant="h5" color="primary.textColor1">
                   {t('signUp')}
                 </Typography>
               </Grid>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/system';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSnackbar } from 'notistack';
 import SystemMessage from '@/app/components/systemMessage';
+import CustomButton from '@/app/components/customButton';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -39,6 +40,7 @@ const LoginPage = () => {
     () =>
       handleSubmit(async (data) => {
         try {
+          console.log('AAAAAAAAAAAAAAAA')
           const res = await postLogin(data as iLogin).unwrap();
           localStorage.setItem(lsConstants.CURRENT_USER, JSON.stringify(res));
           SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), {
@@ -67,30 +69,46 @@ const LoginPage = () => {
           <form noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography color="primary" variant="h5">
-                  {t('title')}
+                <Typography variant="h5" color="primary.textColor1" sx={{ fontWeight: '600' }}>
+                  {t('loginWelcome')}
+                </Typography>
+                <Typography
+                  variant="h5"
+                  color="primary.textColor1"
+                  sx={{ fontSize: 14, mt: 2 }}
+                >
+                  {t('enterCred')}
                 </Typography>
               </Grid>
               <LoginForm handleSubmit={handleSubmitLogin} />
               <Grid item xs={12}>
-                <Typography
-                  component={Link}
-                  sx={styles.link}
-                  href={routes.loginGuest.path}
-                >
-                  {' '}
-                  {t('signInGuest')}
-                </Typography>
+                <Divider>{t('or')}</Divider>
               </Grid>
               <Grid item xs={12}>
-                {t('createAccount')}
+                <CustomButton
+                  href={routes.loginGuest.path}
+                  label={t('loginGuest')}
+                  sx={{
+                    width: '100%',
+                    p: '8px 12px',
+                    fontSize: '16px',
+                    lineHeight: '24px',
+                    fontWeight: 600,
+                  }}
+                  variant="outlined"
+                  name="login-submit"
+                  btnType="secondary"
+                />
+              </Grid>
+              <Grid item xs={12} sx={{ mt: 12 }}>
+                {t('notAccountYet')}
                 <Typography
                   component={Link}
-                  sx={styles.link}
+                  sx={{...styles.link, ml: 1}}
                   href={routes.registration.path}
                 >
                   {' '}
-                  {t('register')}
+                  {t('createAccount')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>

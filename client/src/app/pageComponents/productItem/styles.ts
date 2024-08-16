@@ -2,7 +2,7 @@ import { Theme } from '@mui/system';
 
 const stylesWithTheme = (theme: Theme) => ({
   root: {
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(250,250,250,1)',
     width: '100%',
     minHeight: '100%',
     padding: '52px 140px',
@@ -73,7 +73,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderColor: 'primary.red5',
       color: 'primary.red5',
       opacity: '0.5',
-      background: 'white',
+      background: 'rgb(250,250,250,1)',
     },
   },
   readableFieldBlock: {
@@ -169,7 +169,7 @@ const stylesWithTheme = (theme: Theme) => ({
       borderStyle: 'solid',
       borderColor: 'primary.error',
       opacity: 0.6,
-      color: 'white',
+      color: 'rgb(250,250,250,1)',
     },
   },
   cancelBtn: {
