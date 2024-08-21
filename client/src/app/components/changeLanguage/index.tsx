@@ -1,9 +1,9 @@
 'use client';
-import { Box, Button, ButtonGroup, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Button, ButtonGroup, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
-import i18nConfig from '@/app/i18nConfig';
+import { languageDetector } from '@/lib/languageDetector';
 
 function ChangeLanguage() {
   const { t, i18n } = useTranslation();
@@ -21,15 +21,16 @@ function ChangeLanguage() {
       date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
       const expires = '; expires=' + date.toUTCString();
       document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
-
-      if (currentLocale === i18nConfig.defaultLocale) {
-        router.push('/' + newLocale + currentPathname);
-      } else {
+      if (languageDetector.cache) {
+        languageDetector.cache(newLocale);
+      }
+      if (currentLocale) {
         router.push(
           currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
         );
+      } else {
+        router.push('/' + newLocale + currentPathname);
       }
-
       router.refresh();
     },
     [currentLocale, currentPathname, router]

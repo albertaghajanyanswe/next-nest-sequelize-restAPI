@@ -22,16 +22,15 @@ const getMessage = (t, error, variant = 'success') => {
   return message;
 };
 
-const getMessageV1 = (error, variant = 'success') => {
+const getMessageV1 = (t, error, variant = 'success') => {
   const message =
     error && error.message
       ? error.message
       : error && error.error
-        ? error.error
-        : variant === 'error'
-          ? t('unknownError')
-          : t('operationSucceeded');
-  console.log('message = ', message);
+      ? error.error
+      : variant === 'error'
+      ? t('unknownError')
+      : t('operationSucceeded');
   return message;
 };
 

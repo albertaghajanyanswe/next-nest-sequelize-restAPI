@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { Box, Grid, IconButton, Typography } from '@mui/material';
 import { useTheme } from '@mui/system';
 import { useContext } from 'react';
@@ -29,7 +30,7 @@ function ChangeTheme() {
           onClick={() =>
             handleChangeTheme(currentTheme === 'light' ? 'dark' : 'light')
           }
-          color="inherit"
+          color='inherit'
         >
           {theme.palette.mode === 'dark' ? (
             <Brightness7Icon />

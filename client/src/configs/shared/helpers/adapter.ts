@@ -1,7 +1,6 @@
 import { ProductWithImages } from '@/configs/shared/types';
-import { StaticFiles, User } from '@/generated/openapi';
+import { FavoriteProductDto, User } from '@/generated/openapi';
 import { ProductDto } from '../../../app/generated/openapi/api';
-import { FavoriteProductDto } from '../../../../../server/src/favoriteProducts/dto/favorite-product.dto';
 
 function decorateShowField<T extends readonly any[]>(ar: T) {
   return ar as readonly (T[number] & {
@@ -25,7 +24,7 @@ export type ProductsDataType = ReturnType<typeof adaptProductsData>[number];
 
 // Users table data
 function adaptProductsData(data: Partial<ProductDto>[]) {
-  return data.map((item) => {
+  return data.map((item: Partial<ProductDto>) => {
     return {
       id: item?.id,
       name: item?.name,

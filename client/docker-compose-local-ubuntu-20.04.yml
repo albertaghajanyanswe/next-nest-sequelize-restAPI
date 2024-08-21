@@ -20,7 +20,7 @@ services:
     container_name: client-service
     build: ./client
     # uncomment network_mode variable to be able to run docker in localhost -
-    network_mode: host
+    # network_mode: host
     ports:
       - "80:80"
       # - "443:443"

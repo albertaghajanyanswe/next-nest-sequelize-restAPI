@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "buildAndExport": "next build && next export",
     "start": "next start",
     "openapi": "yarn openapi-generator-cli generate -g typescript-axios -o src/app/generated/openapi -i openapi/doc.yml",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
