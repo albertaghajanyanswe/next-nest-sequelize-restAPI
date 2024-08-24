@@ -1,5 +1,5 @@
-import { ProductWithImages } from '@/configs/shared/types';
 import { FavoriteProductDto, User } from '@/generated/openapi';
+
 import { ProductDto } from '../../../app/generated/openapi/api';
 
 function decorateShowField<T extends readonly any[]>(ar: T) {

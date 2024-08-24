@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
-import { Button, ButtonGroup, Grid, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { usePathname, useRouter } from 'next/navigation';
 import { languageDetector } from '@/lib/languageDetector';
+import { Button, ButtonGroup, Grid, Typography } from '@mui/material';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function ChangeLanguage() {
   const { t, i18n } = useTranslation();
@@ -14,7 +14,7 @@ function ChangeLanguage() {
   const isEN = currentLocale === 'en';
   const isRU = currentLocale === 'ru';
 
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (newLocale: string) => () => {
       const days = 30;
       const date = new Date();

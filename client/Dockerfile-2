@@ -1,0 +1,47 @@
+# Use Node.js 20.11.1 as the base image
+FROM node:20.11.1-bullseye AS build
+
+# Install OpenAPI generator and dependencies
+RUN npm install @openapitools/openapi-generator-cli -g
+
+# Install Java for OpenAPI generator
+RUN apt-get update && apt-get install -y \
+    openjdk-11-jdk \
+    && apt-get clean
+
+# Set Java environment variables
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Verify Java installation
+RUN java -version
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package.json /app/
+COPY package-lock.json /app/
+RUN npm ci --legacy-peer-deps --silent
+
+# Copy the rest of the application files
+COPY ./ /app/
+
+# Run OpenAPI generator and build the Next.js app
+RUN npm run openapi
+RUN npm run build
+
+# Use the production version of Node.js as the base image
+FROM node:20.11.1-bullseye AS production
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built application from the previous stage
+COPY --from=build /app /app
+
+# Expose the port that the Next.js server will run on
+EXPOSE 3000
+
+# Start the Next.js server
+CMD ["npm", "run", "dev"]

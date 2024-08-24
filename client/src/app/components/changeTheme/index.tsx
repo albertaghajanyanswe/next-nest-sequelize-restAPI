@@ -1,11 +1,10 @@
 'use client';
-import React from 'react';
-import { Box, Grid, IconButton, Typography } from '@mui/material';
-import { useTheme } from '@mui/system';
-import { useContext } from 'react';
 import { CustomThemeContext } from '@/configs/themes/CustomThemeProvider';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { Grid, IconButton, Typography } from '@mui/material';
+import { useTheme } from '@mui/system';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 function ChangeTheme() {

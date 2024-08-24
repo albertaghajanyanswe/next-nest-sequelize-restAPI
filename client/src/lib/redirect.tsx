@@ -1,7 +1,7 @@
 'use client';
-import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+
 import { languageDetector } from './languageDetector';
 
 /**
@@ -28,7 +28,7 @@ function useRedirect(to?: string) {
       languageDetector.cache(detectedLng);
     }
     router.push(pathname.replace(`/${lngFromPath}`, `/${detectedLng}`));
-  });
+  }, [redirectPath, pathname, router]);
 
   return <></>;
 }

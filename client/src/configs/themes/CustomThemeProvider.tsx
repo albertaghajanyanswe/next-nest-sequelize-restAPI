@@ -1,9 +1,10 @@
 'use client';
-import React, { useState, useMemo } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
+import React, { useState, useMemo, createContext } from 'react';
+
 import getTheme from './base';
 
-export const CustomThemeContext = React.createContext({
+export const CustomThemeContext = createContext({
   currentTheme: 'light',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
   setTheme: (name: string) => {},

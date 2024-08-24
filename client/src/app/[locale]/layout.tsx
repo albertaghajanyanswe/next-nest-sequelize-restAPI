@@ -1,15 +1,10 @@
 import React from 'react';
 import initTranslations from '@/app/i18n';
-import TranslationProvider from '@/app/providers/TranslationProvider';
-import { ReactQueryClientProvider } from '@/app/providers/ReactQueryClientProvider';
-// import { ReduxProvider } from '@/app/providers/ReduxProvider';
-import { lsConstants } from '@/configs/shared/constants';
-// import { CurrentUserProvider } from '@/app/providers/CurrentUserProvider';
-import { Box } from '@mui/material';
 import { CustomSnackbarProvider } from '@/app/providers/CustomSnackbarProvider';
-import { Poppins } from 'next/font/google';
+import { ReactQueryClientProvider } from '@/app/providers/ReactQueryClientProvider';
+import TranslationProvider from '@/app/providers/TranslationProvider';
+
 import i18nConfig from '../i18nConfig';
-// import { SnackbarProvider } from 'notistack';
 
 const i18nNamespaces = ['translation'];
 
@@ -26,7 +21,6 @@ export default async function Layout({ children, params: { locale } }: any) {
 
   return (
     <CustomSnackbarProvider>
-      {/* <ReduxProvider> */}
       <ReactQueryClientProvider>
         <TranslationProvider
           locale={locale}
@@ -36,7 +30,6 @@ export default async function Layout({ children, params: { locale } }: any) {
           {children}
         </TranslationProvider>
       </ReactQueryClientProvider>
-      {/* </ReduxProvider> */}
     </CustomSnackbarProvider>
   );
 }

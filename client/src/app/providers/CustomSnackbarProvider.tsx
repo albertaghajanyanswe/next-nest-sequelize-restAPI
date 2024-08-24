@@ -1,7 +1,7 @@
 'use client';
-import React from 'react';
-import { SnackbarProvider } from 'notistack';
 import { Box } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
+import React from 'react';
 
 export const CustomSnackbarProvider = ({
   children,

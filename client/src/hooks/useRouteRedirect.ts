@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router';
-import { languageDetector } from '@/lib/languageDetector';
 import i18nConfig from '@/app/i18nConfig';
+import { languageDetector } from '@/lib/languageDetector';
 import { Locale } from '@/types/i18n.type';
+import { useRouter } from 'next/router';
 
 /**
  * A custom hook that provides a function for redirecting to a specific route with language detection.

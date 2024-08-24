@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
 import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import React, { useState } from 'react';
 
 export const ReactQueryClientProvider = ({
   children,

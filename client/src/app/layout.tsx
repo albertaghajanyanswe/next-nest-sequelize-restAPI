@@ -4,6 +4,7 @@ import React from 'react';
 import './globals.css';
 import i18nConfig from '@/app/i18nConfig';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+
 import CustomThemeProvider from '../configs/themes/CustomThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });

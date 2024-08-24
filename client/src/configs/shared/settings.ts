@@ -2,12 +2,13 @@ import {
   ProductIntendedForEnum,
   ProductProductStateEnum,
 } from '@/generated/openapi';
+import { TFunction } from 'i18next';
 
 const SETTINGS = {
   apiUrl: process.env.REACT_APP_API_URL,
   uiUrl: process.env.REACT_APP_UI_URL,
   fileRead: '/api/proxy/files/read',
-  usersStatuses: (t: any) => [
+  usersStatuses: (t: TFunction) => [
     { label: `${t('active')}`, value: 'active' },
     { label: `${t('inactive')}`, value: 'inactive' },
   ],
@@ -65,18 +66,17 @@ const SETTINGS = {
     { label: 'AMD', value: 'AMD' },
     { label: 'USD', value: 'USD' },
   ],
-  intendedForList: (t: any) => [
+  intendedForList: (t: TFunction) => [
     { label: t('forSale'), value: ProductIntendedForEnum.Sale },
     { label: t('forRent'), value: ProductIntendedForEnum.Rent },
     { label: t('forFreeGiving'), value: ProductIntendedForEnum.FreeGiving },
   ],
-  productStateList: (t: any) => [
+  productStateList: (t: TFunction) => [
     { label: t('new'), value: ProductProductStateEnum.New },
     { label: t('used'), value: ProductProductStateEnum.Used },
     { label: t('notOperable'), value: ProductProductStateEnum.NotOperable },
   ],
   regexp: {
-    // eslint-disable-next-line
     number: '^(|(?!0d)(d+(.d*)?|.d+)([eE][-+]?d+)?)$',
     percentage: /^$|^100$|^(?:\d{0,2}(?:\.\d{0,2})?)$/,
   },

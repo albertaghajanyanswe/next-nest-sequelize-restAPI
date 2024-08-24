@@ -9,11 +9,9 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
     'prettier',
     'plugin:prettier/recommended',
-    'next/core-web-vitals',
+    'plugin:@next/next/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -28,37 +26,21 @@ module.exports = {
     'react-hooks',
     'jsx-a11y',
     '@typescript-eslint',
-    'import',
     'prettier',
   ],
   rules: {
     'prettier/prettier': 'error',
-    'import/no-unresolved': 'off',
-    'import/default': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/no-explicit-any': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
-    'import/order': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'no-constant-condition': 'off',
+    'prefer-const': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      {
-        components: ['Link'],
-        specialLink: ['hrefLeft', 'hrefRight'],
-        aspects: ['invalidHref', 'preferButton'],
-      },
-    ],
+    'react-hooks/exhaustive-deps': 'error',
   },
   settings: {
     react: {
       version: 'detect',
-    },
-    'import/resolver': {
-      typescript: {},
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
     },
   },
 };

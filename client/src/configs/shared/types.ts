@@ -1,11 +1,13 @@
+import { StaticFiles } from '@/app/generated/openapi';
 import React from 'react';
+
 import {
   FavoriteProductDto,
   Product,
   ProductIntendedForEnum,
   ProductProductStateEnum,
 } from '../../generated/openapi';
-import { StaticFiles } from '@/app/generated/openapi';
+import { SxProps, Theme } from '@mui/material';
 
 export interface IUser {
   id: number;
@@ -120,7 +122,7 @@ export interface iFilterSelectField extends iFilterField {
   selectAll?: boolean;
   selectAllLabel?: string;
   insteadNone?: string;
-  sxPaperProps?: any;
+  sxPaperProps?: SxProps<Theme>;
   maxItemCount?: number;
   currentUserOption?: boolean;
   currentUserOptionLbl?: string;
