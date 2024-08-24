@@ -10,14 +10,17 @@
     "openapi": "yarn openapi-generator-cli generate -g typescript-axios -o src/app/generated/openapi -i openapi/doc.yml",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.11",
-    "@mui/material": "^5.15.11",
+    "@mui/lab": "^5.0.0-alpha.173",
+    "@mui/material": "^5.16.7",
     "@mui/material-nextjs": "^5.15.11",
     "@tanstack/react-query": "^5.51.5",
     "@tanstack/react-query-devtools": "^5.51.5",
@@ -36,9 +39,19 @@
     "react-i18next": "^14.0.5"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.7.0",
     "@eslint/js": "^9.3.0",
     "@next/eslint-plugin-next": "^14.2.6",
     "@openapitools/openapi-generator-cli": "^2.9.0",
+    "@storybook/addon-essentials": "^8.2.9",
+    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-links": "^8.2.9",
+    "@storybook/addon-onboarding": "^8.2.9",
+    "@storybook/addon-themes": "^8.2.9",
+    "@storybook/blocks": "^8.2.9",
+    "@storybook/nextjs": "^8.2.9",
+    "@storybook/react": "^8.2.9",
+    "@storybook/test": "^8.2.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -52,8 +65,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-storybook": "^0.8.0",
     "globals": "^15.3.0",
     "prettier": "^2.8.8",
+    "storybook": "^8.2.9",
     "typescript": "^5",
     "typescript-eslint": "^7.11.0"
   }
