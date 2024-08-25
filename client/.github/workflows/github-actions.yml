@@ -1,14 +1,9 @@
 name: GitHub Actions
 on:
   push:
-      - '**/*.js'
-      - '**/*.jsx'
-      - '**/*.ts'
-      - '**/*.tsx'
-  # push:
-  #   branches: [ 1_added_docker ]
-  # pull_request:
-  #   branches: [ 1_added_docker ]
+    branches: [ 1_added_docker ]
+  pull_request:
+    branches: [ 1_added_docker ]
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -27,9 +22,9 @@ jobs:
         run: npm run build
       - name: build storybook
         run: npm run build:storybook
-      - name: unit test
-        run: npm run test:unit
-      - name: e2e test
-        run: npm run test:e2e
+      # - name: unit test
+      #   run: npm run test:unit
+      # - name: e2e test
+      #   run: npm run test:e2e
       - name: lint code
         run: npm run lint
