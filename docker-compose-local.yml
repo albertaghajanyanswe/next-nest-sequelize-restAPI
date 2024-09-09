@@ -1,6 +1,18 @@
 version: '3.3'
 
 services:
+  # db_data:
+  #   image: postgres:14.1-alpine
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   networks:
+  #     - app-connect
   server:
     container_name: server-service-rest
     restart: always
@@ -27,6 +39,8 @@ services:
       CLIENT_URL: ${CLIENT_URL}
     networks:
       - app-connect
+    # depends_on:
+    #   - db_data
   ui:
     container_name: client-service-rest
     build: ./client

@@ -1,11 +1,11 @@
 'use client';
-import { CustomThemeContext } from '@/configs/themes/CustomThemeProvider';
+import React, { useContext } from 'react';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Grid, IconButton, Typography } from '@mui/material';
 import { useTheme } from '@mui/system';
-import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { CustomThemeContext } from '@/configs/themes/CustomThemeProvider';
 
 function ChangeTheme() {
   const { t } = useTranslation();

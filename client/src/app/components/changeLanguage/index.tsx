@@ -1,9 +1,9 @@
 'use client';
-import { languageDetector } from '@/lib/languageDetector';
+import React, { useCallback } from 'react';
 import { Button, ButtonGroup, Grid, Typography } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { languageDetector } from '@/lib/languageDetector';
 
 function ChangeLanguage() {
   const { t, i18n } = useTranslation();
