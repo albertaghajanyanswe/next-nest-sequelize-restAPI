@@ -50,16 +50,19 @@ function ProductsLayout<T>({
   // eslint-disable-next-line react-hooks/exhaustive-deps, @typescript-eslint/no-unused-vars
   const getPageHeaderHeight = useCallback(
     () => pageHeaderRef.current?.clientHeight || 0,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [pageHeaderRef.current?.clientHeight, loading]
   );
 
   const filterRef = useRef<any>();
   const handleFilterRef = useCallback((el: HTMLDivElement | null) => {
     filterRef.current = el;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // eslint-disable-next-line react-hooks/exhaustive-deps, @typescript-eslint/no-unused-vars
   const getFilterHeight = useCallback(
     () => filterRef.current?.clientHeight || 0,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [filterRef.current?.clientHeight, loading]
   );
 
@@ -70,6 +73,7 @@ function ProductsLayout<T>({
   // eslint-disable-next-line
   const getFooterHeight = useCallback(
     () => footerRef.current?.clientHeight || 0,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [footerRef.current?.clientHeight, loading]
   );
 

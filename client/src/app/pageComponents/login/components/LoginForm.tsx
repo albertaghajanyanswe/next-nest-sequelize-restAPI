@@ -40,7 +40,8 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t('nickName')}
             sxContainer={{ mt: 0 }}
             title={t('nickName')}
-            titleTooltip={t('nickName')}
+            label={t('nickName')}
+            helperTooltip={t('nickName')}
             borderRadius={8}
           />
         ) : (
@@ -53,7 +54,8 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t('email')}
             sxContainer={{ mt: 0 }}
             title={t('email')}
-            titleTooltip={t('email')}
+            label={t('email')}
+            helperTooltip={t('email')}
             borderRadius={8}
           />
         )}
@@ -65,7 +67,8 @@ const LoginForm = FormHOC<iProps>(({ handleSubmit }) => {
           placeholder={t('password')}
           sxContainer={{ mt: 0 }}
           title={t('password')}
-          titleTooltip={t('password')}
+          label={t('password')}
+          helperTooltip={t('password')}
           borderRadius={8}
           withEyeIcon
           eyeIconSize={16}

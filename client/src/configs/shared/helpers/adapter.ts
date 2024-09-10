@@ -1,7 +1,6 @@
 import { ProductWithImages } from '@/configs/shared/types';
-import { StaticFiles, User } from '@/generated/openapi';
+import { FavoriteProductDto, StaticFiles, User } from '@/generated/openapi';
 import { ProductDto } from '../../../app/generated/openapi/api';
-import { FavoriteProductDto } from '../../../../../server/src/favoriteProducts/dto/favorite-product.dto';
 
 function decorateShowField<T extends readonly any[]>(ar: T) {
   return ar as readonly (T[number] & {

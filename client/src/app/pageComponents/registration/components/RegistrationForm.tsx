@@ -58,7 +58,8 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t('firstName')}
             sxContainer={{ mt: 0 }}
             title={t('firstName')}
-            titleTooltip={t('firstName')}
+            label={t('firstName')}
+            helperTooltip={t('firstName')}
             borderRadius={8}
           />
         </Grid>
@@ -71,7 +72,8 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t('lastName')}
             sxContainer={{ mt: 0 }}
             title={t('lastName')}
-            titleTooltip={t('lastName')}
+            label={t('lastName')}
+            helperTooltip={t('lastName')}
             borderRadius={8}
           />
         </Grid>
@@ -87,7 +89,8 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t('email')}
             sxContainer={{ mt: 0 }}
             title={t('email')}
-            titleTooltip={t('email')}
+            label={t('email')}
+            helperTooltip={t('email')}
             borderRadius={8}
           />
         </Grid>
@@ -100,7 +103,8 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t(`nickName`)}
             sxContainer={{ mt: 0 }}
             title={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
-            titleTooltip={
+            label={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
+            helperTooltip={
               switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)
             }
             borderRadius={8}
@@ -114,7 +118,8 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
           placeholder={t(`password`)}
           sxContainer={{ mt: 0 }}
           title={switchGuestAccountValue ? t(`guestPassword`) : t(`password`)}
-          titleTooltip={
+          label={switchGuestAccountValue ? t(`guestPassword`) : t(`password`)}
+          helperTooltip={
             switchGuestAccountValue ? t(`guestPassword`) : t(`password`)
           }
           borderRadius={8}
@@ -131,7 +136,8 @@ const RegistrationForm = FormHOC<iProps>(({ handleSubmit }) => {
             placeholder={t(`nickName`)}
             sxContainer={{ mt: 0 }}
             title={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
-            titleTooltip={
+            label={switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)}
+            helperTooltip={
               switchGuestAccountValue ? t(`guestNickName`) : t(`nickName`)
             }
             borderRadius={8}

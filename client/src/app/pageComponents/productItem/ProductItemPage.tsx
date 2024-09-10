@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, useMediaQuery } from '@mui/material';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
 
@@ -84,10 +84,11 @@ const ProductItemPage = () => {
   const pageHeaderRef = useRef<any>();
   const handlePageHeaderRef = useCallback((el: HTMLDivElement | null) => {
     pageHeaderRef.current = el;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getPageHeaderHeight = useCallback(
     () => pageHeaderRef.current?.clientHeight || 0,
+    // eslint-disable-next-line
     [pageHeaderRef.current?.clientHeight, isGetLoading]
   );
 
@@ -98,6 +99,7 @@ const ProductItemPage = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getFooterHeight = useCallback(
     () => footerRef.current?.clientHeight || 0,
+    // eslint-disable-next-line
     [footerRef.current?.clientHeight, isGetLoading]
   );
 
@@ -154,6 +156,7 @@ const ProductItemPage = () => {
           setDisableSubmit(false);
         }
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -213,6 +216,8 @@ const ProductItemPage = () => {
     return res;
   };
 
+  const isPC = useMediaQuery(theme.breakpoints.up('md'));
+
   if (isGetLoading) {
     return <Loading />;
   }
@@ -226,10 +231,9 @@ const ProductItemPage = () => {
       <Box
         sx={{
           position: 'fixed',
-          width: `calc(100% - ${isSideBarOpen ? variables.drawerWidth : variables.closedDrawerWidth})`,
+          width: `calc(100% - ${isPC ? variables.drawerWidth : '0px'})`,
           backgroundColor: 'rgb(250,250,250,1)',
           zIndex: 1,
-          boxShadow: 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px',
         }}
       >
         <PageTitle
@@ -279,6 +283,7 @@ const ProductItemPage = () => {
                   placeholder={t('productName')}
                   sxContainer={{ mt: 0 }}
                   title={t('productName')}
+                  label={t('productName')}
                   borderRadius={8}
                 />
               </Grid>
@@ -311,6 +316,7 @@ const ProductItemPage = () => {
                   placeholder={t('productDescription')}
                   sxContainer={{ mt: 0 }}
                   title={t('productDescription')}
+                  label={t('productDescription')}
                   borderRadius={8}
                   multiline
                   rows={4.5}
@@ -323,6 +329,7 @@ const ProductItemPage = () => {
                   placeholder={t('productPrice')}
                   sxContainer={{ mt: 0 }}
                   title={t('productPrice')}
+                  label={t('productPrice')}
                   borderRadius={8}
                   pattern="^\d{0,9}$"
                 />
@@ -345,6 +352,7 @@ const ProductItemPage = () => {
                   placeholder={t('productProvince')}
                   sxContainer={{ mt: 0 }}
                   title={t('productProvince')}
+                  label={t('productProvince')}
                   borderRadius={8}
                 />
               </Grid>
@@ -355,6 +363,7 @@ const ProductItemPage = () => {
                   placeholder={t('productCity')}
                   sxContainer={{ mt: 0 }}
                   title={t('productCity')}
+                  label={t('productCity')}
                   borderRadius={8}
                 />
               </Grid>
@@ -365,6 +374,7 @@ const ProductItemPage = () => {
                   placeholder={t('productAddress')}
                   sxContainer={{ mt: 0 }}
                   title={t('productAddress')}
+                  label={t('productAddress')}
                   borderRadius={8}
                 />
               </Grid>
@@ -389,6 +399,7 @@ const ProductItemPage = () => {
                   placeholder={t('productOtherInfo')}
                   sxContainer={{ mt: 0 }}
                   title={t('productOtherInfo')}
+                  label={t('productOtherInfo')}
                   borderRadius={8}
                   multiline={true}
                   rows={3.5}

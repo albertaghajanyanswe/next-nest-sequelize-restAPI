@@ -15,8 +15,8 @@ const stylesWithTheme = (theme: Theme) => ({
   container: {
     width: '100%',
     [theme.breakpoints.up(768)]: {
-      width: '568px'
-    }
+      width: '568px',
+    },
   },
   description: {
     fontWeight: 400,

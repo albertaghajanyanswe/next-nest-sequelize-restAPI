@@ -1,5 +1,5 @@
 import { useCallback, useLayoutEffect, useRef } from 'react';
-
+// eslint-disable-next-line
 export function useEvent<T extends Function>(fn: T) {
   const fnRef = useRef(fn);
 

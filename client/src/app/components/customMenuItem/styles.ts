@@ -6,6 +6,9 @@ export const stylesWithTheme = (theme: Theme) => ({
     maxHeight: 'inherit',
     fontWeight: 400,
   },
+  menuItemActive: {
+    background: '#F3FAFF',
+  },
   listItem: {
     display: 'flex',
     alignItems: 'center',

@@ -100,9 +100,8 @@ function ProductItemCard<T>({
         flexDirection: 'column',
         justifyContent: 'space-between',
         position: 'relative',
-        background: 'white'
+        background: 'white',
       }}
-      className="AAAAAAA"
     >
       <Chip
         sx={{

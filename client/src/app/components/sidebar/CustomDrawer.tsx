@@ -43,10 +43,12 @@ const CustomDrawer = ({ open, children }: IDrawerProps) => {
 
   useEffect(() => {
     dispatch(toggleSidebarByValue(!!open));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     dispatch(toggleSidebarByValue(!!open));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   return (
@@ -68,7 +70,7 @@ const CustomDrawer = ({ open, children }: IDrawerProps) => {
         }),
         '& > .MuiPaper-root': {
           // backgroundColor: theme.palette.primary.main,
-          backgroundColor: 'rgb(250,250,250,1)'
+          // backgroundColor: 'rgb(250,250,250,1)'
         },
       }}
     >

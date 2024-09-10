@@ -19,7 +19,8 @@ const stylesWithTheme = (theme: Theme) => ({
     },
   },
   paper: {
-    background: 'rgb(250,250,250,1)',
+    // background: 'rgb(250,250,250,1)',
+    background: 'white',
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'primary.borderColor1',
@@ -117,7 +118,7 @@ const stylesWithTheme = (theme: Theme) => ({
       fontFamily: 'var(--font-poppins)',
       fontWeight: 500,
       letterSpacing: '-0.00300em',
-      color: 'rgb(250,250,250,1)'
+      color: 'rgb(250,250,250,1)',
     },
   },
   divider: {
@@ -142,7 +143,7 @@ const stylesWithTheme = (theme: Theme) => ({
       fontFamily: 'var(--font-poppins)',
       fontSize: '14px',
       lineHeight: '16px',
-      fontWeight: 600
+      fontWeight: 600,
     },
   },
 });

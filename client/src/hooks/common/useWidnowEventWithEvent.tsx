@@ -17,6 +17,7 @@ function useWindowEvent(type: string, cb: (event: Event) => void) {
     window.addEventListener(type, eventCb);
 
     return () => window.removeEventListener(type, eventCb);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eventCb]);
 }
 

@@ -29,6 +29,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Fade from '@mui/material/Fade';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListIcon from '@mui/icons-material/List';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
+
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
   children?: React.ReactNode;
@@ -67,12 +71,20 @@ const CustomAppBar = ({ open, children }: AppBarProps) => {
     setAnchorElLeft(null);
     setIsOpenLeft(false);
   };
+  const handleLeftMenuItemClick = (path: string) => {
+    router.push(path, undefined);
+  };
+
   const handleLogout = () => {
     logOut();
     router.push(routes.login.path, undefined);
   };
 
   const muiStyles = stylesWithTheme(theme);
+
+  const isLinkActive = (link: string) => {
+    return pathname === link || pathname.includes(link);
+  };
 
   const appBarContent = useMemo(() => {
     return (
@@ -106,12 +118,47 @@ const CustomAppBar = ({ open, children }: AppBarProps) => {
               id={isOpenLeft ? 'simple-popper-left' : undefined}
               open={isOpenLeft}
               anchorEl={anchorElLeft}
+              sx={{ zIndex: 100 }}
             >
               <ClickAwayListener onClickAway={handleCloseLeft}>
                 <Paper>
-                  <MenuList sx={{ backgroundColor: 'white', mt: '12px', ml: '12px' }} className="AAAAAAAA">
-                    <CustomMenuItem text={t('logout')} onClick={handleLogout}>
-                      <LogoutIcon
+                  <MenuList
+                    sx={{ backgroundColor: 'white', mt: '12px', ml: '12px' }}
+                  >
+                    <CustomMenuItem
+                      text={t('home')}
+                      onClick={() => handleLeftMenuItemClick(routes.home.path)}
+                      isLinkActive={pathname === routes.home.path}
+                    >
+                      <HomeIcon
+                        style={{
+                          fontSize: '14px',
+                          color: theme.palette.primary.textColor1,
+                        }}
+                      />
+                    </CustomMenuItem>
+                    <CustomMenuItem
+                      text={t('products')}
+                      onClick={() =>
+                        handleLeftMenuItemClick(routes.products.path)
+                      }
+                      isLinkActive={isLinkActive(routes.products.path)}
+                    >
+                      <ProductionQuantityLimitsIcon
+                        style={{
+                          fontSize: '14px',
+                          color: theme.palette.primary.textColor1,
+                        }}
+                      />
+                    </CustomMenuItem>
+                    <CustomMenuItem
+                      text={t('settings')}
+                      onClick={() =>
+                        handleLeftMenuItemClick(routes.settings.path)
+                      }
+                      isLinkActive={isLinkActive(routes.settings.path)}
+                    >
+                      <SettingsIcon
                         style={{
                           fontSize: '14px',
                           color: theme.palette.primary.textColor1,
@@ -177,7 +224,9 @@ const CustomAppBar = ({ open, children }: AppBarProps) => {
             >
               <ClickAwayListener onClickAway={handleClose}>
                 <Paper>
-                  <MenuList sx={{ backgroundColor: 'white', mt: '4px', mr: '12px' }}>
+                  <MenuList
+                    sx={{ backgroundColor: 'white', mt: '4px', mr: '12px' }}
+                  >
                     <CustomMenuItem text={t('logout')} onClick={handleLogout}>
                       <LogoutIcon
                         style={{

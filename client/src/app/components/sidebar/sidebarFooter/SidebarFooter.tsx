@@ -25,6 +25,7 @@ function SideBarFooter() {
 
   useEffect(() => {
     dispatch(toggleSidebar(!downSM));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [downSM]);
 
   return (

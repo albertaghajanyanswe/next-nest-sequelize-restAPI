@@ -87,7 +87,7 @@ function CustomSideBar() {
     return (
       currentUser && (
         <Box component="div" sx={{ mt: 5 }}>
-          <List sx={{ background: 'rgb(250,250,250,1)', p: '0!important' }}>
+          <List sx={{ p: '0!important' }}>
             {links.map((item) =>
               item.type === 'divider' ? (
                 <Box key={item.id} sx={{ p: '12px' }}>
@@ -157,6 +157,7 @@ function CustomSideBar() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
       )
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [links, handleClick, i18n.languages]);
 
   const handleLogout = () => {
@@ -200,6 +201,7 @@ function CustomSideBar() {
                     ).sx,
                     backgroundColor: 'primary.main',
                   }}
+                  // eslint-disable-next-line
                   children={`${userName.split(' ')[0][0]}${userName.split(' ')[1][0]}`}
                   src={fileService.getFileUrl(currentUser?.image)}
                 />

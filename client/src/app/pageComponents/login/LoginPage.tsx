@@ -40,7 +40,7 @@ const LoginPage = () => {
     () =>
       handleSubmit(async (data) => {
         try {
-          console.log('AAAAAAAAAAAAAAAA')
+          console.log('AAAAAAAAAAAAAAAA');
           const res = await postLogin(data as iLogin).unwrap();
           localStorage.setItem(lsConstants.CURRENT_USER, JSON.stringify(res));
           SystemMessage(enqueueSnackbar, getMessage(t, '', 'success'), {
@@ -57,8 +57,8 @@ const LoginPage = () => {
           });
         }
         return true;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -69,7 +69,11 @@ const LoginPage = () => {
           <form noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography variant="h5" color="primary.textColor1" sx={{ fontWeight: '600' }}>
+                <Typography
+                  variant="h5"
+                  color="primary.textColor1"
+                  sx={{ fontWeight: '600' }}
+                >
                   {t('loginWelcome')}
                 </Typography>
                 <Typography
@@ -104,7 +108,7 @@ const LoginPage = () => {
                 {t('notAccountYet')}
                 <Typography
                   component={Link}
-                  sx={{...styles.link, ml: 1}}
+                  sx={{ ...styles.link, ml: 1 }}
                   href={routes.registration.path}
                 >
                   {' '}

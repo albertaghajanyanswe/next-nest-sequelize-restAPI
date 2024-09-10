@@ -19,15 +19,14 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     minWidth: 'fit-content',
     height: '44px',
     boxShadow: 'none',
-    borderRadius: '.5rem',
+    borderRadius: '8px',
   },
   primaryBtn: {
-    color: 'rgb(250,250,250,1)',
-    backgroundColor: 'primary.btnMain',
-    borderRadius: '.5rem',
+    color: 'white',
+    backgroundColor: 'primary.btnMainPressed',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'primary.btnMain',
+    borderColor: 'primary.btnMainPressed',
     fontSize: '16px',
     lineHeight: '24px',
     fontWeight: 500,
@@ -68,7 +67,6 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.btnMainPressed',
     color: 'primary.main',
-    borderRadius: '.5rem',
     '&:hover': {
       boxShadow: 'none',
       borderWidth: '1px',
@@ -98,7 +96,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.btnMainDisabled',
-      background: 'rgb(250,250,250,1)',
+      background: 'white',
       '& > span': {
         '& > svg': {
           '& > path': {
@@ -118,7 +116,6 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.borderColor1',
     color: 'primary.btnMain',
-    borderRadius: '.5rem',
     '&:hover': {
       boxShadow: 'none',
       borderWidth: '1px',
@@ -148,7 +145,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.textColor2',
-      background: 'rgb(250,250,250,1)',
+      background: 'white',
       '& > span': {
         '& > svg': {
           '& > path': {
@@ -163,7 +160,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.textColor2',
-      background: 'rgb(250,250,250,1)',
+      background: 'white',
       '& > span': {
         opacity: '0.6',
         '& > svg': {
@@ -183,10 +180,9 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     // border: 'none',
     // borderWidth: '1px',
     // borderStyle: 'solid',
-    // borderColor: 'rgb(250,250,250,1)',
+    // borderColor: 'white',
     border: 'none',
     color: 'primary.btnMain',
-    borderRadius: '.5rem',
     '& > span': {
       '& > svg': {
         '& > path': {
@@ -200,7 +196,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       border: 'none',
       // borderWidth: '1px',
       // borderStyle: 'solid',
-      // borderColor: 'rgb(250,250,250,1)',
+      // borderColor: 'white',
       color: 'primary.btnMainHover',
       '& > span': {
         '& > svg': {
@@ -214,7 +210,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       border: 'none',
       // borderWidth: '1px',
       // borderStyle: 'solid',
-      // borderColor: 'rgb(250,250,250,1)',
+      // borderColor: 'white',
       background: 'inherit',
       boxShadow: 'none',
       color: 'primary.btnMainPressed',
@@ -231,7 +227,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       border: 'none',
       // borderWidth: '1px',
       // borderStyle: 'solid',
-      // borderColor: 'rgb(250,250,250,1)',
+      // borderColor: 'white',
       color: 'primary.textColor2',
       '& > span': {
         '& > svg': {
@@ -251,7 +247,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     borderStyle: 'solid',
     borderColor: 'primary.borderColor2',
     color: 'primary.btnMain',
-    borderRadius: '.5rem',
+    borderRadius: '500px',
     backgroundColor: 'primary.lightBG1',
     '&:hover': {
       boxShadow: 'none',
@@ -290,7 +286,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: 'primary.textColor2',
-      background: 'rgb(250,250,250,1)',
+      background: 'white',
       '& > span': {
         opacity: '0.6',
         '& > svg': {
@@ -326,7 +322,7 @@ const stylesCallback = (theme?: Theme | undefined) => ({
     '& > svg': {
       animation: `${spin} 2s linear infinite;`,
       '& > path': {
-        stroke: 'rgb(250,250,250,1)',
+        stroke: 'white',
       },
     },
   },

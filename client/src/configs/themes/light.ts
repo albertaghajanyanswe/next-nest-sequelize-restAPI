@@ -221,8 +221,8 @@ const theme = createTheme({
       styleOverrides: {
         tooltip: {
           fontFamily: 'var(--font-poppins)',
-          color: "rgb(250,250,250,1)",
-          backgroundColor: "#47508A"
+          color: 'rgb(250,250,250,1)',
+          backgroundColor: '#47508A',
         },
       },
     },
@@ -279,9 +279,6 @@ const theme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: {
-          backgroundColor: 'white'
-        },
         notchedOutline: {
           border: '1px solid #E0E0E0;',
         },
@@ -293,8 +290,8 @@ const theme = createTheme({
             fontSize: '14px',
           },
         },
-
         root: {
+          backgroundColor: 'white',
           '& .MuiInputBase-inputSizeSmall': {
             padding: '12.5px 16px',
           },
@@ -376,7 +373,8 @@ const theme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          background: 'rgb(250,250,250,1)',
+          // background: 'rgb(250,250,250,1)',
+          background: 'white',
           borderRadius: '2px',
           fontSize: '14px',
           lineHeight: '24px',
@@ -399,7 +397,8 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          background: 'rgb(250,250,250,1)',
+          // background: 'rgb(250,250,250,1)',
+          background: 'white',
           borderRadius: '4px',
           fontSize: '14px',
           lineHeight: '24px',
@@ -424,9 +423,9 @@ const theme = createTheme({
             // marginTop: '4px',
             '& .MuiMenuItem-root': {
               padding: '12px 20px',
-              borderRadius: '4px'
+              borderRadius: '4px',
             },
-          }
+          },
         },
       },
     },

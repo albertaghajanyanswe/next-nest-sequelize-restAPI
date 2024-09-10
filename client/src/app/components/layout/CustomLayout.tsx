@@ -32,7 +32,6 @@ function CustomLayout({ children }: { children: React.ReactNode }) {
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isPC = useMediaQuery(theme.breakpoints.up('md'));
 
-  console.log('isPC = ', isPC)
   const calculatedDrawerWidth = isPC ? variables.drawerWidth : '0px';
 
   //   useEffect(() => {

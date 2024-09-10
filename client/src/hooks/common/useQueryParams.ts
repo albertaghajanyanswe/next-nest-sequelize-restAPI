@@ -58,6 +58,7 @@ const useQueryParams = ({
   const setFilteredParams = useCallback((newParams: iFilterParams) => {
     replacePath(newParams.params);
     tableFilter.current = { ...tableFilter.current, params: newParams.params };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { queryParams: tableFilter.current, setFilteredParams };

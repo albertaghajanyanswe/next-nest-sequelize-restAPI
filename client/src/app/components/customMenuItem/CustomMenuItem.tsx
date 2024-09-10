@@ -24,7 +24,14 @@ const CustomMenuItem = ({
   const muiStyles = stylesWithTheme(theme);
 
   return (
-    <MenuItem disabled={disableItem} onClick={onClick} sx={muiStyles.menuItem}>
+    <MenuItem
+      disabled={disableItem}
+      onClick={onClick}
+      sx={{
+        ...muiStyles.menuItem,
+        ...(isLinkActive ? muiStyles.menuItemActive : {}),
+      }}
+    >
       <Box sx={muiStyles.listItem}>
         {children && (
           <ListItemIcon

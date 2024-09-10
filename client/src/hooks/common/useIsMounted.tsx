@@ -35,7 +35,7 @@ export function UseIsMountedExample() {
         }
         setItems(items);
       });
-  }, []);
+  }, [isMounted]);
 
   return (
     <div>
